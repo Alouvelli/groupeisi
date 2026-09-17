@@ -1,0 +1,13 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "Groupe ISI (Docker)",
+      "Group": "Servers",
+      "Host": "postgres",
+      "Port": 5432,
+      "MaintenanceDB": "groupeisi",
+      "Username": "postgres",
+      "SSLMode": "prefer"
+    }
+  }
+}

@@ -1,0 +1,747 @@
+// ---------------------------------------------------------------------------
+// Groupe ISI - Schéma Prisma
+// 19 modèles : SiteSettings, NavigationItem, Departement, Programme, Campus,
+// Post, CategorieActualite, Evenement, Personne, Alumni, Partenaire,
+// Inscription, Document, Testimonial, FAQ, User, ERPConfig, ERPLog, ERPMapping
+// (+ ContactMessage et NewsletterSubscriber pour les formulaires du site)
+// ---------------------------------------------------------------------------
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================================
+// ENUMS
+// ============================================================================
+
+enum NavLocation {
+  HEADER
+  FOOTER
+  FOOTER_SECONDARY
+}
+
+enum Niveau {
+  BTS
+  LICENCE
+  MASTER
+  DOCTORAT
+  CERTIFICAT
+  FORMATION_CONTINUE
+}
+
+enum PersonneType {
+  DIRECTION
+  ENSEIGNANT
+  ADMINISTRATION
+}
+
+enum PartenaireType {
+  ACADEMIQUE
+  ENTREPRISE
+  INSTITUTIONNEL
+}
+
+enum DocumentType {
+  BROCHURE
+  PLAQUETTE
+  FORMULAIRE
+  REGLEMENT
+  CALENDRIER
+  AUTRE
+}
+
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  EDITEUR
+}
+
+enum Civilite {
+  M
+  MME
+  MLLE
+}
+
+enum NiveauEtudes {
+  BFEM
+  BAC
+  BAC_PLUS_1
+  BAC_PLUS_2
+  BAC_PLUS_3
+  BAC_PLUS_4
+  BAC_PLUS_5
+  AUTRE
+}
+
+enum ModeFormation {
+  PRESENTIEL
+  EN_LIGNE
+  ALTERNANCE
+  COURS_DU_SOIR
+}
+
+enum SourceConnaissance {
+  SITE_WEB
+  RESEAUX_SOCIAUX
+  BOUCHE_A_OREILLE
+  SALON_FORUM
+  PRESSE_RADIO_TV
+  AFFICHAGE
+  ANCIEN_ETUDIANT
+  AUTRE
+}
+
+enum InscriptionStatut {
+  NOUVELLE
+  EN_COURS
+  ACCEPTEE
+  REFUSEE
+  CONFIRMEE
+  ANNULEE
+}
+
+enum ERPSyncStatus {
+  PENDING
+  SYNCING
+  SYNCED
+  FAILED
+  SKIPPED
+}
+
+enum ERPDirection {
+  OUTBOUND
+  INBOUND
+}
+
+enum ERPLogStatus {
+  SUCCESS
+  ERROR
+  RETRY
+  INFO
+}
+
+enum ContactStatut {
+  NOUVEAU
+  LU
+  TRAITE
+}
+
+// ============================================================================
+// 1. SITE SETTINGS
+// ============================================================================
+
+model SiteSettings {
+  id                   String   @id @default("default")
+  siteName             String   @default("Groupe ISI")
+  tagline              String?
+  description          String?
+  logoUrl              String?
+  logoWhiteUrl         String?
+  faviconUrl           String?
+  email                String?
+  emailAdmissions      String?
+  phone                String?
+  phone2               String?
+  whatsapp             String?
+  address              String?
+  horaires             String?
+  facebook             String?
+  instagram            String?
+  linkedin             String?
+  youtube              String?
+  twitter              String?
+  tiktok               String?
+  // Homepage
+  heroTitle            String?
+  heroSubtitle         String?
+  heroCtaLabel         String?
+  heroCtaHref          String?
+  heroVideoUrl         String?
+  annonceBandeau       String?
+  annonceLien          String?
+  // Statistiques (barre de chiffres clés)
+  statAnnees           Int      @default(30)
+  statEtudiants        Int      @default(15000)
+  statCampus           Int      @default(9)
+  statProgrammes       Int      @default(40)
+  statInsertion        Int      @default(85)
+  statPartenaires      Int      @default(120)
+  // SEO
+  seoTitle             String?
+  seoDescription       String?
+  seoKeywords          String?
+  ogImage              String?
+  googleAnalytics      String?
+  // Pré-inscription
+  inscriptionsOuvertes Boolean  @default(true)
+  anneeAcademique      String   @default("2026-2027")
+  rentreeOptions       String[] @default(["Octobre 2026", "Janvier 2027", "Mars 2027"])
+  updatedAt            DateTime @updatedAt
+}
+
+// ============================================================================
+// 2. NAVIGATION
+// ============================================================================
+
+model NavigationItem {
+  id          String           @id @default(cuid())
+  label       String
+  href        String
+  ordre       Int              @default(0)
+  location    NavLocation      @default(HEADER)
+  isExternal  Boolean          @default(false)
+  isActive    Boolean          @default(true)
+  isMega      Boolean          @default(false)
+  description String?
+  icone       String?
+  parentId    String?
+  parent      NavigationItem?  @relation("NavChildren", fields: [parentId], references: [id], onDelete: Cascade)
+  children    NavigationItem[] @relation("NavChildren")
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  @@index([location, ordre])
+}
+
+// ============================================================================
+// 3. DEPARTEMENT
+// ============================================================================
+
+model Departement {
+  id             String      @id @default(cuid())
+  nom            String
+  slug           String      @unique
+  accroche       String?
+  description    String
+  contenu        String?
+  icone          String? // nom d'icône lucide (ex: "Code2")
+  image          String?
+  couleur        String? // couleur d'accent (#hex)
+  ordre          Int         @default(0)
+  isActive       Boolean     @default(true)
+  seoTitle       String?
+  seoDescription String?
+  programmes     Programme[]
+  personnes      Personne[]
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+
+  @@index([ordre])
+}
+
+// ============================================================================
+// 4. PROGRAMME
+// ============================================================================
+
+model Programme {
+  id                  String        @id @default(cuid())
+  titre               String
+  slug                String        @unique
+  niveau              Niveau
+  duree               String // ex: "3 ans", "2 ans", "6 mois"
+  credits             Int?
+  accroche            String?
+  description         String
+  contenu             String?
+  objectifs           String[]      @default([])
+  debouches           String[]      @default([])
+  competences         String[]      @default([])
+  modules             Json? // [{ semestre, intitule, ects }]
+  conditionsAdmission String?
+  fraisInscription    Int? // en FCFA
+  fraisScolarite      Int? // en FCFA / an
+  diplome             String? // ex: "Licence professionnelle (ANAQ-Sup)"
+  accreditation       String? // ex: "CAMES", "ANAQ-Sup"
+  image               String?
+  brochureUrl         String?
+  ordre               Int           @default(0)
+  isActive            Boolean       @default(true)
+  isFeatured          Boolean       @default(false)
+  seoTitle            String?
+  seoDescription      String?
+  departementId       String
+  departement         Departement   @relation(fields: [departementId], references: [id], onDelete: Cascade)
+  campus              Campus[]      @relation("ProgrammeCampus")
+  inscriptions        Inscription[]
+  erpCode             String? // identifiant du programme dans l'ERP
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
+
+  @@index([niveau, isActive])
+  @@index([departementId])
+}
+
+// ============================================================================
+// 5. CAMPUS
+// ============================================================================
+
+model Campus {
+  id           String        @id @default(cuid())
+  nom          String
+  slug         String        @unique
+  ville        String
+  pays         String        @default("Sénégal")
+  adresse      String
+  telephone    String?
+  telephone2   String?
+  email        String?
+  whatsapp     String?
+  description  String
+  contenu      String?
+  image        String?
+  images       String[]      @default([])
+  equipements  String[]      @default([])
+  latitude     Float?
+  longitude    Float?
+  mapEmbedUrl  String?
+  ordre        Int           @default(0)
+  isActive     Boolean       @default(true)
+  isSiege      Boolean       @default(false)
+  erpCode      String?
+  programmes   Programme[]   @relation("ProgrammeCampus")
+  inscriptions Inscription[]
+  evenements   Evenement[]
+  personnes    Personne[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  @@index([ordre])
+}
+
+// ============================================================================
+// 6. POST (ACTUALITÉS)
+// ============================================================================
+
+model Post {
+  id             String              @id @default(cuid())
+  titre          String
+  slug           String              @unique
+  extrait        String
+  contenu        String
+  image          String?
+  tags           String[]            @default([])
+  isPublished    Boolean             @default(false)
+  isFeatured     Boolean             @default(false)
+  publishedAt    DateTime?
+  vues           Int                 @default(0)
+  tempsLecture   Int? // minutes
+  seoTitle       String?
+  seoDescription String?
+  categorieId    String?
+  categorie      CategorieActualite? @relation(fields: [categorieId], references: [id], onDelete: SetNull)
+  auteurId       String?
+  auteur         User?               @relation(fields: [auteurId], references: [id], onDelete: SetNull)
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+
+  @@index([isPublished, publishedAt])
+  @@index([categorieId])
+}
+
+// ============================================================================
+// 7. CATEGORIE ACTUALITE
+// ============================================================================
+
+model CategorieActualite {
+  id          String   @id @default(cuid())
+  nom         String
+  slug        String   @unique
+  description String?
+  couleur     String?
+  ordre       Int      @default(0)
+  posts       Post[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ============================================================================
+// 8. EVENEMENT
+// ============================================================================
+
+model Evenement {
+  id              String    @id @default(cuid())
+  titre           String
+  slug            String    @unique
+  description     String
+  contenu         String?
+  image           String?
+  dateDebut       DateTime
+  dateFin         DateTime?
+  heure           String?
+  lieu            String?
+  type            String? // Journée portes ouvertes, Conférence, Atelier, Cérémonie...
+  lienInscription String?
+  isPublished     Boolean   @default(true)
+  isFeatured      Boolean   @default(false)
+  campusId        String?
+  campus          Campus?   @relation(fields: [campusId], references: [id], onDelete: SetNull)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([dateDebut, isPublished])
+}
+
+// ============================================================================
+// 9. PERSONNE (ÉQUIPE)
+// ============================================================================
+
+model Personne {
+  id            String       @id @default(cuid())
+  prenom        String
+  nom           String
+  slug          String       @unique
+  poste         String
+  type          PersonneType @default(ENSEIGNANT)
+  bio           String?
+  photo         String?
+  email         String?
+  telephone     String?
+  linkedin      String?
+  twitter       String?
+  specialites   String[]     @default([])
+  diplomes      String[]     @default([])
+  ordre         Int          @default(0)
+  isActive      Boolean      @default(true)
+  isFeatured    Boolean      @default(false)
+  departementId String?
+  departement   Departement? @relation(fields: [departementId], references: [id], onDelete: SetNull)
+  campusId      String?
+  campus        Campus?      @relation(fields: [campusId], references: [id], onDelete: SetNull)
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  @@index([type, ordre])
+}
+
+// ============================================================================
+// 10. ALUMNI
+// ============================================================================
+
+model Alumni {
+  id         String   @id @default(cuid())
+  prenom     String
+  nom        String
+  slug       String   @unique
+  promotion  Int // année de sortie
+  programme  String // intitulé du diplôme obtenu
+  poste      String?
+  entreprise String?
+  ville      String?
+  pays       String?
+  temoignage String?
+  parcours   String?
+  photo      String?
+  linkedin   String?
+  isFeatured Boolean  @default(false)
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([promotion])
+}
+
+// ============================================================================
+// 11. PARTENAIRE
+// ============================================================================
+
+model Partenaire {
+  id          String         @id @default(cuid())
+  nom         String
+  logo        String
+  url         String?
+  type        PartenaireType @default(ENTREPRISE)
+  description String?
+  ordre       Int            @default(0)
+  isActive    Boolean        @default(true)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+}
+
+// ============================================================================
+// 12. INSCRIPTION (PRÉ-INSCRIPTION EN LIGNE + CHAMPS ERP)
+// ============================================================================
+
+model Inscription {
+  id     String @id @default(cuid())
+  numero String @unique // ex: ISI-2026-00042
+
+  // --- Identité --------------------------------------------------------------
+  civilite      Civilite
+  prenom        String
+  nom           String
+  dateNaissance DateTime
+  lieuNaissance String
+  nationalite   String
+  numeroPiece   String? // CNI / passeport
+
+  // --- Contact ---------------------------------------------------------------
+  email      String
+  telephone  String
+  telephone2 String?
+  adresse    String
+  ville      String
+  pays       String  @default("Sénégal")
+
+  // --- Parcours scolaire -----------------------------------------------------
+  niveauEtudes         NiveauEtudes
+  serieBac             String?
+  anneeBac             Int?
+  mentionBac           String?
+  etablissementOrigine String
+  dernierDiplome       String?
+
+  // --- Choix de formation ----------------------------------------------------
+  programmeId   String
+  programme     Programme     @relation(fields: [programmeId], references: [id])
+  campusId      String
+  campus        Campus        @relation(fields: [campusId], references: [id])
+  niveauEntree  String // ex: "1ère année", "3ème année"
+  rentree       String // ex: "Octobre 2026"
+  modeFormation ModeFormation @default(PRESENTIEL)
+
+  // --- Tuteur / responsable financier ---------------------------------------
+  tuteurNom       String?
+  tuteurTelephone String?
+  tuteurEmail     String?
+  tuteurLien      String? // Père, Mère, Tuteur...
+
+  // --- Divers ----------------------------------------------------------------
+  sourceConnaissance SourceConnaissance @default(SITE_WEB)
+  motivation         String?
+  besoinBourse       Boolean            @default(false)
+  besoinLogement     Boolean            @default(false)
+  newsletter         Boolean            @default(true)
+  accepteConditions  Boolean            @default(false)
+  documents          Json? // [{ nom, url }]
+
+  // --- Suivi interne ---------------------------------------------------------
+  statut      InscriptionStatut @default(NOUVELLE)
+  notesAdmin  String?
+  traiteParId String?
+  traitePar   User?             @relation(fields: [traiteParId], references: [id], onDelete: SetNull)
+  traiteAt    DateTime?
+  emailEnvoye Boolean           @default(false)
+
+  // --- Synchronisation ERP ---------------------------------------------------
+  erpSyncStatus ERPSyncStatus @default(PENDING)
+  erpProspectId String?
+  erpContactId  String?
+  erpSyncedAt   DateTime?
+  erpLastError  String?
+  erpAttempts   Int           @default(0)
+  erpJobId      String?
+  mapping       ERPMapping?
+  logs          ERPLog[]
+
+  // --- Méta ------------------------------------------------------------------
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([statut, createdAt])
+  @@index([erpSyncStatus])
+  @@index([email])
+  @@index([programmeId])
+  @@index([campusId])
+}
+
+// ============================================================================
+// 13. DOCUMENT (TÉLÉCHARGEMENTS)
+// ============================================================================
+
+model Document {
+  id              String       @id @default(cuid())
+  titre           String
+  description     String?
+  fichier         String // URL / chemin
+  type            DocumentType @default(AUTRE)
+  format          String? // PDF, DOCX...
+  taille          String? // "2,4 Mo"
+  categorie       String?
+  ordre           Int          @default(0)
+  isActive        Boolean      @default(true)
+  telechargements Int          @default(0)
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+}
+
+// ============================================================================
+// 14. TESTIMONIAL
+// ============================================================================
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  nom       String
+  role      String // ex: "Étudiante en Master Génie Logiciel"
+  contenu   String
+  photo     String?
+  note      Int      @default(5)
+  ordre     Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ============================================================================
+// 15. FAQ
+// ============================================================================
+
+model FAQ {
+  id        String   @id @default(cuid())
+  question  String
+  reponse   String
+  categorie String   @default("Général")
+  ordre     Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([categorie, ordre])
+}
+
+// ============================================================================
+// 16. USER (ADMINISTRATEURS)
+// ============================================================================
+
+model User {
+  id           String        @id @default(cuid())
+  email        String        @unique
+  password     String
+  nom          String
+  role         Role          @default(EDITEUR)
+  avatar       String?
+  isActive     Boolean       @default(true)
+  lastLoginAt  DateTime?
+  posts        Post[]
+  inscriptions Inscription[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+// ============================================================================
+// 17. ERP CONFIG
+// ============================================================================
+
+model ERPConfig {
+  id                     String    @id @default("default")
+  nom                    String    @default("ERP / CRM Groupe ISI")
+  isEnabled              Boolean   @default(false)
+  baseUrl                String    @default("")
+  apiKey                 String    @default("")
+  apiSecret              String    @default("") // signature HMAC des requêtes sortantes
+  webhookSecret          String    @default("") // vérification HMAC des webhooks entrants
+  authHeader             String    @default("Authorization") // ex: "Authorization" -> Bearer, ou "X-API-Key"
+  timeoutMs              Int       @default(15000)
+  // Options de synchronisation
+  syncInscriptions       Boolean   @default(true)
+  syncContacts           Boolean   @default(true)
+  syncProspects          Boolean   @default(true)
+  syncNewsletter         Boolean   @default(false)
+  // Retry
+  retryAttempts          Int       @default(3)
+  retryDelayMs           Int       @default(5000) // backoff exponentiel : delay * 2^(n-1)
+  notifyEmail            String?
+  notifyOnFailure        Boolean   @default(true)
+  // Endpoints (chemins relatifs, personnalisables)
+  endpointProspects      String    @default("/api/prospects")
+  endpointContacts       String    @default("/api/contacts")
+  endpointHealth         String    @default("/api/health")
+  // État
+  lastHealthCheckAt      DateTime?
+  lastHealthCheckOk      Boolean?
+  lastHealthCheckMessage String?
+  lastSyncAt             DateTime?
+  updatedAt              DateTime  @updatedAt
+  createdAt              DateTime  @default(now())
+}
+
+// ============================================================================
+// 18. ERP LOG
+// ============================================================================
+
+model ERPLog {
+  id              String       @id @default(cuid())
+  direction       ERPDirection
+  action          String // createProspect | updateProspect | createContact | healthCheck | webhook:prospect.created ...
+  status          ERPLogStatus
+  message         String?
+  inscriptionId   String?
+  inscription     Inscription? @relation(fields: [inscriptionId], references: [id], onDelete: SetNull)
+  jobId           String?
+  attempt         Int?
+  httpMethod      String?
+  endpoint        String?
+  statusCode      Int?
+  requestPayload  Json?
+  responsePayload Json?
+  errorMessage    String?
+  durationMs      Int?
+  createdAt       DateTime     @default(now())
+
+  @@index([createdAt])
+  @@index([inscriptionId])
+  @@index([status])
+  @@index([direction, action])
+}
+
+// ============================================================================
+// 19. ERP MAPPING (Inscription <-> entité ERP)
+// ============================================================================
+
+model ERPMapping {
+  id            String       @id @default(cuid())
+  inscriptionId String       @unique
+  inscription   Inscription  @relation(fields: [inscriptionId], references: [id], onDelete: Cascade)
+  erpEntityType String       @default("prospect") // prospect | contact | lead | student
+  erpEntityId   String
+  erpContactId  String?
+  erpUrl        String?
+  erpStatus     String? // statut côté ERP (ex: "qualified", "enrolled")
+  lastSyncedAt  DateTime     @default(now())
+  lastDirection ERPDirection @default(OUTBOUND)
+  metadata      Json?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  @@unique([erpEntityType, erpEntityId])
+}
+
+// ============================================================================
+// + CONTACT MESSAGE (formulaire de contact)
+// ============================================================================
+
+model ContactMessage {
+  id        String        @id @default(cuid())
+  nom       String
+  email     String
+  telephone String?
+  sujet     String
+  message   String
+  statut    ContactStatut @default(NOUVEAU)
+  erpSynced Boolean       @default(false)
+  ipAddress String?
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@index([statut, createdAt])
+}
+
+// ============================================================================
+// + NEWSLETTER
+// ============================================================================
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  nom       String?
+  source    String? // footer, pre-inscription...
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
