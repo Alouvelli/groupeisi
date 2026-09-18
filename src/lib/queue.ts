@@ -241,14 +241,28 @@ export async function pauseQueue(queue: QueueName, pause: boolean) {
   else await q.resume();
 }
 
-export async function pingRedis(): Promise<{ ok: boolean; message: string }> {
+/**
+ * Teste la disponibilité de Redis sans jamais bloquer.
+ *
+ * BullMQ impose `maxRetriesPerRequest: null` : une commande émise alors que
+ * Redis est injoignable est mise en file et réessayée indéfiniment, sans
+ * jamais échouer. Sans la limite de temps ci-dessous, /api/health resterait
+ * donc suspendu exactement quand Redis est en panne.
+ */
+export async function pingRedis(timeoutMs = 1500): Promise<{ ok: boolean; message: string }> {
+  let minuteur: NodeJS.Timeout | undefined;
   try {
     const r = getRedisConnection();
-    if (r.status === "wait") await r.connect();
-    const pong = await r.ping();
+    const limite = new Promise<never>((_, rejeter) => {
+      minuteur = setTimeout(() => rejeter(new Error(`Redis injoignable (délai de ${timeoutMs} ms dépassé)`)), timeoutMs);
+    });
+    if (r.status === "wait") await Promise.race([r.connect(), limite]);
+    const pong = await Promise.race([r.ping(), limite]);
     return { ok: pong === "PONG", message: pong };
   } catch (err) {
     return { ok: false, message: (err as Error).message };
+  } finally {
+    if (minuteur) clearTimeout(minuteur);
   }
 }
 
