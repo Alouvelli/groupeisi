@@ -17,7 +17,7 @@ export function DocumentCard({
   type: string;
 }) {
   return (
-    <article className="flex items-center gap-5 rounded-lg border border-line bg-white p-5 transition hover:shadow-card">
+    <article className="flex min-w-0 items-center gap-5 overflow-hidden rounded-lg border border-line bg-white p-5 transition hover:shadow-card">
       <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
         <FileText className="h-6 w-6" aria-hidden />
       </span>

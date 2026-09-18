@@ -1643,6 +1643,15 @@ async function main() {
   }
 
   const articles: Article[] = JSON.parse(readFileSync(join(process.cwd(), "prisma/data/actualites.json"), "utf8"));
+  /* Visuel de repli par catégorie pour les articles dont les images d'origine ne sont plus en ligne. */
+  const REPLI: Record<string, string> = {
+    "vie-associative": IMG.gal11,
+    "clubs-et-amicale": IMG.vie1,
+    distinctions: IMG.histoire2024,
+    partenariats: IMG.aproposA,
+    sport: IMG.sport1,
+    "vie-de-l-institut": IMG.gal2,
+  };
   for (const [i, a] of articles.entries()) {
     await prisma.post.create({
       data: {
@@ -1650,7 +1659,7 @@ async function main() {
         slug: a.slug,
         extrait: a.extrait,
         contenu: a.contenu,
-        image: a.image ?? IMG.gal1,
+        image: a.image ?? REPLI[a.categorie] ?? IMG.gal1,
         tags: [],
         isPublished: true,
         isFeatured: i < 3,

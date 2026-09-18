@@ -57,7 +57,7 @@ export function NewsletterForm({
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Votre adresse email"
           className={cn(
-            "h-12 flex-1 px-4 text-sm outline-none",
+            "h-12 w-full min-w-0 flex-1 px-4 text-sm outline-none",
             dark
               ? "border border-white/20 border-r-0 bg-white/10 text-white placeholder:text-white/60 focus:border-secondary"
               : "border border-line border-r-0 bg-white text-body placeholder:text-muted focus:border-primary",
