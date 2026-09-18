@@ -13,6 +13,7 @@ import { ProgramCard } from "@/components/cards/ProgramCard";
 import { getProgrammeBySlug, getProgrammes, getSettings } from "@/lib/data";
 import { NIVEAU_LABELS } from "@/lib/constants";
 import { absoluteUrl, formatFCFA } from "@/lib/utils";
+import { AnimatedHeading, ReadingProgress } from "@/components/motion";
 
 type UE = { intitule: string; contenu?: string };
 
@@ -57,6 +58,7 @@ export default async function FormationPage({ params }: { params: Promise<{ slug
 
   return (
     <>
+      <ReadingProgress />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <PageHeader
@@ -83,7 +85,7 @@ export default async function FormationPage({ params }: { params: Promise<{ slug
         </Container>
       </div>
 
-      <section id="sommaire" className="scroll-mt-24 bg-white py-16 lg:py-[90px]">
+      <section id="sommaire" className="scroll-mt-24 bg-white section-y">
         <Container>
           <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr]">
             <div>
@@ -313,11 +315,11 @@ export default async function FormationPage({ params }: { params: Promise<{ slug
       </section>
 
       {/* Demande d'information */}
-      <section className="bg-surface py-16 lg:py-[90px]">
+      <section className="bg-surface section-y">
         <Container narrow>
           <div className="mb-10 text-center">
             <SectionLabel className="justify-center">Se préinscrire</SectionLabel>
-            <h2 className="section-title">Demander des informations sur cette formation</h2>
+            <AnimatedHeading className="section-title">Demander des informations sur cette formation</AnimatedHeading>
           </div>
           <div className="rounded-xl bg-white p-6 shadow-card sm:p-10">
             <InfoRequestForm formations={[{ id: programme.id, titre: programme.titre }]} />
@@ -326,9 +328,9 @@ export default async function FormationPage({ params }: { params: Promise<{ slug
       </section>
 
       {autres.length > 0 && (
-        <section className="bg-white py-16 lg:py-[90px]">
+        <section className="bg-white section-y">
           <Container>
-            <h2 className="section-title mb-10">Autres formations du département</h2>
+            <AnimatedHeading className="section-title mb-7">Autres formations du département</AnimatedHeading>
             <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
               {autres.map((p) => (
                 <ProgramCard

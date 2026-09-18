@@ -12,11 +12,10 @@ import {
 } from "@/lib/data";
 import {
   AboutSection,
+  ActualiteAgendaSection,
   CampusSection,
-  EventsSection,
   GalleryStrip,
   HeroSection,
-  NewsSection,
   PreInscriptionCTA,
   ProgrammesSection,
   QuickLinks,
@@ -34,7 +33,7 @@ export const metadata: Metadata = {
 export default async function HomePage() {
   const [settings, programmes, campus, posts, events, testimonials, team, gallery, formations] = await Promise.all([
     getSettings(),
-    getFeaturedProgrammes(4),
+    getFeaturedProgrammes(3),
     getCampus(),
     getLatestPosts(4),
     getEvenements({ upcoming: true, take: 3 }),
@@ -158,7 +157,7 @@ export default async function HomePage() {
       />
 
       <CampusSection
-        campus={campus.slice(0, 6).map((c) => ({
+        campus={campus.slice(0, 3).map((c) => ({
           nom: c.nom,
           slug: c.slug,
           image: c.image,
@@ -170,18 +169,6 @@ export default async function HomePage() {
         description="Inscrivez-vous dès maintenant pour commencer votre parcours académique transformateur avec nous."
       />
 
-      <EventsSection
-        events={events.map((e) => ({
-          titre: e.titre,
-          slug: e.slug,
-          description: e.description,
-          image: e.image,
-          dateDebut: e.dateDebut,
-          heure: e.heure,
-          lieu: e.lieu,
-          type: e.type,
-        }))}
-      />
 
       <GalleryStrip images={gallery.slice(0, 5)} title="Vie estudiantine" />
 
@@ -196,7 +183,7 @@ export default async function HomePage() {
         }))}
       />
 
-      <NewsSection
+      <ActualiteAgendaSection
         posts={posts.map((p) => ({
           titre: p.titre,
           slug: p.slug,
@@ -205,6 +192,16 @@ export default async function HomePage() {
           publishedAt: p.publishedAt,
           tempsLecture: p.tempsLecture,
           categorie: p.categorie ? { nom: p.categorie.nom, slug: p.categorie.slug, couleur: p.categorie.couleur } : null,
+        }))}
+        events={events.map((e) => ({
+          titre: e.titre,
+          slug: e.slug,
+          description: e.description,
+          image: e.image,
+          dateDebut: e.dateDebut,
+          heure: e.heure,
+          lieu: e.lieu,
+          type: e.type,
         }))}
       />
     </>

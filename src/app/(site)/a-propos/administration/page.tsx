@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/Section";
 import { AproposNav } from "@/components/layout/AproposNav";
 import { getCampus } from "@/lib/data";
+import { AnimatedHeading } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "Administration",
@@ -67,7 +68,7 @@ export default async function AdministrationPage() {
       <PageHeader title="Administration" items={[{ label: "À propos", href: "/a-propos" }, { label: "Administration" }]} image="/media/img-9163.jpg" />
       <AproposNav />
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
           <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
             <div className="overflow-hidden rounded-lg">
@@ -75,7 +76,7 @@ export default async function AdministrationPage() {
             </div>
             <div>
               <SectionLabel>Nous joindre</SectionLabel>
-              <h2 className="section-title">Répertoire administratif d&apos;ISI</h2>
+              <AnimatedHeading className="section-title">Répertoire administratif d&apos;ISI</AnimatedHeading>
               <p className="mt-5 text-[15px] leading-7 text-body">
                 À ISI, l&apos;éducation va au-delà des manuels et des salles de classe. Nous croyons qu&apos;il faut donner aux étudiants les moyens
                 d&apos;explorer leurs passions, de remettre en question les conventions et de découvrir leur potentiel grâce à des expériences

@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { getPostBySlug, getRelatedPosts } from "@/lib/data";
 import { prisma } from "@/lib/prisma";
 import { formatDate, absoluteUrl } from "@/lib/utils";
+import { AnimatedHeading, ReadingProgress } from "@/components/motion";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -43,6 +44,7 @@ export default async function ActualitePage({ params }: { params: Promise<{ slug
 
   return (
     <article>
+      <ReadingProgress />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <PageHeader
@@ -51,7 +53,7 @@ export default async function ActualitePage({ params }: { params: Promise<{ slug
         image={p.image}
       />
 
-      <section className="bg-white py-16 lg:py-[90px]">
+      <section className="bg-white section-y">
         <Container narrow>
           <div className="mb-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-[15px] font-medium text-body">
             {p.categorie && (
@@ -100,9 +102,9 @@ export default async function ActualitePage({ params }: { params: Promise<{ slug
       </section>
 
       {related.length > 0 && (
-        <section className="bg-surface py-16 lg:py-[90px]">
+        <section className="bg-surface section-y">
           <Container>
-            <h2 className="section-title mb-10">Articles similaires</h2>
+            <AnimatedHeading className="section-title mb-7">Articles similaires</AnimatedHeading>
             <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
               {related.map((r) => (
                 <NewsCard key={r.id} titre={r.titre} slug={r.slug} extrait={r.extrait} image={r.image} publishedAt={r.publishedAt} categorie={r.categorie} />

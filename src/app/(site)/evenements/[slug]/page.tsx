@@ -9,6 +9,7 @@ import { SocialLinks } from "@/components/ui/SocialLinks";
 import { EventCard } from "@/components/cards/EventCard";
 import { getEvenementBySlug, getEvenements, getSettings } from "@/lib/data";
 import { absoluteUrl, formatDate } from "@/lib/utils";
+import { AnimatedHeading, ReadingProgress } from "@/components/motion";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -52,6 +53,7 @@ export default async function EvenementPage({ params }: { params: Promise<{ slug
 
   return (
     <>
+      <ReadingProgress />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <PageHeader
@@ -60,14 +62,14 @@ export default async function EvenementPage({ params }: { params: Promise<{ slug
         image={evenement.image}
       />
 
-      <section className="bg-white py-16 lg:py-[90px]">
+      <section className="bg-white section-y">
         <Container>
           <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr] lg:gap-16">
             <div>
               {evenement.image && (
                 <Image src={evenement.image} alt={evenement.titre} width={1100} height={640} className="mb-10 h-auto w-full rounded-lg object-cover" priority />
               )}
-              <h2 className="section-title">{evenement.titre}</h2>
+              <AnimatedHeading className="section-title">{evenement.titre}</AnimatedHeading>
               <p className="mt-5 text-base leading-7 text-body">{evenement.description}</p>
               {evenement.contenu && <div className="prose-isi mt-6 max-w-none" dangerouslySetInnerHTML={{ __html: evenement.contenu }} />}
             </div>
@@ -128,9 +130,9 @@ export default async function EvenementPage({ params }: { params: Promise<{ slug
       </section>
 
       {autres.length > 0 && (
-        <section className="bg-surface py-16 lg:py-[90px]">
+        <section className="bg-surface section-y">
           <Container>
-            <h2 className="section-title mb-10">Autres évènements</h2>
+            <AnimatedHeading className="section-title mb-7">Autres évènements</AnimatedHeading>
             <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
               {autres.map((e) => (
                 <EventCard key={e.id} titre={e.titre} slug={e.slug} description={e.description} image={e.image} dateDebut={e.dateDebut} heure={e.heure} lieu={e.lieu} type={e.type} />

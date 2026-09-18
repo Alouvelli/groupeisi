@@ -34,7 +34,10 @@ export function HeroSection({ slides, interval = 6000 }: { slides: string[]; int
             fill
             priority={i === 0}
             sizes="100vw"
-            className={cn("object-cover object-center transition-opacity duration-700", i === index ? "opacity-100" : "opacity-0")}
+            className={cn(
+              "object-cover object-center transition-opacity duration-[900ms] motion-reduce:animate-none",
+              i === index ? "animate-ken-burns opacity-100" : "scale-[1.07] opacity-0",
+            )}
           />
         ))}
       </div>

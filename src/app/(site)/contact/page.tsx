@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/Section";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { getSettings, getCampus } from "@/lib/data";
+import { AnimatedHeading } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -39,7 +40,7 @@ export default async function ContactPage() {
     <>
       <PageHeader title="Contact" items={[{ label: "Contact" }]} image="/media/img-9163.jpg" />
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
           <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-4">
             {blocs.map(({ titre, icone: Icon, lignes }) => (
@@ -68,7 +69,7 @@ export default async function ContactPage() {
           <div className="mt-16 grid gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
               <SectionLabel>Formulaire</SectionLabel>
-              <h2 className="section-title mb-8">Entrer en contact</h2>
+              <AnimatedHeading className="section-title mb-8">Entrer en contact</AnimatedHeading>
               <ContactForm />
             </div>
             <div className="overflow-hidden rounded-lg border border-line">
@@ -84,9 +85,9 @@ export default async function ContactPage() {
         </Container>
       </section>
 
-      <section className="bg-surface py-16 lg:py-[100px]">
+      <section className="bg-surface section-y">
         <Container>
-          <h2 className="section-title mb-10">Tous nos campus</h2>
+          <AnimatedHeading className="section-title mb-7">Tous nos campus</AnimatedHeading>
           <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
             {campus.map((c) => (
               <div key={c.id} className="rounded-lg border border-line bg-white p-6">

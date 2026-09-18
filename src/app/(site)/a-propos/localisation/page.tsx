@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/Section";
 import { AproposNav } from "@/components/layout/AproposNav";
 import { getCampus } from "@/lib/data";
+import { AnimatedHeading } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "Localisation",
@@ -24,11 +25,11 @@ export default async function LocalisationPage() {
       <PageHeader title="Localisation" items={[{ label: "À propos", href: "/a-propos" }, { label: "Localisation" }]} image="/media/img-9163.jpg" />
       <AproposNav />
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
-          <div className="mb-12 max-w-3xl">
+          <div className="mb-8 max-w-3xl lg:mb-10">
             <SectionLabel>Nos implantations</SectionLabel>
-            <h2 className="section-title">Nos campus sur la carte</h2>
+            <AnimatedHeading className="section-title">Nos campus sur la carte</AnimatedHeading>
             <p className="mt-4 text-base leading-7 text-body">
               Le Groupe ISI est présent à Dakar et dans ses annexes, dans les régions du Sénégal et en Mauritanie.
             </p>

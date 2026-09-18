@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/Section";
 import { EventCard } from "@/components/cards/EventCard";
 import { getEvenements } from "@/lib/data";
+import { AnimatedHeading } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "Évènements",
@@ -25,11 +26,11 @@ export default async function EvenementsPage() {
         image="/media/img-1714-1.jpg"
       />
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
-          <div className="mb-12 max-w-3xl">
+          <div className="mb-8 max-w-3xl lg:mb-10">
             <SectionLabel>Evènements à venir</SectionLabel>
-            <h2 className="section-title">Assistez à nos prochains évènements</h2>
+            <AnimatedHeading className="section-title">Assistez à nos prochains évènements</AnimatedHeading>
           </div>
 
           {aVenir.length === 0 ? (
@@ -47,9 +48,9 @@ export default async function EvenementsPage() {
       </section>
 
       {passes.length > 0 && (
-        <section className="bg-surface py-16 lg:py-[100px]">
+        <section className="bg-surface section-y">
           <Container>
-            <h2 className="section-title mb-10">Évènements passés</h2>
+            <AnimatedHeading className="section-title mb-7">Évènements passés</AnimatedHeading>
             <div className="grid gap-5 lg:grid-cols-2">
               {passes.map((e) => (
                 <EventCard key={e.id} variant="row" titre={e.titre} slug={e.slug} image={e.image} dateDebut={e.dateDebut} heure={e.heure} lieu={e.lieu} type={e.type} />

@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { Accordion } from "@/components/ui/Accordion";
 import { PreInscriptionCTA } from "@/components/sections/PreInscriptionCTA";
 import { getSettings, getFAQ, getProgrammesForForm, getCampus } from "@/lib/data";
+import { AnimatedHeading } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "Conditions d'admission",
@@ -96,12 +97,12 @@ export default async function ConditionAdmissionPage() {
         image="/media/img-2024-1.jpg"
       />
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
           <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
               <SectionLabel>Admissions {settings.anneeAcademique}</SectionLabel>
-              <h2 className="section-title">Exigences et calendrier</h2>
+              <AnimatedHeading className="section-title">Exigences et calendrier</AnimatedHeading>
               <p className="mt-5 text-[15px] leading-7 text-body">
                 Nos conditions d&apos;admission sont conçues pour rester transparentes, compétitives et accessibles aux étudiants de tous horizons.
                 Chaque programme précise le niveau requis, les pièces à fournir et les modalités d&apos;étude du dossier. Les candidats sont
@@ -134,11 +135,11 @@ export default async function ConditionAdmissionPage() {
         </Container>
       </section>
 
-      <section className="bg-surface py-16 lg:py-[100px]">
+      <section className="bg-surface section-y">
         <Container>
-          <div className="mb-12 max-w-3xl">
+          <div className="mb-8 max-w-3xl lg:mb-10">
             <SectionLabel>Procédure</SectionLabel>
-            <h2 className="section-title">Comment s&apos;inscrire en 4 étapes</h2>
+            <AnimatedHeading className="section-title">Comment s&apos;inscrire en 4 étapes</AnimatedHeading>
           </div>
           <ol className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-4">
             {ETAPES.map((e) => (
@@ -152,11 +153,11 @@ export default async function ConditionAdmissionPage() {
         </Container>
       </section>
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
-          <div className="mb-12 max-w-3xl">
+          <div className="mb-8 max-w-3xl lg:mb-10">
             <SectionLabel>Profils</SectionLabel>
-            <h2 className="section-title">Quel que soit votre parcours</h2>
+            <AnimatedHeading className="section-title">Quel que soit votre parcours</AnimatedHeading>
           </div>
           <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
             {PROFILS.map(({ titre, texte, image, icone: Icon }) => (
@@ -182,7 +183,7 @@ export default async function ConditionAdmissionPage() {
             <div className="mt-16 grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
               <div>
                 <SectionLabel>FAQ</SectionLabel>
-                <h2 className="section-title">Questions fréquentes</h2>
+                <AnimatedHeading className="section-title">Questions fréquentes</AnimatedHeading>
                 <p className="mt-4 text-[15px] leading-7 text-body">
                   Vous ne trouvez pas votre réponse ? La scolarité vous répond du lundi au vendredi de 8h à 18h.
                 </p>

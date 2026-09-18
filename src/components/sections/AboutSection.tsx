@@ -5,6 +5,7 @@ import { SectionLabel } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { Tabs } from "@/components/ui/Tabs";
 import { Counter } from "@/components/ui/Counter";
+import { AnimatedHeading, ImageReveal, Parallax, StaggerChildren } from "@/components/motion";
 
 export interface AboutSectionProps {
   label: string;
@@ -27,24 +28,26 @@ const CHIFFRE_ICONS = { users: Users, award: BadgeCheck, trophy: Trophy } as con
  */
 export function AboutSection({ label, title, intro, onglets, atouts, images, href = "/a-propos", chiffres }: AboutSectionProps) {
   return (
-    <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-[100px]">
+    <section className="relative overflow-hidden bg-white section-y">
       <Container>
         <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Visuels */}
           <div className="relative">
-            <div className="overflow-hidden rounded-lg">
+            <ImageReveal className="rounded-lg" sens="gauche">
               <Image src={images[0]} alt="" width={900} height={600} className="h-auto w-full object-cover" />
-            </div>
-            <div className="mt-6 overflow-hidden rounded-lg sm:ml-16 sm:mt-8">
-              <Image src={images[1]} alt="" width={760} height={520} className="h-auto w-full object-cover" />
-            </div>
+            </ImageReveal>
+            <Parallax amplitude={26} className="mt-6 sm:ml-16 sm:mt-8">
+              <ImageReveal className="rounded-lg" sens="droite" delay={0.15}>
+                <Image src={images[1]} alt="" width={760} height={520} className="h-auto w-full object-cover" />
+              </ImageReveal>
+            </Parallax>
             <span className="pointer-events-none absolute -left-10 top-1/3 hidden h-40 w-40 rounded-full bg-secondary/10 blur-2xl lg:block" aria-hidden />
           </div>
 
           {/* Texte */}
           <div>
             <SectionLabel>{label}</SectionLabel>
-            <h2 className="section-title text-balance">{title}</h2>
+            <AnimatedHeading className="section-title text-balance">{title}</AnimatedHeading>
             <p className="mt-5 text-base leading-7 text-body">{intro}</p>
 
             <Tabs
@@ -64,14 +67,14 @@ export function AboutSection({ label, title, intro, onglets, atouts, images, hre
               }))}
             />
 
-            <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+            <StaggerChildren className="mt-8 grid gap-3 sm:grid-cols-2" gap={0.06} distance={14}>
               {atouts.map((a) => (
-                <li key={a} className="flex gap-2.5 text-[15px] text-body">
+                <div key={a} className="flex gap-2.5 text-[15px] text-body">
                   <Check className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden />
                   <span>{a}</span>
-                </li>
+                </div>
               ))}
-            </ul>
+            </StaggerChildren>
 
             <Button href={href} className="mt-9" arrow>
               En savoir plus

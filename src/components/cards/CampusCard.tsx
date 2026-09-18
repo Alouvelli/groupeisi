@@ -37,7 +37,7 @@ export function CampusCard({
 }: CampusCardProps) {
   if (variant === "detail") {
     return (
-      <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white transition hover:shadow-card">
+      <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white transition duration-500 hover:-translate-y-1.5 hover:shadow-card">
         <Link href={`/campus/${slug}`} className="relative block aspect-[4/3] overflow-hidden">
           <Image
             src={image || "/media/img-9163.jpg"}

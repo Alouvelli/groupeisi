@@ -13,6 +13,7 @@ import { GallerySection } from "@/components/sections/GallerySection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { getCampusBySlug, getCampus, getTestimonials } from "@/lib/data";
 import { absoluteUrl } from "@/lib/utils";
+import { AnimatedHeading, ReadingProgress } from "@/components/motion";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -53,11 +54,12 @@ export default async function CampusDetailPage({ params }: { params: Promise<{ s
 
   return (
     <>
+      <ReadingProgress />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <PageHeader title={campus.nom} items={[{ label: "Nos campus", href: "/campus" }, { label: campus.nom }]} image={campus.image} />
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
           <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
             <div className="overflow-hidden rounded-lg">
@@ -65,7 +67,7 @@ export default async function CampusDetailPage({ params }: { params: Promise<{ s
             </div>
             <div>
               <SectionLabel>{campus.ville}</SectionLabel>
-              <h2 className="section-title">{campus.nom}</h2>
+              <AnimatedHeading className="section-title">{campus.nom}</AnimatedHeading>
               <p className="mt-5 text-base leading-7 text-body">{campus.description}</p>
 
               {campus.directeurNom && (
@@ -181,11 +183,11 @@ export default async function CampusDetailPage({ params }: { params: Promise<{ s
       </section>
 
       {campus.programmes.length > 0 && (
-        <section className="bg-surface py-16 lg:py-[100px]">
+        <section className="bg-surface section-y">
           <Container>
-            <div className="mb-12 max-w-3xl">
+            <div className="mb-8 max-w-3xl lg:mb-10">
               <SectionLabel>Programmes &amp; Études</SectionLabel>
-              <h2 className="section-title">Formations &amp; Programmes</h2>
+              <AnimatedHeading className="section-title">Formations &amp; Programmes</AnimatedHeading>
             </div>
             <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
               {campus.programmes.slice(0, 6).map((p) => (
@@ -215,9 +217,9 @@ export default async function CampusDetailPage({ params }: { params: Promise<{ s
       )}
 
       {campus.personnes.length > 0 && (
-        <section className="bg-white py-16 lg:py-[100px]">
+        <section className="bg-white section-y">
           <Container>
-            <h2 className="section-title mb-10">L&apos;équipe du campus</h2>
+            <AnimatedHeading className="section-title mb-7">L&apos;équipe du campus</AnimatedHeading>
             <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
               {campus.personnes.map((p) => (
                 <TeamCard
@@ -238,9 +240,9 @@ export default async function CampusDetailPage({ params }: { params: Promise<{ s
       )}
 
       {campus.evenements.length > 0 && (
-        <section className="bg-surface py-16 lg:py-[100px]">
+        <section className="bg-surface section-y">
           <Container>
-            <h2 className="section-title mb-10">Prochains événements sur ce campus</h2>
+            <AnimatedHeading className="section-title mb-7">Prochains événements sur ce campus</AnimatedHeading>
             <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
               {campus.evenements.map((e) => (
                 <EventCard key={e.id} titre={e.titre} slug={e.slug} description={e.description} image={e.image} dateDebut={e.dateDebut} heure={e.heure} lieu={e.lieu} type={e.type} />
@@ -261,9 +263,9 @@ export default async function CampusDetailPage({ params }: { params: Promise<{ s
       />
 
       {autres.length > 0 && (
-        <section className="bg-white py-16 lg:py-[100px]">
+        <section className="bg-white section-y">
           <Container>
-            <h2 className="section-title mb-10">Nos autres campus</h2>
+            <AnimatedHeading className="section-title mb-7">Nos autres campus</AnimatedHeading>
             <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
               {autres.map((c) => (
                 <CampusCardLite key={c.id} nom={c.nom} slug={c.slug} image={c.image} />

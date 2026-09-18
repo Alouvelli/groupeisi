@@ -3,6 +3,7 @@ import { Check, Play } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
+import { AnimatedHeading } from "@/components/motion";
 
 /**
  * Section « Pourquoi choisir ISI » : visuel avec lecteur vidéo à gauche,
@@ -28,7 +29,7 @@ export function WhyChooseSection({
   cta?: string;
 }) {
   return (
-    <section className="bg-white py-16 sm:py-20 lg:py-[100px]">
+    <section className="bg-white section-y">
       <Container>
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <div className="relative overflow-hidden rounded-lg">
@@ -50,7 +51,7 @@ export function WhyChooseSection({
           </div>
           <div>
             <SectionLabel>{label}</SectionLabel>
-            <h2 className="section-title text-balance">{title}</h2>
+            <AnimatedHeading className="section-title text-balance">{title}</AnimatedHeading>
             {description && <p className="mt-5 text-base leading-7 text-body">{description}</p>}
             {atouts.length > 0 && (
               <ul className="mt-8 space-y-5">

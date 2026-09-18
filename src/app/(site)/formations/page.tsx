@@ -38,7 +38,7 @@ export default async function FormationsPage({ searchParams }: { searchParams: P
         items={[{ label: "Nos formations" }]}
       />
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
           <div className="grid gap-10 lg:grid-cols-4 lg:gap-12">
             {/* Colonne de filtres */}

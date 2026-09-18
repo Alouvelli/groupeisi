@@ -9,6 +9,7 @@ export * from "./CampusSection";
 export * from "./PreInscriptionCTA";
 export * from "./NewsSection";
 export * from "./EventsSection";
+export * from "./ActualiteAgendaSection";
 export * from "./TestimonialsSection";
 export * from "./TeamSection";
 export * from "./AlumniSection";

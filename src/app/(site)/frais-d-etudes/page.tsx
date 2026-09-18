@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { InfoRequestForm } from "@/components/forms/InfoRequestForm";
 import { getProgrammes, getFAQ, getSettings, getCampus } from "@/lib/data";
 import { formatFCFA } from "@/lib/utils";
+import { AnimatedHeading } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "Frais d'études",
@@ -90,12 +91,12 @@ export default async function FraisEtudesPage() {
     <>
       <PageHeader title="Frais d'études" items={[{ label: "Frais d'études" }]} image="/media/img-2024-1.jpg" />
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
               <SectionLabel>Opportunités d&apos;études à ISI</SectionLabel>
-              <h2 className="section-title">Des frais transparents et des paiements échelonnés</h2>
+              <AnimatedHeading className="section-title">Des frais transparents et des paiements échelonnés</AnimatedHeading>
               <p className="mt-5 text-[15px] leading-7 text-body">
                 Notre institut s&apos;engage à faire progresser les connaissances grâce à une recherche innovante, interdisciplinaire et à fort impact.
                 Animés par une vision d&apos;excellence académique, nous réunissons des professeurs talentueux, des chercheurs dévoués et des étudiants
@@ -114,11 +115,11 @@ export default async function FraisEtudesPage() {
         </Container>
       </section>
 
-      <section className="bg-surface py-16 lg:py-[100px]">
+      <section className="bg-surface section-y">
         <Container>
           <div className="mb-10 max-w-3xl">
             <SectionLabel>Tarifs {settings.anneeAcademique}</SectionLabel>
-            <h2 className="section-title">Découvrez les frais de nos programmes d&apos;étude</h2>
+            <AnimatedHeading className="section-title">Découvrez les frais de nos programmes d&apos;étude</AnimatedHeading>
             <p className="mt-4 text-base leading-7 text-body">
               Nous soutenons activement la recherche à tous les niveaux, des licences aux masters avancés, en garantissant des opportunités
               d&apos;apprentissage pratique, de découverte et de leadership.
@@ -131,17 +132,17 @@ export default async function FraisEtudesPage() {
         </Container>
       </section>
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
               <SectionLabel>FAQ</SectionLabel>
-              <h2 className="section-title mb-8">Questions fréquentes</h2>
+              <AnimatedHeading className="section-title mb-8">Questions fréquentes</AnimatedHeading>
               <Accordion items={faqs.slice(0, 5).map((f) => ({ id: f.id, title: f.question, content: f.reponse }))} />
             </div>
             <div>
               <SectionLabel>Se préinscrire</SectionLabel>
-              <h2 className="section-title mb-8">Demander des informations</h2>
+              <AnimatedHeading className="section-title mb-8">Demander des informations</AnimatedHeading>
               <div className="rounded-xl border border-line bg-white p-6 shadow-card sm:p-8">
                 <InfoRequestForm
                   compact

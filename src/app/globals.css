@@ -39,6 +39,7 @@
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-ring: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-fade-up: fade-up 0.7s ease both;
+  --animate-ken-burns: ken-burns 7s ease-out both;
 
   @keyframes marquee {
     from { transform: translateX(0); }
@@ -55,6 +56,11 @@
   @keyframes fade-up {
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+  /* Lente respiration du visuel affiché dans le diaporama d'accueil. */
+  @keyframes ken-burns {
+    from { transform: scale(1.07); }
+    to { transform: scale(1); }
   }
 }
 
@@ -164,6 +170,39 @@
   background-image: url("/images/pattern-grid.svg");
 }
 
+/* Rythme vertical commun à toutes les sections. Resserré par rapport au thème
+   d'origine (100 px) pour raccourcir les pages sans tasser le contenu. */
+@utility section-y {
+  @apply py-12 lg:py-[64px];
+}
+
+/* Variante courte, pour deux sections qui se suivent sur le même fond. */
+@utility section-y-sm {
+  @apply py-8 lg:py-[44px];
+}
+
+/**
+ * Grille de cartes qui devient un rail à défilement horizontal en mobile.
+ * Chaque enfant occupe 82 % de la largeur de l'écran et s'aimante, ce qui
+ * évite d'empiler dix cartes sur toute la hauteur du téléphone.
+ */
+@utility rail {
+  @apply -mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 scrollbar-hide;
+  scroll-padding-inline: 1.25rem;
+
+  & > * {
+    @apply w-[82%] shrink-0 snap-start;
+  }
+
+  @media (min-width: 1024px) {
+    @apply mx-0 grid gap-[30px] overflow-visible px-0 pb-0;
+
+    & > * {
+      @apply w-auto;
+    }
+  }
+}
+
 @utility scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -179,6 +218,12 @@
   /* Bouton pilule « rs-button » du thème */
   .rs-button {
     @apply relative z-[1] inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-[30px] px-[25px] py-4 text-[15px] font-medium leading-[1.2] transition-all duration-300;
+  }
+  .rs-button:hover {
+    @apply -translate-y-0.5 shadow-soft;
+  }
+  .rs-button:active {
+    @apply translate-y-0;
   }
 
   /* Contenu riche (articles, fiches) */
@@ -227,6 +272,35 @@
   }
   .tab-btn[aria-selected="true"] { @apply border-primary text-primary; }
 
+  /* Lien de texte dont le soulignement se déploie au survol. */
+  .lien-anime {
+    @apply relative inline-block;
+  }
+  .lien-anime::after {
+    content: "";
+    @apply absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 bg-current transition-transform duration-300;
+  }
+  .lien-anime:hover::after,
+  .lien-anime:focus-visible::after {
+    @apply origin-left scale-x-100;
+  }
+
+  /* Carte qui se soulève au survol : à poser sur le conteneur de la carte. */
+  .carte-levee {
+    @apply transition-[transform,box-shadow] duration-500;
+  }
+  .carte-levee:hover {
+    @apply -translate-y-1.5 shadow-card;
+  }
+
+  /* Visuel qui s'agrandit lentement au survol de la carte parente. */
+  .zoom-parent img {
+    @apply transition-transform duration-[900ms] ease-out;
+  }
+  .zoom-parent:hover img {
+    @apply scale-[1.06];
+  }
+
   /* Onglets pleins (Frais d'études, Galerie, FAQ) */
   .pill-tab {
     @apply inline-flex items-center rounded-full border border-line bg-white px-6 py-3 font-heading text-[15px] font-medium text-title transition hover:border-primary hover:text-primary;
@@ -236,5 +310,13 @@
 
 /* Animations d'apparition (fallback si JS désactivé) */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .carte-levee:hover { transform: none; }
+  .rs-button:hover { transform: none; }
+  .zoom-parent:hover img { transform: none; }
 }

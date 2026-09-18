@@ -36,7 +36,7 @@ export default async function ActualitesPage({
         image="/media/img-2298-1.jpg"
       />
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
           <div className="grid gap-12 lg:grid-cols-4 lg:gap-14">
             <div className="lg:col-span-3">

@@ -39,7 +39,7 @@ export function TeamCard({
   ].filter(Boolean) as { href: string; Icon: (p: React.SVGProps<SVGSVGElement>) => React.JSX.Element; label: string }[];
 
   return (
-    <article className="group relative rounded-2xl bg-white p-3 text-center shadow-card transition duration-300 hover:bg-primary">
+    <article className="group relative rounded-2xl bg-white p-3 text-center shadow-card transition duration-500 hover:-translate-y-1.5 hover:bg-primary">
       <div className="relative">
         <Link href={`/equipe/${slug}`} className="block overflow-hidden rounded-2xl">
           <Image

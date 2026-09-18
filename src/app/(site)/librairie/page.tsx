@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { DocumentCard } from "@/components/cards/DocumentCard";
 import { NewsSection } from "@/components/sections/NewsSection";
 import { getDocuments, getLatestPosts } from "@/lib/data";
+import { AnimatedHeading } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "Librairie",
@@ -45,11 +46,11 @@ export default async function LibrairiePage() {
     <>
       <PageHeader title="Librairie" items={[{ label: "Librairie" }]} image="/media/img-8837-cr3-dxo-deepprime-dxo.jpg" />
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
           <div className="max-w-3xl">
             <SectionLabel>Librairie du Groupe ISI</SectionLabel>
-            <h2 className="section-title">Un espace de travail et de documentation</h2>
+            <AnimatedHeading className="section-title">Un espace de travail et de documentation</AnimatedHeading>
             <p className="mt-5 text-base leading-7 text-body">
               La librairie met à disposition des étudiants les ouvrages, revues et ressources numériques nécessaires à leur parcours. Elle accueille
               également les travaux de recherche menés au sein des départements du Groupe ISI.
@@ -68,11 +69,11 @@ export default async function LibrairiePage() {
         </Container>
       </section>
 
-      <section className="bg-surface py-16 lg:py-[100px]">
+      <section className="bg-surface section-y">
         <Container>
-          <div className="mb-12 max-w-3xl">
+          <div className="mb-8 max-w-3xl lg:mb-10">
             <SectionLabel>Collections</SectionLabel>
-            <h2 className="section-title">Nos collections</h2>
+            <AnimatedHeading className="section-title">Nos collections</AnimatedHeading>
           </div>
           <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
             {COLLECTIONS.map((c) => (
@@ -88,12 +89,12 @@ export default async function LibrairiePage() {
         </Container>
       </section>
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
-          <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="mb-8 flex flex-col gap-6 lg:mb-10 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
               <SectionLabel>Téléchargements</SectionLabel>
-              <h2 className="section-title">Documents utiles</h2>
+              <AnimatedHeading className="section-title">Documents utiles</AnimatedHeading>
             </div>
             <Button href="/telechargements" arrow className="shrink-0">
               Tous les documents

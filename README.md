@@ -242,6 +242,33 @@ Les routes reprennent celles de new.groupeisi.com (les anciennes URL WordPress s
 - **Images** : 100 visuels du site sont téléchargés, redimensionnés et servis depuis `public/media/` (aucune dépendance à new.groupeisi.com en production).
 - **Redirections** : `/programs/:slug`, `/faculties/:slug`, `/blog-grid`, `/contact-2`, `/apply-now`, `/frais-etudes`, `/2025/01/10/:slug`… redirigent vers les routes correspondantes.
 
+### Couche de mouvement
+
+Les primitives vivent dans `src/components/motion/`, les jetons partagés (courbes, durées, cascades) dans `src/lib/motion.ts`.
+
+| Primitive | Effet |
+|---|---|
+| `Reveal`, `Stagger`, `StaggerChildren` | Apparition au défilement, en série pour les grilles de cartes. `StaggerChildren` enveloppe automatiquement ses enfants, sans toucher aux cartes. |
+| `AnimatedHeading` | Titre dont les mots montent en cascade derrière une ligne de masque. Le texte reste un seul nœud pour les lecteurs d'écran (`aria-label`). |
+| `Parallax` | Parallaxe verticale amortie par un ressort. |
+| `ImageReveal` | Visuel dévoilé par un voile qui glisse, avec désagrandissement lent. |
+| `Magnetic`, `Tilt` | Attraction vers le curseur et inclinaison légère, uniquement sur pointeur fin. |
+| `ReadingProgress` | Barre de progression sur les pages longues. |
+| `PageTransition` | Transition d'entrée, montée par `src/app/(site)/template.tsx`. |
+
+S'y ajoutent le zoom lent du diaporama d'accueil, l'en-tête qui se compacte au défilement, l'élévation des cartes et des boutons au survol, et le bloc « Actualités & agenda » à onglets.
+
+**Accessibilité.** `MotionProvider` applique `MotionConfig reducedMotion="user"` : framer-motion neutralise alors déplacements et mises à l'échelle pour qui a demandé moins d'animations, l'opacité restant animée. Aucune primitive ne change la structure du DOM selon cette préférence, ce qui évite toute erreur d'hydratation.
+
+### Densité
+
+`section-y` donne le rythme vertical commun, `rail` transforme les grilles de cartes en carrousel à défilement horizontal sous 1024 px. Effet mesuré sur l'accueil :
+
+| Largeur | Avant | Après |
+|---|---|---|
+| 1440 px | 10 658 px | 8 491 px |
+| 390 px | 18 513 px | 10 648 px |
+
 ### Sources de contenu
 
 Trois sites du Groupe ISI ont servi de référence :

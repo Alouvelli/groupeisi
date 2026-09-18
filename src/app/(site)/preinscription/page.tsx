@@ -33,7 +33,7 @@ export default async function PreinscriptionPage({ searchParams }: { searchParam
         image="/media/img-2298-1.jpg"
       />
 
-      <section className="bg-surface py-16 lg:py-[100px]">
+      <section className="bg-surface section-y">
         <Container>
           <div className="grid gap-[30px] lg:grid-cols-3">
             <div className="min-w-0 lg:col-span-2">

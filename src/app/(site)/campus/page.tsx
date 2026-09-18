@@ -5,6 +5,7 @@ import { SectionLabel } from "@/components/ui/Section";
 import { CampusCard } from "@/components/cards/CampusCard";
 import { PreInscriptionCTA } from "@/components/sections/PreInscriptionCTA";
 import { getCampus, getSettings, getProgrammesForForm } from "@/lib/data";
+import { AnimatedHeading } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "Nos campus",
@@ -23,11 +24,11 @@ export default async function CampusPage() {
         image="/media/img-9163.jpg"
       />
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
-          <div className="mb-12 max-w-3xl">
+          <div className="mb-8 max-w-3xl lg:mb-10">
             <SectionLabel>Campus &amp; Annexes</SectionLabel>
-            <h2 className="section-title">Nos Campus :</h2>
+            <AnimatedHeading className="section-title">Nos Campus :</AnimatedHeading>
           </div>
           <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
             {campus.map((c) => (

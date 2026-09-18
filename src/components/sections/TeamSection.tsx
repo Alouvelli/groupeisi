@@ -2,6 +2,7 @@ import { TeamCard } from "@/components/cards/TeamCard";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
+import { AnimatedHeading, StaggerChildren } from "@/components/motion";
 
 export interface TeamMember {
   prenom: string;
@@ -37,18 +38,18 @@ export function TeamSection({
 }) {
   if (!members.length) return null;
   return (
-    <section className="bg-white py-16 sm:py-20 lg:py-[100px]">
+    <section className="bg-white section-y">
       <Container>
-        <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mb-8 flex flex-col gap-6 lg:mb-10 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <SectionLabel>{label}</SectionLabel>
-            <h2 className="section-title">{title}</h2>
+            <AnimatedHeading className="section-title">{title}</AnimatedHeading>
           </div>
           <Button href={href} arrow className="shrink-0">
             {cta}
           </Button>
         </div>
-        <div className={`grid gap-[30px] sm:grid-cols-2 ${columns === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
+        <StaggerChildren className={`rail sm:grid-cols-2 ${columns === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
           {members.map((m) => (
             <TeamCard
               key={m.slug}
@@ -56,7 +57,7 @@ export function TeamSection({
               departement={typeof m.departement === "string" ? m.departement : m.departement?.nom ?? null}
             />
           ))}
-        </div>
+        </StaggerChildren>
       </Container>
     </section>
   );

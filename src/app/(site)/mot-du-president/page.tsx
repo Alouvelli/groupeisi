@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { AproposNav } from "@/components/layout/AproposNav";
 import { GallerySection } from "@/components/sections/GallerySection";
 import { getGalleryImages } from "@/lib/data";
+import { AnimatedHeading } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "Mot du président",
@@ -30,7 +31,7 @@ export default async function MotDuPresidentPage() {
       <PageHeader title="Mot du Président" items={[{ label: "À propos", href: "/a-propos" }, { label: "Mot du Président" }]} image="/media/img-9163.jpg" />
       <AproposNav />
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
           <div className="grid items-start gap-12 lg:grid-cols-[400px_1fr] lg:gap-16">
             <div>
@@ -43,7 +44,7 @@ export default async function MotDuPresidentPage() {
 
             <div>
               <SectionLabel>Groupe ISI</SectionLabel>
-              <h2 className="section-title">Mot du Président</h2>
+              <AnimatedHeading className="section-title">Mot du Président</AnimatedHeading>
               <div className="prose-isi mt-6">
                 {PARAGRAPHES.map((p, i) => (
                   <p key={i} className={i === 0 ? "font-medium text-dark" : undefined}>

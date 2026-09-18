@@ -54,7 +54,7 @@ export function Header({ nav, topNav, mega, megaImage, megaImageLabel, settings 
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 120);
+    const onScroll = () => setScrolled(window.scrollY > 64);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -118,7 +118,12 @@ export function Header({ nav, topNav, mega, megaImage, megaImageLabel, settings 
       </div>
 
       {/* Barre principale blanche : logo + menu + actions + CTA */}
-      <div className={cn("sticky top-0 z-50 w-full bg-white transition-shadow duration-300", scrolled && "shadow-menu")}>
+      <div
+        className={cn(
+          "sticky top-0 z-50 w-full bg-white transition-[box-shadow,background-color] duration-300",
+          scrolled && "shadow-menu supports-[backdrop-filter]:bg-white/92 supports-[backdrop-filter]:backdrop-blur",
+        )}
+      >
         <div className="container-x flex items-stretch justify-between gap-4">
           <Link href="/" className="flex shrink-0 items-center py-2" aria-label={`${settings.siteName} – Accueil`}>
             <Image
@@ -127,7 +132,7 @@ export function Header({ nav, topNav, mega, megaImage, megaImageLabel, settings 
               width={220}
               height={90}
               priority
-              className="h-14 w-auto sm:h-16 lg:h-[78px]"
+              className={cn("w-auto transition-[height] duration-300", scrolled ? "h-11 sm:h-12 lg:h-[56px]" : "h-14 sm:h-16 lg:h-[78px]")}
             />
           </Link>
 

@@ -9,6 +9,7 @@ import { AproposNav } from "@/components/layout/AproposNav";
 import { IconBoxes } from "@/components/sections/AboutSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { getSettings, getTestimonials, getGalleryImages } from "@/lib/data";
+import { AnimatedHeading } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "À propos",
@@ -46,7 +47,7 @@ export default async function AproposPage() {
       <PageHeader title="À propos" items={[{ label: "À propos" }]} image="/media/img-9163.jpg" />
       <AproposNav />
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
           <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
             <div className="overflow-hidden rounded-lg">
@@ -54,7 +55,7 @@ export default async function AproposPage() {
             </div>
             <div>
               <SectionLabel>Groupe ISI</SectionLabel>
-              <h2 className="section-title">À propos de ISI</h2>
+              <AnimatedHeading className="section-title">À propos de ISI</AnimatedHeading>
               <div className="prose-isi mt-5">
                 <p>
                   Situé au Km1, avenue Cheikh Anta Diop, l&apos;Institut Supérieur d&apos;Informatique est sous la tutelle du Ministère de
@@ -96,7 +97,7 @@ export default async function AproposPage() {
       </section>
 
       {/* Chiffres clés + visuels */}
-      <section className="bg-surface py-16 lg:py-[100px]">
+      <section className="bg-surface section-y">
         <Container>
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <div className="grid grid-cols-2 gap-5">
@@ -152,12 +153,12 @@ export default async function AproposPage() {
       </section>
 
       {/* Palmes et reconnaissances + COIP */}
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
               <SectionLabel>Distinctions</SectionLabel>
-              <h2 className="section-title">Palmes et reconnaissances</h2>
+              <AnimatedHeading className="section-title">Palmes et reconnaissances</AnimatedHeading>
               <p className="mt-5 text-[15px] leading-7 text-body">
                 L&apos;excellence académique des programmes du Groupe ISI a été distinguée à plusieurs reprises au Sénégal et à l&apos;échelle du
                 continent.
@@ -179,7 +180,7 @@ export default async function AproposPage() {
 
             <div>
               <SectionLabel>Insertion professionnelle</SectionLabel>
-              <h2 className="section-title">La cellule COIP</h2>
+              <AnimatedHeading className="section-title">La cellule COIP</AnimatedHeading>
               <p className="mt-5 text-[15px] leading-7 text-body">
                 La Cellule d&apos;Orientation et d&apos;Insertion Professionnelle accompagne chaque étudiant, de son entrée à l&apos;ISI jusqu&apos;à
                 son premier emploi.
@@ -202,11 +203,11 @@ export default async function AproposPage() {
       </section>
 
       {/* Les 72H du Groupe ISI */}
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
-              <h3 className="section-title">Les 72H du Groupe ISI</h3>
+              <AnimatedHeading className="section-title" as="h3">Les 72H du Groupe ISI</AnimatedHeading>
               <p className="mt-5 text-[15px] leading-7 text-body">
                 Notre communauté diversifiée accueille des étudiants du monde entier, favorisant les échanges culturels et la compréhension mutuelle.
                 Grâce à des collaborations internationales, des initiatives de recherche et des pôles d&apos;innovation, nous offrons aux étudiants la

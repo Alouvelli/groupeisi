@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { SectionLabel } from "@/components/ui/Section";
 import { getSettings } from "@/lib/data";
+import { AnimatedHeading } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "Formation en ligne",
@@ -62,12 +63,12 @@ export default async function FormationEnLignePage() {
         image="/media/mg-8766-cr3-at-2025-copie.jpg"
       />
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
           <div className="grid gap-[30px] lg:grid-cols-3">
             <div className="lg:col-span-2">
               <SectionLabel>Formation ouverte et à distance</SectionLabel>
-              <h2 className="section-title">Apprenez à votre façon avec l&apos;ISI</h2>
+              <AnimatedHeading className="section-title">Apprenez à votre façon avec l&apos;ISI</AnimatedHeading>
               <p className="mt-5 text-base leading-7 text-body">
                 L&apos;Institut Supérieur d&apos;Informatique vous offre des options d&apos;études flexibles adaptées à votre réalité. Profitez
                 d&apos;une formation de qualité, entièrement à distance, et avancez à votre façon.
@@ -114,11 +115,11 @@ export default async function FormationEnLignePage() {
         </Container>
       </section>
 
-      <section className="bg-surface py-16 lg:py-[100px]">
+      <section className="bg-surface section-y">
         <Container>
-          <div className="mb-12 max-w-3xl">
+          <div className="mb-8 max-w-3xl lg:mb-10">
             <SectionLabel>Nos formations</SectionLabel>
-            <h2 className="section-title">Les cursus proposés à distance</h2>
+            <AnimatedHeading className="section-title">Les cursus proposés à distance</AnimatedHeading>
             <p className="mt-4 text-[15px] leading-7 text-body">
               Découvrez les différentes formations à distance que le Groupe ISI propose, du premier cycle au master, ainsi que les certificats courts.
             </p>
@@ -143,11 +144,11 @@ export default async function FormationEnLignePage() {
         </Container>
       </section>
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
-          <div className="mb-12 max-w-3xl">
+          <div className="mb-8 max-w-3xl lg:mb-10">
             <SectionLabel>Pourquoi nous choisir ?</SectionLabel>
-            <h2 className="section-title">Une formation à distance sans compromis</h2>
+            <AnimatedHeading className="section-title">Une formation à distance sans compromis</AnimatedHeading>
           </div>
           <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-4">
             {ATOUTS.map(({ Icon, titre, texte }) => (

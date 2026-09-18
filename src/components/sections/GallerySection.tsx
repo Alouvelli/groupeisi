@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/Section";
+import { AnimatedHeading } from "@/components/motion";
 
 export interface GalleryImage {
   src: string;
@@ -61,11 +62,11 @@ export function GallerySection({ images, categories }: { images: GalleryImage[];
   const filtered = active === "Toutes" ? images : images.filter((i) => i.categorie === active);
 
   return (
-    <section className="bg-white py-16 sm:py-20 lg:py-[100px]">
+    <section className="bg-white section-y">
       <Container>
         <div className="mb-10 text-center">
           <SectionLabel className="justify-center">Galerie</SectionLabel>
-          <h2 className="section-title">Vie de campus</h2>
+          <AnimatedHeading className="section-title">Vie de campus</AnimatedHeading>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-body">
             Découvrez la vie dans notre institut à travers des images et des souvenirs.
           </p>

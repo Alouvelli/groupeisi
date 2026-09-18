@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { AnimatedHeading, Reveal } from "@/components/motion";
 import { Container } from "./Container";
 import { GraduationCap } from "lucide-react";
 
@@ -15,7 +16,7 @@ const variants = {
   dark: "bg-night text-white",
   gradient: "bg-gradient-to-br from-primary via-primary-light to-primary-dark text-white",
 };
-const paddings = { none: "", sm: "py-12 sm:py-16", md: "py-16 sm:py-20 lg:py-[100px]", lg: "py-20 sm:py-24 lg:py-[120px]" };
+const paddings = { none: "", sm: "section-y-sm", md: "section-y", lg: "py-16 lg:py-[88px]" };
 
 export function Section({ variant = "white", padding = "md", container = true, className, children, ...rest }: SectionProps) {
   return (
@@ -57,21 +58,45 @@ export function SectionHeading({
 }) {
   if (align === "split") {
     return (
-      <div className={cn("mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between", className)}>
+      <div className={cn("mb-8 flex flex-col gap-6 lg:mb-10 lg:flex-row lg:items-end lg:justify-between", className)}>
         <div className="max-w-3xl">
-          {label && <SectionLabel light={light}>{label}</SectionLabel>}
-          <Tag className={cn("section-title text-balance", light && "text-white")}>{title}</Tag>
-          {description && <p className={cn("mt-4 text-base leading-7", light ? "text-white/80" : "text-body")}>{description}</p>}
+          {label && (
+            <Reveal distance={14} duration={0.4}>
+              <SectionLabel light={light}>{label}</SectionLabel>
+            </Reveal>
+          )}
+          <AnimatedHeading as={Tag} className={cn("section-title text-balance", light && "text-white")}>
+            {title}
+          </AnimatedHeading>
+          {description && (
+            <Reveal delay={0.12}>
+              <p className={cn("mt-4 text-base leading-7", light ? "text-white/80" : "text-body")}>{description}</p>
+            </Reveal>
+          )}
         </div>
-        {action && <div className="shrink-0">{action}</div>}
+        {action && (
+          <Reveal delay={0.2} className="shrink-0">
+            {action}
+          </Reveal>
+        )}
       </div>
     );
   }
   return (
-    <div className={cn("mb-12 max-w-3xl", align === "center" ? "mx-auto text-center" : "text-left", className)}>
-      {label && <SectionLabel light={light}>{label}</SectionLabel>}
-      <Tag className={cn("section-title text-balance", light && "text-white")}>{title}</Tag>
-      {description && <p className={cn("mt-4 text-base leading-7", light ? "text-white/80" : "text-body")}>{description}</p>}
+    <div className={cn("mb-8 max-w-3xl lg:mb-10", align === "center" ? "mx-auto text-center" : "text-left", className)}>
+      {label && (
+        <Reveal distance={14} duration={0.4}>
+          <SectionLabel light={light}>{label}</SectionLabel>
+        </Reveal>
+      )}
+      <AnimatedHeading as={Tag} className={cn("section-title text-balance", light && "text-white")}>
+        {title}
+      </AnimatedHeading>
+      {description && (
+        <Reveal delay={0.12}>
+          <p className={cn("mt-4 text-base leading-7", light ? "text-white/80" : "text-body")}>{description}</p>
+        </Reveal>
+      )}
     </div>
   );
 }

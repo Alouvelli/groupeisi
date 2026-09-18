@@ -9,6 +9,7 @@ import { SectionLabel } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { LinkedinIcon } from "@/components/ui/SocialLinks";
 import { getPersonneBySlug, getPersonnes } from "@/lib/data";
+import { AnimatedHeading } from "@/components/motion";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -35,7 +36,7 @@ export default async function PersonnePage({ params }: { params: Promise<{ slug:
         image="/media/mg-9698-cr3-at-2025-copie.jpg"
       />
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
           <div className="grid gap-12 lg:grid-cols-[420px_1fr] lg:gap-16">
             <div>
@@ -87,9 +88,7 @@ export default async function PersonnePage({ params }: { params: Promise<{ slug:
 
             <div>
               <SectionLabel>{personne.departement?.nom ?? "Groupe ISI"}</SectionLabel>
-              <h2 className="section-title">
-                {personne.prenom} {personne.nom}
-              </h2>
+              <AnimatedHeading className="section-title">{`${personne.prenom} ${personne.nom}`}</AnimatedHeading>
               <p className="mt-2 text-[17px] font-medium text-primary">{personne.poste}</p>
               {personne.bio && <p className="mt-6 text-base leading-7 text-body">{personne.bio}</p>}
 
@@ -128,9 +127,9 @@ export default async function PersonnePage({ params }: { params: Promise<{ slug:
       </section>
 
       {autres.length > 0 && (
-        <section className="bg-surface py-16 lg:py-[100px]">
+        <section className="bg-surface section-y">
           <Container>
-            <h2 className="section-title mb-10">Autres membres de l&apos;équipe</h2>
+            <AnimatedHeading className="section-title mb-7">Autres membres de l&apos;équipe</AnimatedHeading>
             <div className="grid gap-[30px] sm:grid-cols-3">
               {autres.map((p) => (
                 <Link key={p.id} href={`/equipe/${p.slug}`} className="group flex items-center gap-4 rounded-lg border border-line bg-white p-5 transition hover:shadow-card">

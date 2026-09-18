@@ -17,7 +17,7 @@ export interface DepartmentCardProps {
 /** Carte département : visuel, icône, nom, accroche et nombre de formations. */
 export function DepartmentCard({ nom, slug, accroche, description, icone, image, programmesCount }: DepartmentCardProps) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white transition hover:shadow-card">
+    <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white transition duration-500 hover:-translate-y-1.5 hover:shadow-card">
       <Link href={`/departements/${slug}`} className="relative block aspect-[16/10] overflow-hidden">
         <Image
           src={image || "/media/mg-8766-cr3-at-2025-copie.jpg"}

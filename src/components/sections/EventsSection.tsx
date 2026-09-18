@@ -2,6 +2,7 @@ import { EventCard, type EventCardProps } from "@/components/cards/EventCard";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
+import { AnimatedHeading, StaggerChildren } from "@/components/motion";
 
 /**
  * Section « Assistez à nos prochains évènements » : fond beige,
@@ -22,22 +23,22 @@ export function EventsSection({
 }) {
   if (!events.length) return null;
   return (
-    <section className="bg-surface py-16 sm:py-20 lg:py-[100px]">
+    <section className="bg-surface section-y">
       <Container>
-        <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mb-8 flex flex-col gap-6 lg:mb-10 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <SectionLabel>{label}</SectionLabel>
-            <h2 className="section-title">{title}</h2>
+            <AnimatedHeading className="section-title">{title}</AnimatedHeading>
           </div>
           <Button href={href} arrow className="shrink-0">
             {cta}
           </Button>
         </div>
-        <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
+        <StaggerChildren className="rail sm:grid-cols-2 lg:grid-cols-3">
           {events.slice(0, 3).map((e) => (
             <EventCard key={e.slug} {...e} />
           ))}
-        </div>
+        </StaggerChildren>
       </Container>
     </section>
   );

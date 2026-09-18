@@ -10,6 +10,7 @@ import { ProgramCard } from "@/components/cards/ProgramCard";
 import { TeamCard } from "@/components/cards/TeamCard";
 import { getDepartementBySlug, getSettings } from "@/lib/data";
 import { NIVEAU_LABELS } from "@/lib/constants";
+import { AnimatedHeading } from "@/components/motion";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -36,12 +37,12 @@ export default async function DepartementPage({ params }: { params: Promise<{ sl
     <>
       <PageHeader title={departement.nom} items={[{ label: "Nos formations", href: "/formations" }, { label: departement.nom }]} image={departement.image} />
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
           <div className="grid items-start gap-12 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
             <div>
               <SectionLabel>Département</SectionLabel>
-              <h2 className="section-title">{departement.nom}</h2>
+              <AnimatedHeading className="section-title">{departement.nom}</AnimatedHeading>
               <p className="mt-5 text-base leading-7 text-body">{departement.description}</p>
               {departement.contenu && <div className="prose-isi mt-6" dangerouslySetInnerHTML={{ __html: departement.contenu }} />}
               <div className="mt-8 overflow-hidden rounded-lg">
@@ -76,11 +77,11 @@ export default async function DepartementPage({ params }: { params: Promise<{ sl
         </Container>
       </section>
 
-      <section className="bg-surface py-16 lg:py-[100px]">
+      <section className="bg-surface section-y">
         <Container>
-          <div className="mb-12 max-w-3xl">
+          <div className="mb-8 max-w-3xl lg:mb-10">
             <SectionLabel>Nos Formations</SectionLabel>
-            <h2 className="section-title">Les formations du département</h2>
+            <AnimatedHeading className="section-title">Les formations du département</AnimatedHeading>
           </div>
 
           {Object.entries(parNiveau).map(([niveau, items]) => (
@@ -108,9 +109,9 @@ export default async function DepartementPage({ params }: { params: Promise<{ sl
       </section>
 
       {departement.personnes.length > 0 && (
-        <section className="bg-white py-16 lg:py-[100px]">
+        <section className="bg-white section-y">
           <Container>
-            <h2 className="section-title mb-10">L&apos;équipe pédagogique</h2>
+            <AnimatedHeading className="section-title mb-7">L&apos;équipe pédagogique</AnimatedHeading>
             <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
               {departement.personnes.map((p) => (
                 <TeamCard

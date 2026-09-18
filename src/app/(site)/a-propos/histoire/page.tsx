@@ -6,6 +6,7 @@ import { SectionLabel } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { AproposNav } from "@/components/layout/AproposNav";
 import { getGalleryImages } from "@/lib/data";
+import { AnimatedHeading } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "Histoire",
@@ -114,7 +115,7 @@ export default async function HistoirePage() {
       <PageHeader title="Histoire" items={[{ label: "À propos", href: "/a-propos" }, { label: "Histoire" }]} image="/media/img-9163.jpg" />
       <AproposNav />
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
           <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
             <div className="overflow-hidden rounded-lg">
@@ -122,7 +123,7 @@ export default async function HistoirePage() {
             </div>
             <div>
               <SectionLabel>Notre parcours</SectionLabel>
-              <h2 className="section-title">Histoire du Groupe ISI</h2>
+              <AnimatedHeading className="section-title">Histoire du Groupe ISI</AnimatedHeading>
               <div className="prose-isi mt-5">
                 <p>
                   Depuis plus de 27 ans, l&apos;Institut Supérieur d&apos;Informatique « ISI » s&apos;engage dans la formation des jeunes cadres
@@ -143,11 +144,11 @@ export default async function HistoirePage() {
       </section>
 
       {/* Frise des distinctions */}
-      <section className="bg-surface py-16 lg:py-[100px]">
+      <section className="bg-surface section-y">
         <Container>
-          <div className="mb-12 max-w-3xl">
+          <div className="mb-8 max-w-3xl lg:mb-10">
             <SectionLabel>Distinctions</SectionLabel>
-            <h2 className="section-title">Nos prix et reconnaissances</h2>
+            <AnimatedHeading className="section-title">Nos prix et reconnaissances</AnimatedHeading>
           </div>
 
           <ol className="relative space-y-12 border-l-2 border-line pl-6 sm:pl-10">
@@ -177,7 +178,7 @@ export default async function HistoirePage() {
         </Container>
       </section>
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
           <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
             {gallery.slice(4, 8).map((g) => (

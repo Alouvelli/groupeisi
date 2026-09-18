@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/Section";
 import { TestimonialCard } from "@/components/cards/TestimonialCard";
 import { getTestimonials } from "@/lib/data";
+import { AnimatedHeading } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "Témoignages",
@@ -27,11 +28,11 @@ export default async function TemoignagesPage() {
       <PageHeader title="Témoignages" items={[{ label: "Témoignages" }]} image="/media/img-9226-cr3-dxo-deepprimexd-dxo.jpg" />
 
       {videos.length > 0 && (
-        <section className="bg-white py-16 lg:py-[100px]">
+        <section className="bg-white section-y">
           <Container>
-            <div className="mb-12 max-w-3xl">
+            <div className="mb-8 max-w-3xl lg:mb-10">
               <SectionLabel>Interviews</SectionLabel>
-              <h2 className="section-title">Ils racontent leur parcours</h2>
+              <AnimatedHeading className="section-title">Ils racontent leur parcours</AnimatedHeading>
             </div>
             <div className="grid gap-[30px] lg:grid-cols-2">
               {videos.map((t) => {
@@ -66,11 +67,11 @@ export default async function TemoignagesPage() {
       )}
 
       {ecrits.length > 0 && (
-        <section className="bg-surface py-16 lg:py-[100px]">
+        <section className="bg-surface section-y">
           <Container>
-            <div className="mb-12 max-w-3xl">
+            <div className="mb-8 max-w-3xl lg:mb-10">
               <SectionLabel>Feedback de nos étudiants</SectionLabel>
-              <h2 className="section-title">Le parcours de nos diplômés</h2>
+              <AnimatedHeading className="section-title">Le parcours de nos diplômés</AnimatedHeading>
             </div>
             <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
               {ecrits.map((t) => (

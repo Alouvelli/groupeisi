@@ -32,7 +32,7 @@ export default async function FaqPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <PageHeader title="FAQ" items={[{ label: "FAQ" }]} image="/media/img-2298-1.jpg" />
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container narrow>
           <Tabs
             tabs={categories.map((c) => ({

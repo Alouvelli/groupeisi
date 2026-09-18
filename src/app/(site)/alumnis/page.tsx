@@ -7,6 +7,7 @@ import { AlumniCard } from "@/components/cards/AlumniCard";
 import { EventCard } from "@/components/cards/EventCard";
 import { NewsSection } from "@/components/sections/NewsSection";
 import { getAlumni, getSettings, getEvenements, getLatestPosts, getGalleryImages } from "@/lib/data";
+import { AnimatedHeading } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "Nos Alumnis",
@@ -32,12 +33,12 @@ export default async function AlumnisPage() {
         image="/media/dsc-0071-1.jpg"
       />
 
-      <section className="bg-white py-16 lg:py-[100px]">
+      <section className="bg-white section-y">
         <Container>
           <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
               <SectionLabel>Réseau Alumni</SectionLabel>
-              <h2 className="section-title">Une communauté mondiale</h2>
+              <AnimatedHeading className="section-title">Une communauté mondiale</AnimatedHeading>
               <div className="prose-isi mt-5">
                 <p>
                   Fort de plus de 30 ans d&apos;histoire et d&apos;un héritage remarquable, l&apos;Institut Supérieur d&apos;Informatique (ISI)
@@ -86,11 +87,11 @@ export default async function AlumnisPage() {
         </Container>
       </section>
 
-      <section className="bg-surface py-16 lg:py-[100px]">
+      <section className="bg-surface section-y">
         <Container>
-          <div className="mb-12 max-w-3xl">
+          <div className="mb-8 max-w-3xl lg:mb-10">
             <SectionLabel>Portraits</SectionLabel>
-            <h2 className="section-title">Nos Alumnis</h2>
+            <AnimatedHeading className="section-title">Nos Alumnis</AnimatedHeading>
             <p className="mt-4 text-base leading-7 text-body">
               Nos alumnis les plus distingués incarnent l&apos;excellence dans tous les secteurs d&apos;activité, menant l&apos;innovation, la recherche
               et la créativité à l&apos;échelle mondiale. Leurs réalisations inspirent les générations futures.
@@ -118,11 +119,11 @@ export default async function AlumnisPage() {
       </section>
 
       {events.length > 0 && (
-        <section className="bg-white py-16 lg:py-[100px]">
+        <section className="bg-white section-y">
           <Container>
-            <div className="mb-12 max-w-3xl">
+            <div className="mb-8 max-w-3xl lg:mb-10">
               <SectionLabel>Upcoming Events</SectionLabel>
-              <h2 className="section-title">Participez à nos prochains événements</h2>
+              <AnimatedHeading className="section-title">Participez à nos prochains événements</AnimatedHeading>
             </div>
             <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
               {events.map((e) => (
@@ -133,9 +134,9 @@ export default async function AlumnisPage() {
         </section>
       )}
 
-      <section className="bg-surface py-16 lg:py-[100px]">
+      <section className="bg-surface section-y">
         <Container>
-          <h2 className="section-title mb-10">Galerie photos des alumnis</h2>
+          <AnimatedHeading className="section-title mb-7">Galerie photos des alumnis</AnimatedHeading>
           <div className="grid gap-5 sm:grid-cols-3">
             {gallery.slice(0, 3).map((g) => (
               <Image key={g.src} src={g.src} alt={g.alt} width={600} height={420} className="aspect-[4/3] w-full rounded-lg object-cover" />

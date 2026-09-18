@@ -31,7 +31,7 @@ export function AlumniCard({
   temoignage?: string | null;
 }) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white p-3 shadow-card transition hover:bg-primary">
+    <article className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white p-3 shadow-card transition duration-500 hover:-translate-y-1.5 hover:bg-primary">
       <Link href={`/alumni/${slug}`} className="block overflow-hidden rounded-2xl">
         <Image
           src={photo || "/media/alamni-team-1.jpg"}

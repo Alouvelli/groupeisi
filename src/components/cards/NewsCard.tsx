@@ -49,7 +49,7 @@ export function NewsCard({ titre, slug, extrait, image, publishedAt, tempsLectur
   );
 
   return (
-    <article className={cn("group flex h-full", variant === "row" ? "flex-col gap-6 sm:flex-row" : "flex-col")}>
+    <article className={cn("group flex h-full transition duration-500 hover:-translate-y-1.5", variant === "row" ? "flex-col gap-6 sm:flex-row" : "flex-col")}>
       <Link
         href={`/actualites/${slug}`}
         className={cn("relative block overflow-hidden rounded-lg", variant === "row" ? "sm:w-2/5 sm:shrink-0" : "mb-[30px]")}

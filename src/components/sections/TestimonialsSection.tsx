@@ -4,6 +4,7 @@ import { TestimonialCard } from "@/components/cards/TestimonialCard";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/Section";
 import { Carousel } from "@/components/ui/Carousel";
+import { AnimatedHeading } from "@/components/motion";
 
 export interface TestimonialItem {
   nom: string;
@@ -33,11 +34,11 @@ export function TestimonialsSection({
 }) {
   if (!testimonials.length) return null;
   return (
-    <section className={variant === "surface" ? "bg-surface py-16 sm:py-20 lg:py-[100px]" : "bg-white py-16 sm:py-20 lg:py-[100px]"}>
+    <section className={variant === "surface" ? "bg-surface section-y" : "bg-white section-y"}>
       <Container>
-        <div className="mb-12 max-w-3xl">
+        <div className="mb-8 max-w-3xl lg:mb-10">
           <SectionLabel>{label}</SectionLabel>
-          <h2 className="section-title">{title}</h2>
+          <AnimatedHeading className="section-title">{title}</AnimatedHeading>
           {description && <p className="mt-4 text-base leading-7 text-body">{description}</p>}
         </div>
         <Carousel ariaLabel="Témoignages" itemClassName="w-[88%] sm:w-[48%] lg:w-[32.3%]" autoplay={7000}>

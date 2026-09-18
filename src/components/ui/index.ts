@@ -9,7 +9,6 @@ export * from "./Accordion";
 export * from "./Tabs";
 export * from "./Modal";
 export * from "./Carousel";
-export * from "./Reveal";
 export * from "./Counter";
 export * from "./Icon";
 export * from "./SocialLinks";

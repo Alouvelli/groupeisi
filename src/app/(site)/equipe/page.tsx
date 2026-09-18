@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/Section";
 import { TeamCard } from "@/components/cards/TeamCard";
 import { getPersonnes } from "@/lib/data";
+import { AnimatedHeading } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "Notre équipe",
@@ -32,11 +33,11 @@ export default async function EquipePage() {
         const items = personnes.filter((p) => p.type === type);
         if (!items.length) return null;
         return (
-          <section key={type} className={i % 2 === 0 ? "bg-white py-16 lg:py-[100px]" : "bg-surface py-16 lg:py-[100px]"}>
+          <section key={type} className={i % 2 === 0 ? "bg-white section-y" : "bg-surface section-y"}>
             <Container>
-              <div className="mb-12 max-w-3xl">
+              <div className="mb-8 max-w-3xl lg:mb-10">
                 <SectionLabel>{label}</SectionLabel>
-                <h2 className="section-title">{titre}</h2>
+                <AnimatedHeading className="section-title">{titre}</AnimatedHeading>
               </div>
               <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
                 {items.map((p) => (

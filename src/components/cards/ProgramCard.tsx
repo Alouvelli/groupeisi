@@ -39,12 +39,19 @@ export function ProgramCard({
   variant = "row",
   cta = "S'inscrire",
 }: ProgramCardProps) {
-  const puces = objectifs.length ? objectifs.slice(0, 3) : accroche ? [accroche] : description ? [truncate(description, 220)] : [];
+  /* En grille, la carte doit rester compacte : deux objectifs courts suffisent.
+     En ligne, la largeur disponible permet d'en montrer trois, plus détaillés. */
+  const enLigne = variant === "row";
+  const nbPuces = enLigne ? 3 : 2;
+  const longueur = enLigne ? 160 : 82;
+  const puces = (objectifs.length ? objectifs.slice(0, nbPuces) : accroche ? [accroche] : description ? [description] : []).map((p) =>
+    truncate(p, longueur),
+  );
 
   return (
     <article
       className={cn(
-        "group flex h-full gap-[30px] rounded-xl border border-line bg-white p-3 transition hover:shadow-card",
+        "group flex h-full gap-[30px] rounded-xl border border-line bg-white p-3 transition duration-500 hover:-translate-y-1.5 hover:shadow-card",
         variant === "row" ? "flex-col sm:flex-row sm:items-center" : "flex-col",
       )}
     >
@@ -59,7 +66,7 @@ export function ProgramCard({
           alt=""
           width={600}
           height={900}
-          className={cn("w-full object-cover transition duration-500 group-hover:scale-[1.03]", variant === "row" ? "h-[260px] sm:h-[335px]" : "h-[300px]")}
+          className={cn("w-full object-cover transition duration-500 group-hover:scale-[1.03]", variant === "row" ? "h-[230px] sm:h-[290px]" : "h-[232px]")}
         />
       </Link>
 
@@ -77,7 +84,7 @@ export function ProgramCard({
             {puces.map((p, i) => (
               <li key={i} className="flex gap-2.5 text-[15px] font-medium leading-6 text-dark">
                 <Check className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden />
-                <span>{truncate(p, 160)}</span>
+                <span>{p}</span>
               </li>
             ))}
           </ul>

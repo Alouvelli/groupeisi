@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/Section";
+import { AnimatedHeading } from "@/components/motion";
 
 export interface Partenaire {
   nom: string;
@@ -27,7 +28,7 @@ export function PartnersSection({
       <Container>
         <div className="mb-10 text-center">
           <SectionLabel className="justify-center">{label}</SectionLabel>
-          <h2 className="section-title">{title}</h2>
+          <AnimatedHeading className="section-title">{title}</AnimatedHeading>
         </div>
       </Container>
       <div className="relative">
