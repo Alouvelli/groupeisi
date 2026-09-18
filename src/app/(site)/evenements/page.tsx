@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/Section";
 import { EventCard } from "@/components/cards/EventCard";
 import { getEvenements } from "@/lib/data";
-import { AnimatedHeading } from "@/components/motion";
+import { AnimatedHeading, StaggerChildren } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "Évènements",
@@ -38,11 +38,11 @@ export default async function EvenementsPage() {
               Aucun événement à venir pour le moment. Consultez nos actualités pour suivre la vie de l&apos;institut.
             </div>
           ) : (
-            <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
+            <StaggerChildren className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
               {aVenir.map((e) => (
                 <EventCard key={e.id} titre={e.titre} slug={e.slug} description={e.description} image={e.image} dateDebut={e.dateDebut} heure={e.heure} lieu={e.lieu} type={e.type} />
               ))}
-            </div>
+            </StaggerChildren>
           )}
         </Container>
       </section>
@@ -51,11 +51,11 @@ export default async function EvenementsPage() {
         <section className="bg-surface section-y">
           <Container>
             <AnimatedHeading className="section-title mb-7">Évènements passés</AnimatedHeading>
-            <div className="grid gap-5 lg:grid-cols-2">
+            <StaggerChildren className="grid gap-5 lg:grid-cols-2" gap={0.05}>
               {passes.map((e) => (
                 <EventCard key={e.id} variant="row" titre={e.titre} slug={e.slug} image={e.image} dateDebut={e.dateDebut} heure={e.heure} lieu={e.lieu} type={e.type} />
               ))}
-            </div>
+            </StaggerChildren>
           </Container>
         </section>
       )}

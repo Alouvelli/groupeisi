@@ -8,6 +8,7 @@ import { Pagination } from "@/components/ui/Pagination";
 import { NewsCard } from "@/components/cards/NewsCard";
 import { getPosts, getCategories, getLatestPosts } from "@/lib/data";
 import { cn, formatDate } from "@/lib/utils";
+import { Reveal, StaggerChildren } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "Actualités",
@@ -27,6 +28,10 @@ export default async function ActualitesPage({
     getLatestPosts(3),
   ]);
 
+  /* Un article en vedette ouvre la première page, le reste suit en grille. */
+  const vedette = result.page === 1 ? result.items[0] : undefined;
+  const suite = vedette ? result.items.slice(1) : result.items;
+
   return (
     <>
       <PageHeader
@@ -43,21 +48,39 @@ export default async function ActualitesPage({
               {result.items.length === 0 ? (
                 <div className="rounded-lg border border-dashed border-line p-12 text-center text-body">Aucun article trouvé.</div>
               ) : (
-                <div className="grid gap-[30px] sm:grid-cols-2 xl:grid-cols-3">
-                  {result.items.map((p) => (
-                    <NewsCard
-                      key={p.id}
-                      titre={p.titre}
-                      slug={p.slug}
-                      extrait={p.extrait}
-                      image={p.image}
-                      publishedAt={p.publishedAt}
-                      tempsLecture={p.tempsLecture}
-                      categorie={p.categorie}
-                      auteur={p.auteur?.nom}
-                    />
-                  ))}
-                </div>
+                <>
+                  {/* Le premier article de la première page est mis en avant. */}
+                  {vedette && (
+                    <Reveal className="mb-[30px]">
+                      <NewsCard
+                        variant="list"
+                        titre={vedette.titre}
+                        slug={vedette.slug}
+                        extrait={vedette.extrait}
+                        image={vedette.image}
+                        publishedAt={vedette.publishedAt}
+                        tempsLecture={vedette.tempsLecture}
+                        categorie={vedette.categorie}
+                        auteur={vedette.auteur?.nom}
+                      />
+                    </Reveal>
+                  )}
+                  <StaggerChildren className="grid gap-[30px] sm:grid-cols-2 xl:grid-cols-3">
+                    {suite.map((p) => (
+                      <NewsCard
+                        key={p.id}
+                        titre={p.titre}
+                        slug={p.slug}
+                        extrait={p.extrait}
+                        image={p.image}
+                        publishedAt={p.publishedAt}
+                        tempsLecture={p.tempsLecture}
+                        categorie={p.categorie}
+                        auteur={p.auteur?.nom}
+                      />
+                    ))}
+                  </StaggerChildren>
+                </>
               )}
               <Pagination page={result.page} pages={result.pages} basePath="/actualites" params={{ categorie: sp.categorie, q: sp.q, tag: sp.tag }} />
             </div>

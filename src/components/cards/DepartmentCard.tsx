@@ -17,14 +17,14 @@ export interface DepartmentCardProps {
 /** Carte département : visuel, icône, nom, accroche et nombre de formations. */
 export function DepartmentCard({ nom, slug, accroche, description, icone, image, programmesCount }: DepartmentCardProps) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white transition duration-500 hover:-translate-y-1.5 hover:shadow-card">
+    <article className="carte-vivante group flex h-full flex-col rounded-2xl border border-line bg-white">
       <Link href={`/departements/${slug}`} className="relative block aspect-[16/10] overflow-hidden">
         <Image
           src={image || "/media/mg-8766-cr3-at-2025-copie.jpg"}
           alt=""
           fill
           sizes="(max-width: 1024px) 50vw, 25vw"
-          className="object-cover transition duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.08]"
         />
         <span className="absolute inset-0 bg-gradient-to-t from-night/70 to-transparent" aria-hidden />
         {icone && (

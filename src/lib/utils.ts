@@ -27,6 +27,27 @@ export function formatDateTime(date: Date | string | null | undefined): string {
   return formatDate(date, "d MMM yyyy 'à' HH:mm");
 }
 
+/**
+ * Compte à rebours court pour un évènement à venir : « demain », « dans 6 jours ».
+ *
+ * Le calcul se fait sur des jours calendaires en temps universel, afin que le
+ * rendu du serveur et celui du navigateur coïncident quel que soit le fuseau.
+ * Renvoie une chaîne vide pour une date passée.
+ */
+export function compteARebours(date: Date | string | null | undefined): string {
+  if (!date) return "";
+  const d = typeof date === "string" ? new Date(date) : date;
+  if (Number.isNaN(d.getTime())) return "";
+  const jour = (x: Date) => Date.UTC(x.getUTCFullYear(), x.getUTCMonth(), x.getUTCDate());
+  const jours = Math.round((jour(d) - jour(new Date())) / 86_400_000);
+  if (jours < 0) return "";
+  if (jours === 0) return "aujourd'hui";
+  if (jours === 1) return "demain";
+  if (jours < 31) return `dans ${jours} jours`;
+  const mois = Math.round(jours / 30);
+  return mois <= 1 ? "dans un mois" : `dans ${mois} mois`;
+}
+
 export function timeAgo(date: Date | string | null | undefined): string {
   if (!date) return "";
   const d = typeof date === "string" ? new Date(date) : date;

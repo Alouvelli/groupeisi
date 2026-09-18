@@ -51,7 +51,7 @@ export function ProgramCard({
   return (
     <article
       className={cn(
-        "group flex h-full gap-[30px] rounded-xl border border-line bg-white p-3 transition duration-500 hover:-translate-y-1.5 hover:shadow-card",
+        "carte-vivante group flex h-full gap-[30px] rounded-2xl border border-line bg-white p-3",
         variant === "row" ? "flex-col sm:flex-row sm:items-center" : "flex-col",
       )}
     >
@@ -66,7 +66,7 @@ export function ProgramCard({
           alt=""
           width={600}
           height={900}
-          className={cn("w-full object-cover transition duration-500 group-hover:scale-[1.03]", variant === "row" ? "h-[230px] sm:h-[290px]" : "h-[232px]")}
+          className={cn("w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]", variant === "row" ? "h-[230px] sm:h-[290px]" : "h-[232px]")}
         />
       </Link>
 

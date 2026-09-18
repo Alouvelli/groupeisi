@@ -34,7 +34,7 @@ export function AboutSection({ label, title, intro, onglets, atouts, images, hre
           {/* Visuels */}
           <div className="relative">
             <ImageReveal className="rounded-lg" sens="gauche">
-              <Image src={images[0]} alt="" width={900} height={600} className="h-auto w-full object-cover" />
+              <Image src={images[0]} alt="" width={900} height={600} priority className="h-auto w-full object-cover" />
             </ImageReveal>
             <Parallax amplitude={26} className="mt-6 sm:ml-16 sm:mt-8">
               <ImageReveal className="rounded-lg" sens="droite" delay={0.15}>

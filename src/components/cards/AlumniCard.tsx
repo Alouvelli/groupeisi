@@ -31,14 +31,14 @@ export function AlumniCard({
   temoignage?: string | null;
 }) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white p-3 shadow-card transition duration-500 hover:-translate-y-1.5 hover:bg-primary">
+    <article className="carte-vivante group flex h-full flex-col rounded-2xl border border-line bg-white p-3 shadow-card hover:bg-primary">
       <Link href={`/alumni/${slug}`} className="block overflow-hidden rounded-2xl">
         <Image
           src={photo || "/media/alamni-team-1.jpg"}
           alt={`${prenom} ${nom}`}
           width={600}
           height={520}
-          className="aspect-[6/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+          className="aspect-[6/5] w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
         />
       </Link>
       <div className="flex flex-1 flex-col px-4 pb-4 pt-6">

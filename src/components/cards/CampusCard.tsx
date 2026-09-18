@@ -37,14 +37,14 @@ export function CampusCard({
 }: CampusCardProps) {
   if (variant === "detail") {
     return (
-      <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white transition duration-500 hover:-translate-y-1.5 hover:shadow-card">
+      <article className="carte-vivante group flex h-full flex-col rounded-2xl border border-line bg-white">
         <Link href={`/campus/${slug}`} className="relative block aspect-[4/3] overflow-hidden">
           <Image
             src={image || "/media/img-9163.jpg"}
             alt={nom}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
-            className="object-cover transition duration-500 group-hover:scale-105"
+            className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.08]"
           />
           {isSiege && (
             <span className="absolute left-4 top-4 rounded bg-secondary px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-secondary-fg">Siège</span>

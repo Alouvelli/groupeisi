@@ -32,15 +32,17 @@ export function Tilt({ children, className, amplitude = 5 }: { children: React.R
     py.set(0);
   };
 
+  /**
+   * La perspective est portée par un conteneur ordinaire plutôt que par le
+   * style du composant animé : `transformPerspective` forcerait framer-motion
+   * à écrire une transformation dès le rendu serveur, alors que le premier
+   * rendu du navigateur n'en produit aucune, ce qui casse l'hydratation.
+   */
   return (
-    <motion.div
-      ref={ref}
-      onMouseMove={suivre}
-      onMouseLeave={relacher}
-      style={{ rotateX, rotateY, transformPerspective: 900 }}
-      className={cn("will-change-transform", className)}
-    >
-      {children}
-    </motion.div>
+    <div ref={ref} onMouseMove={suivre} onMouseLeave={relacher} className={cn("[perspective:900px]", className)}>
+      <motion.div style={{ rotateX, rotateY }} className="h-full will-change-transform">
+        {children}
+      </motion.div>
+    </div>
   );
 }

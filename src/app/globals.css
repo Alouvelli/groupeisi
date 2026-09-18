@@ -62,6 +62,11 @@
     from { transform: scale(1.07); }
     to { transform: scale(1); }
   }
+  /* Éclat diagonal qui traverse une carte au survol. */
+  @keyframes eclat {
+    from { opacity: 1; transform: translateX(-130%); }
+    to { opacity: 0; transform: translateX(130%); }
+  }
 }
 
 :root {
@@ -285,6 +290,33 @@
     @apply origin-left scale-x-100;
   }
 
+  /**
+   * Carte « vivante » : elle se soulève, sa bordure s'allume et un éclat
+   * diagonal la balaie une fois au survol. À poser sur un conteneur en
+   * position relative et à débordement masqué.
+   */
+  .carte-vivante {
+    @apply relative overflow-hidden transition-[transform,box-shadow,border-color,background-color] duration-500;
+  }
+  .carte-vivante:hover {
+    @apply -translate-y-2 border-primary/35 shadow-card;
+  }
+  .carte-vivante::after {
+    content: "";
+    @apply pointer-events-none absolute inset-0 z-20 opacity-0;
+    background: linear-gradient(115deg, transparent 38%, rgba(255, 255, 255, 0.42) 50%, transparent 62%);
+    transform: translateX(-130%);
+  }
+  .carte-vivante:hover::after {
+    animation: eclat 0.9s ease-out;
+  }
+
+  /* Voile dégradé posé sur un visuel, pour asseoir les pastilles flottantes. */
+  .voile-visuel {
+    @apply pointer-events-none absolute inset-0 transition-opacity duration-500;
+    background: linear-gradient(to top, rgba(5, 20, 53, 0.72) 0%, rgba(5, 20, 53, 0.18) 42%, transparent 70%);
+  }
+
   /* Carte qui se soulève au survol : à poser sur le conteneur de la carte. */
   .carte-levee {
     @apply transition-[transform,box-shadow] duration-500;
@@ -317,6 +349,8 @@
     scroll-behavior: auto !important;
   }
   .carte-levee:hover { transform: none; }
+  .carte-vivante:hover { transform: none; }
+  .carte-vivante:hover::after { animation: none; }
   .rs-button:hover { transform: none; }
   .zoom-parent:hover img { transform: none; }
 }
