@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Play, Quote } from "lucide-react";
+import { Award, Briefcase, Play, Quote } from "lucide-react";
 import { PageHeader } from "@/components/ui/Breadcrumb";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/Section";
@@ -15,6 +15,28 @@ export const metadata: Metadata = {
   description:
     "À ISI, l'éducation va au-delà des manuels et des salles de classe : programmes de calibre international, installations de pointe et communauté de plus de trente nationalités.",
 };
+
+/** Distinctions listées sur la page « Présentation » de groupeisi.com. */
+const PALMES: { annee: string; texte: string }[] = [
+  { annee: "2015", texte: "Meilleure académie d'excellence CISCO au niveau de l'Afrique subsaharienne." },
+  { annee: "2016", texte: "Trophée de la meilleure école IT lors du gala des TIC Set Awards organisé au Sénégal." },
+  {
+    annee: "2017",
+    texte:
+      "Entreprise la plus dynamique et la plus innovante du secteur de l'éducation, lors du gala des 100 entreprises les plus innovantes du Sénégal et de l'espace UEMOA.",
+  },
+  { annee: "2018", texte: "Premier prix du Resakss Data Challenge de l'Union africaine et de l'IFPRI." },
+  { annee: "2019", texte: "Meilleure académie Huawei." },
+];
+
+/** Missions de la Cellule d'Orientation et d'Insertion Professionnelle. */
+const COIP = [
+  "Suivre l'étudiant depuis son entrée à l'ISI jusqu'à son insertion professionnelle",
+  "Informer sur les filières d'études, les orientations et réorientations possibles ainsi que sur les métiers auxquels conduisent les formations",
+  "Aider les étudiants dans leur future insertion professionnelle et leur faciliter l'accès au monde professionnel",
+  "Créer des partenariats avec les entreprises et proposer des offres de stages et d'emplois",
+  "Animer la plateforme des anciens diplômés de l'ISI",
+];
 
 export default async function AproposPage() {
   const [settings, testimonials, gallery] = await Promise.all([getSettings(), getTestimonials(6), getGalleryImages()]);
@@ -34,6 +56,13 @@ export default async function AproposPage() {
               <SectionLabel>Groupe ISI</SectionLabel>
               <h2 className="section-title">À propos de ISI</h2>
               <div className="prose-isi mt-5">
+                <p>
+                  Situé au Km1, avenue Cheikh Anta Diop, l&apos;Institut Supérieur d&apos;Informatique est sous la tutelle du Ministère de
+                  l&apos;Enseignement supérieur privé, signataire de tous les diplômes délivrés, sous le contrôle de l&apos;ANAQ-Sup. L&apos;ISI
+                  contribue depuis plus de 27 ans à la formation des jeunes cadres africains et compte aujourd&apos;hui 9 campus où se côtoient plus
+                  de trente nationalités. Ses diplômes de licence et de master sont reconnus à la fois par le monde de l&apos;entreprise et par les
+                  instances d&apos;accréditation nationale (ANAQ-Sup) et panafricaine (CAMES).
+                </p>
                 <p>
                   À ISI, l&apos;éducation va au-delà des manuels et des salles de classe. Nous croyons qu&apos;il faut donner aux étudiants les moyens
                   d&apos;explorer leurs passions, de remettre en question les conventions et de découvrir leur potentiel grâce à des expériences
@@ -118,6 +147,56 @@ export default async function AproposPage() {
                 },
               ]}
             />
+          </div>
+        </Container>
+      </section>
+
+      {/* Palmes et reconnaissances + COIP */}
+      <section className="bg-white py-16 lg:py-[100px]">
+        <Container>
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <SectionLabel>Distinctions</SectionLabel>
+              <h2 className="section-title">Palmes et reconnaissances</h2>
+              <p className="mt-5 text-[15px] leading-7 text-body">
+                L&apos;excellence académique des programmes du Groupe ISI a été distinguée à plusieurs reprises au Sénégal et à l&apos;échelle du
+                continent.
+              </p>
+              <ul className="mt-8 space-y-5">
+                {PALMES.map(({ annee, texte }) => (
+                  <li key={annee} className="flex gap-4">
+                    <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <Award className="h-5 w-5" aria-hidden />
+                    </span>
+                    <span className="text-[15px] leading-7 text-body">
+                      <strong className="font-heading text-[17px] font-semibold text-dark">{annee}</strong>
+                      <span className="block">{texte}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <SectionLabel>Insertion professionnelle</SectionLabel>
+              <h2 className="section-title">La cellule COIP</h2>
+              <p className="mt-5 text-[15px] leading-7 text-body">
+                La Cellule d&apos;Orientation et d&apos;Insertion Professionnelle accompagne chaque étudiant, de son entrée à l&apos;ISI jusqu&apos;à
+                son premier emploi.
+              </p>
+              <ul className="mt-6 space-y-3">
+                {COIP.map((m) => (
+                  <li key={m} className="flex gap-3 text-[15px] leading-7 text-body">
+                    <Briefcase className="mt-1.5 h-4 w-4 shrink-0 text-secondary-dark" aria-hidden />
+                    <span>{m}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-8 rounded-lg border-l-4 border-secondary bg-secondary-50 px-6 py-5 text-[15px] leading-7 text-body">
+                Plus de 80 % de nos diplômés décrochent leur premier emploi dès la fin de leurs études. Nos étudiants sont accompagnés par des cours de
+                développement personnel et par un réseau de partenaires parmi les plus grandes entreprises du Sénégal et de la sous-région.
+              </p>
+            </div>
           </div>
         </Container>
       </section>

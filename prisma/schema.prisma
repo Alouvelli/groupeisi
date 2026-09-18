@@ -149,6 +149,7 @@ model SiteSettings {
   faviconUrl           String?
   email                String?
   emailAdmissions      String?
+  emailRecrutement     String?
   phone                String?
   phone2               String?
   whatsapp             String?
@@ -169,6 +170,8 @@ model SiteSettings {
   heroSlides           String[] @default([])
   playStoreUrl         String?
   appStoreUrl          String?
+  elearningUrl         String?
+  foadUrl              String?
   annonceBandeau       String?
   annonceLien          String?
   // Statistiques (barre de chiffres clés)
@@ -317,6 +320,7 @@ model Campus {
   latitude         Float?
   longitude        Float?
   mapEmbedUrl      String?
+  siteUrl          String? // site web propre au campus (ex: isikeurmassar.com)
   zone             String? // ex: "Dakar", "Régions", "Mauritanie"
   directeurNom     String?
   directeurPoste   String?

@@ -211,7 +211,7 @@ Les routes reprennent celles de new.groupeisi.com (les anciennes URL WordPress s
 | `/a-propos` | À propos de ISI, citation du président, chiffres, Notre Vision, encarts, « Les 72H du Groupe ISI », témoignages, galerie |
 | `/a-propos/histoire` | Histoire du groupe et frise des distinctions (Gov'athon, Quality Achievements Awards, académies Huawei et Cisco…) |
 | `/a-propos/administration` | Répertoire administratif : personnels fréquemment contactés, direction, responsables de campus |
-| `/a-propos/localisation` | Les 13 implantations avec carte Google Maps, groupées par zone (Dakar, annexes, régions, Mauritanie) |
+| `/a-propos/localisation` | Les 14 implantations avec carte Google Maps, site propre du campus, groupées par zone (Dakar, annexes, régions, Mauritanie) |
 | `/mot-du-president` | Mot d'Abdou Sambe, président du Groupe ISI + galerie |
 | `/formations`, `/formations/[slug]` | Catalogue filtrable (campus, départements, niveaux, recherche) + fiche formation (sommaire ancré, détails du programme, unités d'enseignement, coût & modalités, admissions, demande d'information, JSON-LD `Course`) |
 | `/departements`, `/departements/[slug]` | Les 4 départements + fiche (présentation, contact, formations par niveau, équipe) |
@@ -223,6 +223,7 @@ Les routes reprennent celles de new.groupeisi.com (les anciennes URL WordPress s
 | `/evenements`, `/evenements/[slug]` | Agenda (à venir / passés) + fiche (ajout à Google Agenda, carte, JSON-LD `Event`) |
 | `/alumnis`, `/alumni/[slug]` | Réseau alumni (communauté mondiale, portraits, événements, galerie, actualités) + portrait |
 | `/equipe`, `/equipe/[slug]` | Direction, chefs de département, administration + fiche |
+| `/formation-en-ligne` | Offre à distance (FOAD) : licences, masters et certificats en ligne, accès à la plateforme e-learning, arguments et contacts |
 | `/temoignages` | Interviews vidéo (YouTube) et témoignages écrits |
 | `/galerie` | Galerie filtrable par catégorie avec visionneuse |
 | `/librairie` | Collections, chiffres clés, documents à télécharger, actualités |
@@ -237,9 +238,26 @@ Les routes reprennent celles de new.groupeisi.com (les anciennes URL WordPress s
 
 - **Charte** : couleurs et typographies extraites du kit Elementor et du thème Univet ; polices Bitter et Inter auto-hébergées (`src/fonts/`).
 - **Composants** : header deux niveaux, méga-menu, panneau latéral, cartes formation / campus / équipe / événement / actualité / témoignage, accordéons, onglets et pied de page reprennent la structure du thème.
-- **Contenu** : campus, départements, 24 formations (durée, crédits, volume horaire, unités d'enseignement, frais), équipe, alumni, témoignages, FAQ et 15 actualités réelles proviennent du site ; les textes des actualités sont extraits dans `prisma/data/actualites.json`.
+- **Contenu** : campus, départements, 26 formations (durée, crédits, volume horaire, unités d'enseignement, frais), équipe, alumni, témoignages, FAQ et 18 actualités réelles proviennent du site ; les textes des actualités sont extraits dans `prisma/data/actualites.json`.
 - **Images** : 100 visuels du site sont téléchargés, redimensionnés et servis depuis `public/media/` (aucune dépendance à new.groupeisi.com en production).
 - **Redirections** : `/programs/:slug`, `/faculties/:slug`, `/blog-grid`, `/contact-2`, `/apply-now`, `/frais-etudes`, `/2025/01/10/:slug`… redirigent vers les routes correspondantes.
+
+### Sources de contenu
+
+Trois sites du Groupe ISI ont servi de référence :
+
+| Source | Rôle |
+|---|---|
+| `new.groupeisi.com` | Référence de **design** (thème Univet / Elementor) et de structure : mise en page, composants, routes, visuels. |
+| `groupeisi.com` (site en vigueur) | Référence de **données** : coordonnées, organigramme, sites propres des campus, menu des départements, offre FOAD, distinctions et cellule COIP, actualités récentes. |
+| `test.groupeisi.com` | Référence de **fiches formation** : objectifs, compétences, débouchés, conditions d'admission et unités d'enseignement, ainsi que l'organigramme et ses photos. |
+
+Les contenus extraits sont versionnés dans des fichiers de données relus par le seed :
+
+- `prisma/data/actualites.json` — 18 actualités (titre, extrait, contenu HTML, images, catégorie, date).
+- `prisma/data/programmes-details.json` — fiches détaillées de 25 formations, régénérables avec `node scripts/normaliser-programmes.mjs` (suppression des phrases d'amorce, éclatement des puces collées, réparation des mots recollés par l'export Elementor).
+
+Quand le site de référence et la fiche détaillée divergent, la liste la plus complète l'emporte ; les compétences et les conditions d'admission viennent toujours de la fiche d'origine. Le rattachement de chaque formation à son département suit le menu de `groupeisi.com` et les pages département de `test.groupeisi.com`.
 
 > Deux libellés du pied de page de l'original (« About Univet », « Univet Library ») sont des restes du thème de démonstration : ils ont été remplacés par « À propos » et « Librairie », qui pointent vers les mêmes pages. Ils restent modifiables depuis `/admin`.
 
@@ -353,10 +371,11 @@ Templates HTML dans `src/lib/email.ts` : confirmation de pré-inscription (numé
 ## Tests réalisés
 
 - `npm run lint` : 0 erreur · `npm run typecheck` : OK · `npm run build` : OK.
-- Base PostgreSQL 16 locale, `npm run db:push` puis `npm run db:seed` : 13 campus, 4 départements, 24 formations, 15 actualités, 11 témoignages, 8 questions FAQ.
+- Base PostgreSQL 16 locale, `npm run db:push` puis `npm run db:seed` : 14 campus, 4 départements, 26 formations, 18 actualités, 12 membres de l'administration, 11 témoignages, 8 questions FAQ.
 - Rendu vérifié en production (`npm start`) : toutes les pages publiques et l'espace admin répondent en HTTP 200, `/sitemap.xml` liste 80 URL.
 - Redirections des anciennes URL WordPress vérifiées (308 vers la route correspondante).
 - Rendu comparé au site d'origine en 1440 px et en 390 px (aucun débordement horizontal).
+- Audit Playwright de 36 pages en 1440 px et 390 px : aucun débordement, aucune erreur JavaScript, aucune réponse HTTP ≥ 400.
 
 ---
 

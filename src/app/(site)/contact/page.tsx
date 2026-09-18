@@ -29,8 +29,8 @@ export default async function ContactPage() {
       titre: "Carrière",
       icone: Briefcase,
       lignes: [
+        ...(settings.emailRecrutement ? [{ label: settings.emailRecrutement, href: `mailto:${settings.emailRecrutement}` }] : []),
         { label: "coip@groupeisi.com", href: "mailto:coip@groupeisi.com" },
-        { label: "+221 76 450 83 97", href: "tel:+221764508397" },
       ],
     },
   ];

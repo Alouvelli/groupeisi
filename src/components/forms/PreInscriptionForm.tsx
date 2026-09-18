@@ -34,7 +34,17 @@ function Field({ label, required, error, help, children, className }: { label: s
   );
 }
 
-export function PreInscriptionForm({ options, defaultProgrammeId, defaultCampusId }: { options: InscriptionOptions; defaultProgrammeId?: string; defaultCampusId?: string }) {
+export function PreInscriptionForm({
+  options,
+  defaultProgrammeId,
+  defaultCampusId,
+  defaultMode,
+}: {
+  options: InscriptionOptions;
+  defaultProgrammeId?: string;
+  defaultCampusId?: string;
+  defaultMode?: keyof typeof MODE_FORMATION_LABELS;
+}) {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [submitting, setSubmitting] = useState(false);
@@ -47,7 +57,7 @@ export function PreInscriptionForm({ options, defaultProgrammeId, defaultCampusI
       prenom: "", nom: "", dateNaissance: "", lieuNaissance: "", nationalite: "Sénégalaise", numeroPiece: "",
       email: "", telephone: "", telephone2: "", adresse: "", ville: "", pays: "Sénégal",
       niveauEtudes: undefined, serieBac: "", anneeBac: "", mentionBac: "", etablissementOrigine: "", dernierDiplome: "",
-      programmeId: defaultProgrammeId ?? "", campusId: defaultCampusId ?? "", niveauEntree: NIVEAU_ENTREE_OPTIONS[0], rentree: options.rentrees[0] ?? "", modeFormation: "PRESENTIEL",
+      programmeId: defaultProgrammeId ?? "", campusId: defaultCampusId ?? "", niveauEntree: NIVEAU_ENTREE_OPTIONS[0], rentree: options.rentrees[0] ?? "", modeFormation: defaultMode ?? "PRESENTIEL",
       tuteurNom: "", tuteurTelephone: "", tuteurEmail: "", tuteurLien: "",
       sourceConnaissance: "SITE_WEB", motivation: "", besoinBourse: false, besoinLogement: false, newsletter: true, accepteConditions: undefined as unknown as true,
       website: "",

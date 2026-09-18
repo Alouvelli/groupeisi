@@ -42,6 +42,13 @@ const IMG = {
   ibrahimaSy: M("ibrahima-sy-photo.jpg"),
   latyrNdiaye: M("fichier-2-at-4x.png"),
   morDiaw: M("fichier-1-at-4x.png"),
+  maneDiop: M("m-diop-at-3x.jpg"),
+  diombera: M("gassama-at-3x.jpg"),
+  sambaSouare: M("img-0346-souare.jpg"),
+  mouhamedGueye: M("img-0001-gueye.jpg"),
+  kineDembele: M("ndiaye-at-3x.jpg"),
+  ahmadouNdao: M("img-0431-ndao.jpg"),
+  marieDiallo: M("marie-at-3x.jpg"),
   eventGraduation: M("img-1714-1.jpg"),
   alumni1: M("alamni-team-1.jpg"),
   alumni2: M("alamni-team-2.jpg"),
@@ -155,10 +162,11 @@ async function main() {
       faviconUrl: M("design-sans-titre.png"),
       email: "contact@groupeisi.com",
       emailAdmissions: "contact@groupeisi.com",
-      phone: "+221 76 664 85 44",
-      phone2: "+221 33 822 19 81",
+      emailRecrutement: "recrutement@groupeisi.com",
+      phone: "+221 33 822 19 81",
+      phone2: "+221 76 664 85 44",
       whatsapp: "+221 76 664 85 44",
-      address: "Km1 Avenue Cheikh Anta Diop, en face Police 4e – Dakar",
+      address: "Km1, Avenue Cheikh Anta Diop, Dakar, Sénégal",
       horaires: "Lundi – Vendredi : 8h – 18h · Samedi : 9h – 13h",
       facebook: "https://www.facebook.com/GroupeISI/",
       instagram: "https://www.instagram.com/groupeisi",
@@ -175,12 +183,14 @@ async function main() {
       heroVideoUrl: "https://www.youtube.com/watch?v=dnJa4EDaoh8",
       playStoreUrl: null,
       appStoreUrl: null,
+      elearningUrl: "https://elearning-groupeisi.com/",
+      foadUrl: "/formation-en-ligne",
       annonceBandeau: null,
       annonceLien: null,
       statAnnees: 27,
       statEtudiants: 2000,
       statCampus: 9,
-      statProgrammes: 23,
+      statProgrammes: 26,
       statInsertion: 87,
       statPartenaires: 20,
       seoTitle: "Groupe ISI – Institut de référence dans les TIC",
@@ -198,6 +208,17 @@ async function main() {
   // -------------------------------------------------------------------------
   // Campus (9 campus + annexes, coordonnées de la page « Localisation »)
   // -------------------------------------------------------------------------
+  /* Équipements communs décrits sur les fiches campus de groupeisi.com. */
+  const EQUIPEMENTS_TYPE = [
+    "Des salles informatiques",
+    "Des salles de cours",
+    "Des salles serveurs et réseaux",
+    "1 salle de conférences de 100 places équipée de tableaux blancs interactifs",
+    "Un système de visioconférence reliant les 9 campus du réseau Groupe ISI",
+    "Des salles multi-associations",
+    "Academies CISCO, Microsoft, HUAWEI, ORACLE, GOOGLE et ETS Global (TOEIC/TOEFL)",
+  ];
+
   const campusData = [
     {
       nom: "ISI DAKAR",
@@ -218,6 +239,8 @@ async function main() {
       longitude: -17.454729,
       mapEmbedUrl:
         "https://maps.google.com/maps?q=14.686388982114329%2C%20-17.45472877323827&t=m&z=15&output=embed&iwloc=near",
+      siteUrl: "https://www.groupeisi.com/",
+      telephone2: "+221 33 822 31 90",
       directeurNom: "Thierno Birahime Sambe",
       directeurPoste: "Directeur Général",
       directeurPhoto: IMG.dg,
@@ -235,7 +258,7 @@ async function main() {
       statDepartements: 3,
       statFormations: 18,
       statEtudiants: "1500 +",
-      equipements: ["Laboratoires réseaux Cisco", "Laboratoire Huawei", "Amphithéâtres", "Bibliothèque", "Espace coworking"],
+      equipements: EQUIPEMENTS_TYPE,
     },
     {
       nom: "ISI KEUR MASSAR",
@@ -252,7 +275,8 @@ async function main() {
       longitude: -17.288097,
       mapEmbedUrl:
         "https://maps.google.com/maps?q=14.785878430696805%2C%20-17.288097073236834&t=m&z=15&output=embed&iwloc=near",
-      equipements: ["Salles informatiques", "Laboratoire réseaux", "Bibliothèque"],
+      siteUrl: "http://isikeurmassar.com/",
+      equipements: EQUIPEMENTS_TYPE,
     },
     {
       nom: "ISI SUPTECH",
@@ -267,7 +291,8 @@ async function main() {
         "ISI SupTech propose des formations technologiques et professionnalisantes au cœur de Dakar, avec un accompagnement renforcé vers l'emploi.",
       mapEmbedUrl:
         "https://maps.google.com/maps?q=PG9V%2BJC2%2C%20Allees%20Khalifa%20Ababacar%20Sy%2C%20Dakar&t=m&z=15&output=embed&iwloc=near",
-      equipements: ["Salles informatiques", "Ateliers pratiques"],
+      siteUrl: "https://www.isisuptech.com/",
+      equipements: EQUIPEMENTS_TYPE,
     },
     {
       nom: "ISI DIOURBEL",
@@ -280,7 +305,8 @@ async function main() {
       image: IMG.campusDiourbel,
       description: "Le campus de Diourbel dessert la région du Baol et propose les filières informatiques et de gestion du Groupe ISI.",
       mapEmbedUrl: "https://maps.google.com/maps?q=580%2C%20N3%2C%20Diourbel&t=m&z=15&output=embed&iwloc=near",
-      equipements: ["Salles informatiques", "Bibliothèque"],
+      siteUrl: "https://diourbel.groupeisi.com/",
+      equipements: EQUIPEMENTS_TYPE,
     },
     {
       nom: "ISI KAOLACK",
@@ -291,9 +317,12 @@ async function main() {
       telephone: "+221 76 664 85 44",
       email: "atraore@groupeisi.com",
       image: IMG.campusKaolack,
-      description: "Au cœur du bassin arachidier, ISI Kaolack forme les techniciens et cadres du numérique de la région.",
+      description:
+        "ISI campus Kaolack a été créé en 2010 pour participer au défi de la décentralisation de l'offre, en vue de mieux valoriser la formation professionnelle au Sénégal.",
+      contenu:
+        "<p>ISI campus Kaolack a été créé en 2010 pour participer au défi de la décentralisation de l'offre, en vue de mieux valoriser la formation professionnelle au Sénégal. Ce défi a notamment commencé avec la région de Kaolack, mais sera surtout élargi avec l'ouverture d'autres campus dans plusieurs régions du Sénégal et dans la sous-région.</p><p>À ISI Kaolack, nous dispensons des formations académiques en informatique et en gestion. Le campus accueille également des séminaires ainsi que des formations en entreprise et à la carte.</p><p><strong>Formation en entreprise :</strong> inter-entreprises, elle réunit des personnes d'un niveau de départ similaire pour suivre une même formation.</p><p><strong>Formation à la carte :</strong> formation particulière dispensée à une personne ou à un groupe de personnes, à l'ISI ou chez le client.</p>",
       mapEmbedUrl: "https://maps.google.com/maps?q=5W58%2B95P%2C%20Kaolack&t=m&z=15&output=embed&iwloc=near",
-      equipements: ["Salles informatiques", "Laboratoire réseaux"],
+      equipements: EQUIPEMENTS_TYPE,
     },
     {
       nom: "ISI KAFFRINE",
@@ -309,7 +338,8 @@ async function main() {
       longitude: -15.55094,
       mapEmbedUrl:
         "https://maps.google.com/maps?q=14.10390220568031%2C%20-15.550940475098823&t=m&z=15&output=embed&iwloc=near",
-      equipements: ["Salles informatiques"],
+      siteUrl: "https://isi-kaffrine.vercel.app/",
+      equipements: EQUIPEMENTS_TYPE,
     },
     {
       nom: "ISI ZIGUINCHOR",
@@ -322,7 +352,8 @@ async function main() {
       image: IMG.campusZig,
       description: "Le campus de Ziguinchor accompagne les bacheliers de la Casamance vers les métiers du numérique.",
       mapEmbedUrl: "https://maps.google.com/maps?q=HPQH%2B36%2C%20Ziguinchor&t=m&z=15&output=embed&iwloc=near",
-      equipements: ["Salles informatiques", "Bibliothèque"],
+      siteUrl: "https://ziguinchor.groupeisi.com/",
+      equipements: EQUIPEMENTS_TYPE,
     },
     {
       nom: "ISI SEDHIOU",
@@ -335,7 +366,7 @@ async function main() {
       image: IMG.campusSedhiou,
       description: "Dernier campus ouvert par le Groupe ISI, ISI Sédhiou étend le maillage de l'institut en Casamance.",
       mapEmbedUrl: "https://maps.google.com/maps?q=S%C3%A9dhiou&t=m&z=15&output=embed&iwloc=near",
-      equipements: ["Salles informatiques"],
+      equipements: EQUIPEMENTS_TYPE,
     },
     {
       nom: "ISI KOMUNIK",
@@ -347,7 +378,22 @@ async function main() {
       email: "contact@groupeisi.com",
       image: IMG.campusKomunik,
       description: "ISI Komunik est le pôle dédié aux métiers de la communication digitale et du multimédia.",
-      equipements: ["Studio multimédia", "Salles informatiques"],
+      siteUrl: "https://isikomunik.com/",
+      equipements: ["Studio multimédia", ...EQUIPEMENTS_TYPE],
+    },
+    {
+      nom: "ISI CFE",
+      slug: "isi-cfe",
+      ville: "Dakar",
+      zone: "Dakar",
+      adresse: "Km1, Avenue Cheikh Anta Diop, Dakar",
+      telephone: "+221 33 822 19 81",
+      email: "contact@groupeisi.com",
+      image: IMG.campusIsi24,
+      description:
+        "ISI CFE est le centre de formation en entreprise du Groupe ISI : séminaires, formations inter-entreprises et formations à la carte, à l'ISI ou chez le client.",
+      siteUrl: "https://cfegroupeisi.com/",
+      equipements: ["Salles de séminaire", "Salles informatiques", "Système de visioconférence"],
     },
     {
       nom: "ISI Fass (annexe)",
@@ -486,6 +532,23 @@ async function main() {
   // Formations (23 programmes du site)
   // -------------------------------------------------------------------------
   const PORTFOLIO = "https://portfolio-mgl.groupeisi.com/programme/";
+
+  /**
+   * Contenu détaillé des fiches formation relevé sur test.groupeisi.com
+   * (objectifs, compétences, débouchés, conditions d'admission, UE).
+   * Généré par `node scripts/normaliser-programmes.mjs`.
+   */
+  type Fiche = {
+    source?: string;
+    titreSource?: string;
+    intro?: string;
+    objectifs?: string[];
+    competences?: string[];
+    debouches?: string[];
+    admission?: string[];
+    unitesEnseignement?: { intitule: string; contenu?: string }[];
+  };
+  const fiches: Record<string, Fiche> = JSON.parse(readFileSync(join(process.cwd(), "prisma/data/programmes-details.json"), "utf8"));
   type P = {
     titre: string;
     slug: string;
@@ -821,7 +884,7 @@ async function main() {
       titre: "Licence Professionnelle en Systèmes Embarqués & IoT",
       slug: "licence-systemes-embarques-iot",
       niveau: "LICENCE",
-      dep: GI,
+      dep: RS,
       duree: "3 ans / 6 semestres",
       semestres: 6,
       credits: 180,
@@ -948,7 +1011,7 @@ async function main() {
       titre: "Licence professionnelle en Marketing et Communication digitale",
       slug: "licence-marketing-communication-digitale",
       niveau: "LICENCE",
-      dep: GM,
+      dep: GI,
       duree: "3 ans / 6 semestres",
       semestres: 6,
       credits: 180,
@@ -957,7 +1020,18 @@ async function main() {
       accroche: "Communiquer, promouvoir et fédérer une communauté en ligne",
       description:
         "L'objectif de ce programme est de former des étudiants dans l'utilisation des outils numériques pour communiquer, promouvoir, développer et fédérer une communauté de clients potentiels autour d'un produit, d'une marque, d'une entreprise, etc.",
-      debouches: ["Community manager", "Chargé de communication digitale", "Traffic manager"],
+      debouches: [
+        "Responsable de la stratégie digitale",
+        "Chef de projet digital",
+        "Directeur marketing digital",
+        "Chargé de communication digitale",
+        "Responsable du trafic",
+        "Content manager",
+        "Responsable CRM / E-CRM",
+        "Community manager",
+        "Web designer",
+        "Concepteur de site web",
+      ],
       unitesEnseignement: [
         { intitule: "Marketing et ses dérivées modernes" },
         { intitule: "Communication" },
@@ -1065,7 +1139,7 @@ async function main() {
       titre: "Master Professionnel en Sécurité des Systèmes d'Informations et Monétiques",
       slug: "master-securite-systemes-informations-monetique",
       niveau: "MASTER",
-      dep: GI,
+      dep: RS,
       duree: "2 ans / 4 semestres",
       semestres: 4,
       credits: 120,
@@ -1209,29 +1283,95 @@ async function main() {
       fraisMensualite: 120000,
       campusIds: dakarOnly,
     },
+    {
+      titre: "Licence Professionnelle en Énergies Renouvelables",
+      slug: "licence-energies-renouvelables",
+      niveau: "LICENCE",
+      dep: RS,
+      duree: "3 ans / 6 semestres",
+      semestres: 6,
+      credits: 180,
+      volumeHoraire: 600,
+      nbUE: 8,
+      accroche: "Concevoir et exploiter les systèmes de production d'énergie propre",
+      description:
+        "Rattachée au département Réseaux et Systèmes, la licence professionnelle en Énergies Renouvelables forme des techniciens supérieurs capables de dimensionner, installer et maintenir des installations solaires, éoliennes et hybrides, ainsi que les systèmes de supervision associés.",
+      structure: STRUCT_6,
+      fraisScolarite: 850000,
+      fraisInscription: 155000,
+      fraisMensualite: 75000,
+      campusIds: dakarEtKm,
+    },
+    {
+      titre: "Licence Professionnelle en Maintenance Informatique",
+      slug: "licence-maintenance-informatique",
+      niveau: "LICENCE",
+      dep: RS,
+      duree: "3 ans / 6 semestres",
+      semestres: 6,
+      credits: 180,
+      volumeHoraire: 600,
+      nbUE: 8,
+      accroche: "Former les IT support, help desk et hot liners de demain",
+      description:
+        "L'objectif principal de la formation est de former des IT support, des help desk et des hot liners rompus aux pratiques et techniques de la maintenance des matériels informatiques et autres terminaux. Ils seront capables de mettre en place un système d'information et d'en assurer le bon fonctionnement. Le programme a intégré les nouveaux terminaux (tablettes, smartphones…).",
+      debouches: [
+        "Responsable de salle des machines",
+        "Chef d'exploitation",
+        "Support technique et formateur spécialisé",
+        "Gestionnaire de parc micro-informatique",
+        "Responsable micro-réseaux",
+        "Technico-commercial des télécommunications et réseaux",
+        "Ingénieur de maintenance",
+      ],
+      structure:
+        "À la fin du sixième semestre, l'étudiant ayant capitalisé 180 crédits obtient le diplôme de Licence en Maintenance Informatique. " + STRUCT_6,
+      fraisScolarite: 850000,
+      fraisInscription: 155000,
+      fraisMensualite: 75000,
+      campusIds: dakarEtKm,
+    },
   ];
+
+  /** La liste la plus complète l'emporte : celle du site ou celle de la fiche. */
+  const plusComplete = <T,>(a: T[] | undefined, b: T[] | undefined) => ((b?.length ?? 0) > (a?.length ?? 0) ? b! : (a ?? []));
+
+  /* L'accroche de la fiche d'origine reprend parfois la description : on évite le doublon. */
+  const sansAccents = (t: string) =>
+    t
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9]+/g, "");
+  const introUtile = (intro: string | undefined, description: string) =>
+    intro && intro.length > 40 && !sansAccents(description).includes(sansAccents(intro).slice(0, 45)) ? intro : undefined;
+
+  const ADMISSION_DEFAUT = (n: Niveau) =>
+    n === "MASTER" || n === "INGENIEUR"
+      ? "Licence (Bac+3) dans le domaine ou diplôme équivalent. Admission sur étude de dossier et entretien avec le chef de département."
+      : "Baccalauréat toutes séries ou diplôme admis en équivalence. Admission sur étude de dossier (bulletins et diplômes).";
 
   const programmeIds: Record<string, string> = {};
   for (const [i, p] of programmes.entries()) {
     const { dep: depSlug, campusIds, unitesEnseignement, ...rest } = p;
+    const f = fiches[p.slug] ?? {};
     const created = await prisma.programme.create({
       data: {
         ...rest,
         image: IMG.programme,
         session: "2025 - 2026",
         portfolioUrl: PORTFOLIO,
-        unitesEnseignement: (unitesEnseignement ?? []) as never,
-        objectifs: p.objectifs ?? [],
-        debouches: p.debouches ?? [],
+        contenu: introUtile(f.intro, p.description) ? `<p>${f.intro}.</p>` : undefined,
+        unitesEnseignement: plusComplete(unitesEnseignement, f.unitesEnseignement) as never,
+        objectifs: plusComplete(p.objectifs, f.objectifs),
+        debouches: plusComplete(p.debouches, f.debouches),
+        competences: f.competences ?? [],
         ordre: i,
         departementId: dep[depSlug].id,
         campus: { connect: campusIds ?? allCampusIds },
         diplome: p.niveau === "MASTER" ? "Master professionnel (ANAQ-Sup / CAMES)" : p.niveau === "INGENIEUR" ? "Diplôme d'ingénieur" : "Licence professionnelle (ANAQ-Sup)",
         accreditation: "ANAQ-Sup · CAMES",
-        conditionsAdmission:
-          p.niveau === "MASTER" || p.niveau === "INGENIEUR"
-            ? "Licence (Bac+3) dans le domaine ou diplôme équivalent. Admission sur étude de dossier et entretien avec le chef de département."
-            : "Baccalauréat toutes séries ou diplôme admis en équivalence. Admission sur étude de dossier (bulletins et diplômes).",
+        conditionsAdmission: f.admission?.length ? f.admission.join("\n") : ADMISSION_DEFAUT(p.niveau),
         erpCode: `PROG-${p.slug.toUpperCase().replace(/-/g, "_")}`,
       },
     });
@@ -1285,8 +1425,12 @@ async function main() {
   await nav("Librairie", "/librairie", 4, { parentId: vie.id });
   await nav("Galerie", "/galerie", 5, { parentId: vie.id });
   await nav("FAQ", "/faq", 6, { parentId: vie.id });
-  await nav("Actualités", "/actualites", 4);
-  await nav("Contact", "/contact", 5);
+  const enLigne = await nav("Formation en ligne", "/formation-en-ligne", 4);
+  await nav("Notre offre à distance", "/formation-en-ligne", 0, { parentId: enLigne.id });
+  await nav("Plateforme e-learning", "https://elearning-groupeisi.com/", 1, { parentId: enLigne.id });
+  await nav("Inscription FOAD", "/preinscription?mode=EN_LIGNE", 2, { parentId: enLigne.id });
+  await nav("Actualités", "/actualites", 5);
+  await nav("Contact", "/contact", 6);
 
   // Pied de page : colonne « Notre institut » puis colonne « Liens utiles »
   const footerLinks: [string, string][] = [
@@ -1296,6 +1440,7 @@ async function main() {
     ["Blog", "/actualites"],
     ["Mot du président", "/mot-du-president"],
     ["Galerie", "/galerie"],
+    ["Formation en ligne", "/formation-en-ligne"],
   ];
   for (const [i, [label, href]] of footerLinks.entries()) await nav(label, href, i, { location: "FOOTER" });
   const legal: [string, string][] = [
@@ -1345,7 +1490,50 @@ async function main() {
       isFeatured: true,
     },
     {
-      prenom: "M. Ibrahima",
+      prenom: "Mané",
+      nom: "Diop",
+      poste: "Directrice Administrative et Financière",
+      type: "DIRECTION",
+      photo: IMG.maneDiop,
+      email: "contact@groupeisi.com",
+      bio: "Titulaire d'un master en comptabilité, elle est la Directrice administrative et financière du Groupe ISI.",
+      camp: "isi-dakar",
+      isFeatured: true,
+    },
+    {
+      prenom: "Aissatou G.",
+      nom: "Diombera",
+      poste: "Directrice des Études",
+      type: "DIRECTION",
+      photo: IMG.diombera,
+      email: "contact@groupeisi.com",
+      bio: "Doctorante en informatique, elle est la directrice pédagogique du Groupe ISI et pilote l'organisation des enseignements sur l'ensemble des campus.",
+      camp: "isi-dakar",
+      isFeatured: true,
+    },
+    {
+      prenom: "Samba",
+      nom: "Souaré",
+      poste: "Directeur du Système d'Information",
+      type: "DIRECTION",
+      photo: IMG.sambaSouare,
+      email: "contact@groupeisi.com",
+      bio: "Alumni du Groupe ISI et doctorant en sciences et technologies de l'information, il dirige le système d'information de l'institut.",
+      camp: "isi-dakar",
+      isFeatured: true,
+    },
+    {
+      prenom: "Mouhamed",
+      nom: "Gueye",
+      poste: "Directeur des Ressources Humaines",
+      type: "DIRECTION",
+      photo: IMG.mouhamedGueye,
+      email: "contact@groupeisi.com",
+      bio: "Il pilote la politique de recrutement et de développement des compétences des équipes administratives et pédagogiques du Groupe ISI.",
+      camp: "isi-dakar",
+    },
+    {
+      prenom: "Ibrahima",
       nom: "Sy",
       poste: "Chef de département IA et Ingénierie de données",
       type: "ENSEIGNANT",
@@ -1360,7 +1548,7 @@ async function main() {
       specialites: ["Intelligence artificielle", "Data science", "Machine learning"],
     },
     {
-      prenom: "Dr Latyr",
+      prenom: "Latyr",
       nom: "Ndiaye",
       poste: "Chef de département Réseaux et Systèmes",
       type: "ENSEIGNANT",
@@ -1374,7 +1562,7 @@ async function main() {
       specialites: ["Réseaux", "Virtualisation", "Cybersécurité"],
     },
     {
-      prenom: "M. El Hadji Mor",
+      prenom: "El Hadji Mor",
       nom: "Diaw",
       poste: "Chef de département Génie informatique",
       type: "ENSEIGNANT",
@@ -1386,6 +1574,36 @@ async function main() {
       camp: "isi-dakar",
       isFeatured: true,
       specialites: ["Génie logiciel", "Architecture applicative"],
+    },
+    {
+      prenom: "Kiné Ndiaye",
+      nom: "Dembélé",
+      poste: "Responsable Marketing et Communication",
+      type: "ADMINISTRATION",
+      photo: IMG.kineDembele,
+      email: "communication@groupeisi.com",
+      bio: "Elle conduit la stratégie de communication du Groupe ISI, de la promotion des formations à l'animation des campus.",
+      camp: "isi-dakar",
+    },
+    {
+      prenom: "Ahmadou Bâ",
+      nom: "Ndao",
+      poste: "Contrôleur interne",
+      type: "ADMINISTRATION",
+      photo: IMG.ahmadouNdao,
+      email: "contact@groupeisi.com",
+      bio: "Il veille à la conformité des procédures administratives et financières de l'ensemble des campus du Groupe ISI.",
+      camp: "isi-dakar",
+    },
+    {
+      prenom: "Marie Khadija",
+      nom: "Diallo",
+      poste: "Cellule d'Orientation et d'Insertion Professionnelle (COIP)",
+      type: "ADMINISTRATION",
+      photo: IMG.marieDiallo,
+      email: "contact@groupeisi.com",
+      bio: "Elle accompagne les étudiants de leur entrée à l'ISI jusqu'à leur insertion professionnelle : orientation, stages, offres d'emploi et réseau des diplômés.",
+      camp: "isi-dakar",
     },
   ];
   for (const [i, t] of team.entries()) {

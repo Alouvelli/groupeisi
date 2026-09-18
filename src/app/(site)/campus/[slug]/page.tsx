@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { Check, Mail, MapPin, Phone } from "lucide-react";
+import { Check, Globe, Mail, MapPin, Phone } from "lucide-react";
 import { PageHeader } from "@/components/ui/Breadcrumb";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/Section";
@@ -97,6 +97,14 @@ export default async function CampusDetailPage({ params }: { params: Promise<{ s
                     <Mail className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden />
                     <a href={`mailto:${campus.email}`} className="transition hover:text-primary">
                       {campus.email}
+                    </a>
+                  </li>
+                )}
+                {campus.siteUrl && (
+                  <li className="flex gap-3">
+                    <Globe className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden />
+                    <a href={campus.siteUrl} target="_blank" rel="noopener noreferrer" className="break-all transition hover:text-primary">
+                      {campus.siteUrl.replace(/^https?:\/\//, "").replace(/\/$/, "")}
                     </a>
                   </li>
                 )}

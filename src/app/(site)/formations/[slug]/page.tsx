@@ -35,6 +35,8 @@ export default async function FormationPage({ params }: { params: Promise<{ slug
 
   const autres = (await getProgrammes({ departement: programme.departement.slug })).filter((p) => p.slug !== programme.slug).slice(0, 3);
   const ues = (programme.unitesEnseignement as UE[] | null) ?? [];
+  /* Les fiches d'origine détaillent plusieurs conditions d'admission, une par ligne. */
+  const admission = (programme.conditionsAdmission ?? "").split("\n").map((l) => l.trim()).filter(Boolean);
 
   const details = [
     { icon: Clock, titre: "Durée", valeur: programme.duree },
@@ -86,6 +88,9 @@ export default async function FormationPage({ params }: { params: Promise<{ slug
           <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr]">
             <div>
               <p className="text-base leading-7 text-body">{programme.description}</p>
+              {programme.contenu && (
+                <div className="prose-isi mt-5" dangerouslySetInnerHTML={{ __html: programme.contenu }} />
+              )}
 
               <h3 className="mt-12 font-heading text-[26px] font-semibold text-dark lg:text-[30px]">Détails du programme</h3>
               <div className="mt-6 grid gap-[30px] sm:grid-cols-2">
@@ -108,12 +113,26 @@ export default async function FormationPage({ params }: { params: Promise<{ slug
 
               {programme.objectifs.length > 0 && (
                 <>
-                  <h3 className="mt-14 font-heading text-[26px] font-semibold text-dark lg:text-[30px]">Objectifs et compétences</h3>
+                  <h3 className="mt-14 font-heading text-[26px] font-semibold text-dark lg:text-[30px]">Objectifs de la formation</h3>
                   <ul className="mt-6 space-y-3">
                     {programme.objectifs.map((o) => (
                       <li key={o} className="flex gap-3 text-[15px] leading-7 text-body">
                         <Check className="mt-1.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
                         <span>{o}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+
+              {programme.competences.length > 0 && (
+                <>
+                  <h3 className="mt-14 font-heading text-[26px] font-semibold text-dark lg:text-[30px]">Compétences visées</h3>
+                  <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
+                    {programme.competences.map((c) => (
+                      <li key={c} className="flex gap-2.5 text-[15px] leading-7 text-body">
+                        <Check className="mt-1.5 h-4 w-4 shrink-0 text-secondary-dark" aria-hidden />
+                        <span>{c}</span>
                       </li>
                     ))}
                   </ul>
@@ -191,7 +210,18 @@ export default async function FormationPage({ params }: { params: Promise<{ slug
               {/* Admissions */}
               <div id="admissions" className="scroll-mt-28">
                 <h3 className="mt-14 font-heading text-[26px] font-semibold text-dark lg:text-[30px]">Admissions</h3>
-                <p className="mt-4 text-[15px] leading-7 text-body">{programme.conditionsAdmission}</p>
+                {admission.length > 1 ? (
+                  <ul className="mt-4 space-y-3">
+                    {admission.map((a) => (
+                      <li key={a} className="flex gap-3 text-[15px] leading-7 text-body">
+                        <Check className="mt-1.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
+                        <span>{a}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="mt-4 text-[15px] leading-7 text-body">{programme.conditionsAdmission}</p>
+                )}
                 {programme.debouches.length > 0 && (
                   <>
                     <h4 className="mt-8 font-heading text-[18px] font-semibold text-dark">Débouchés</h4>

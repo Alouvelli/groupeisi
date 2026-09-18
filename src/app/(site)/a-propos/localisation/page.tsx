@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MapPin, Phone } from "lucide-react";
+import { Globe, MapPin, Phone } from "lucide-react";
 import { PageHeader } from "@/components/ui/Breadcrumb";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/Section";
@@ -62,6 +62,14 @@ export default async function LocalisationPage() {
                             <Phone className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden />
                             <a href={`tel:${c.telephone.replace(/[^+\d]/g, "")}`} className="transition hover:text-primary">
                               {c.telephone}
+                            </a>
+                          </p>
+                        )}
+                        {c.siteUrl && (
+                          <p className="flex gap-2.5">
+                            <Globe className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden />
+                            <a href={c.siteUrl} target="_blank" rel="noopener noreferrer" className="break-all transition hover:text-primary">
+                              {c.siteUrl.replace(/^https?:\/\//, "").replace(/\/$/, "")}
                             </a>
                           </p>
                         )}

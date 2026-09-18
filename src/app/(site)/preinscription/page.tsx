@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { PreInscriptionForm } from "@/components/forms/PreInscriptionForm";
 import { getInscriptionOptions } from "@/app/actions/inscriptions";
 import { getSettings } from "@/lib/data";
+import { MODE_FORMATION_LABELS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Préinscription en ligne",
@@ -19,7 +20,7 @@ const ETAPES = [
   { Icon: Clock, t: "Déposez vos pièces", d: "Au campus de votre choix ou par email." },
 ];
 
-export default async function PreinscriptionPage({ searchParams }: { searchParams: Promise<{ programme?: string; campus?: string }> }) {
+export default async function PreinscriptionPage({ searchParams }: { searchParams: Promise<{ programme?: string; campus?: string; mode?: string }> }) {
   const sp = await searchParams;
   const [options, settings] = await Promise.all([getInscriptionOptions(), getSettings()]);
 
@@ -37,7 +38,12 @@ export default async function PreinscriptionPage({ searchParams }: { searchParam
           <div className="grid gap-[30px] lg:grid-cols-3">
             <div className="min-w-0 lg:col-span-2">
               {options.ouvertes ? (
-                <PreInscriptionForm options={options} defaultProgrammeId={sp.programme} defaultCampusId={sp.campus} />
+                <PreInscriptionForm
+                  options={options}
+                  defaultProgrammeId={sp.programme}
+                  defaultCampusId={sp.campus}
+                  defaultMode={sp.mode && sp.mode in MODE_FORMATION_LABELS ? (sp.mode as keyof typeof MODE_FORMATION_LABELS) : undefined}
+                />
               ) : (
                 <div className="rounded-lg border border-secondary bg-secondary-50 p-8 text-center">
                   <AlertTriangle className="mx-auto h-10 w-10 text-secondary-dark" aria-hidden />
