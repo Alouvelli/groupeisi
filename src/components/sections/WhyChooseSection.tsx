@@ -1,72 +1,78 @@
 import Image from "next/image";
-import { CheckCircle2, Award, Laptop, Handshake, Globe2, Play } from "lucide-react";
-import { Section } from "@/components/ui/Section";
+import { Check, Play } from "lucide-react";
+import { Container } from "@/components/ui/Container";
+import { SectionLabel } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
-import { Reveal } from "@/components/ui/Reveal";
 
-const features = [
-  { Icon: Award, title: "Diplômes reconnus", text: "BTS d'État, Licences et Masters accrédités ANAQ-Sup, Masters reconnus par le CAMES." },
-  { Icon: Laptop, title: "Pédagogie par projets", text: "Laboratoires Cisco et Huawei, incubateur ISI Lab, hackathons et certifications internationales." },
-  { Icon: Handshake, title: "Insertion professionnelle", text: "Stages obligatoires, forum entreprises annuel et un réseau de plus de 120 entreprises partenaires." },
-  { Icon: Globe2, title: "Un réseau régional", text: "9 campus au Sénégal et en Mauritanie, des cours du jour, du soir et à distance." },
-];
-
-export function WhyChooseSection({ image, videoUrl, annees }: { image: string; videoUrl?: string | null; annees: number }) {
+/**
+ * Section « Pourquoi choisir ISI » : visuel avec lecteur vidéo à gauche,
+ * liste d'arguments à droite.
+ */
+export function WhyChooseSection({
+  label = "Pourquoi choisir ISI",
+  title = "Une école de proximité, une reconnaissance internationale",
+  description,
+  image = "/media/img-2298-1.jpg",
+  videoUrl,
+  atouts = [],
+  href = "/a-propos",
+  cta = "En savoir plus",
+}: {
+  label?: string;
+  title?: string;
+  description?: string;
+  image?: string;
+  videoUrl?: string | null;
+  atouts?: { titre: string; description?: string }[];
+  href?: string;
+  cta?: string;
+}) {
   return (
-    <Section variant="white" padding="lg" className="overflow-hidden">
-      <div className="grid items-center gap-14 lg:grid-cols-2">
-        <Reveal className="relative">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] sm:aspect-[5/4] lg:aspect-[4/5]">
-            <Image src={image} alt="Étudiants du Groupe ISI" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+    <section className="bg-white py-16 sm:py-20 lg:py-[100px]">
+      <Container>
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <div className="relative overflow-hidden rounded-lg">
+            <Image src={image} alt="" width={960} height={720} className="h-auto w-full object-cover" />
             {videoUrl && (
-              <a href={videoUrl} target="_blank" rel="noopener noreferrer" aria-label="Voir la vidéo de présentation" className="absolute inset-0 flex items-center justify-center">
-                <span className="relative inline-flex h-20 w-20 items-center justify-center rounded-full bg-white text-secondary shadow-2xl">
-                  <span className="absolute inset-0 rounded-full bg-white animate-pulse-ring" aria-hidden />
-                  <Play className="relative h-8 w-8 fill-current" />
+              <a
+                href={videoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Voir la vidéo de présentation"
+                className="absolute inset-0 flex items-center justify-center"
+              >
+                <span className="relative flex h-20 w-20 items-center justify-center rounded-full bg-secondary text-secondary-fg">
+                  <span className="absolute inset-0 animate-pulse-ring rounded-full bg-secondary" aria-hidden />
+                  <Play className="relative h-7 w-7" />
                 </span>
               </a>
             )}
           </div>
-          <div className="absolute -bottom-6 -right-4 rounded-3xl bg-secondary p-6 text-white shadow-card sm:-right-6 sm:p-8 animate-float">
-            <div className="font-heading text-5xl font-extrabold leading-none">{annees}<span className="text-accent">+</span></div>
-            <div className="mt-2 text-sm font-semibold uppercase tracking-wider">Années d&apos;excellence</div>
+          <div>
+            <SectionLabel>{label}</SectionLabel>
+            <h2 className="section-title text-balance">{title}</h2>
+            {description && <p className="mt-5 text-base leading-7 text-body">{description}</p>}
+            {atouts.length > 0 && (
+              <ul className="mt-8 space-y-5">
+                {atouts.map((a) => (
+                  <li key={a.titre} className="flex gap-3.5">
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                      <Check className="h-3.5 w-3.5 text-primary" aria-hidden />
+                    </span>
+                    <span>
+                      <span className="block font-heading text-[18px] font-semibold text-dark">{a.titre}</span>
+                      {a.description && <span className="mt-1 block text-[15px] leading-7 text-body">{a.description}</span>}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+            <Button href={href} className="mt-9" arrow>
+              {cta}
+            </Button>
           </div>
-          <div className="absolute -left-6 top-10 hidden rounded-2xl border border-line bg-white p-4 shadow-card sm:block">
-            <div className="flex items-center gap-3">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700"><CheckCircle2 className="h-5 w-5" /></span>
-              <div>
-                <div className="text-sm font-extrabold text-primary">Accrédité ANAQ-Sup</div>
-                <div className="text-xs text-muted">Qualité garantie par l&apos;État</div>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-
-        <div>
-          <Reveal>
-            <span className="section-label mb-3"><span className="h-px w-6 bg-current" /> Pourquoi choisir ISI ?</span>
-            <h2 className="section-title text-balance">Une école de référence dans les TIC depuis 1994</h2>
-            <p className="mt-5 text-lg leading-relaxed text-muted">
-              Le Groupe ISI accompagne chaque étudiant vers la réussite avec un enseignement professionnalisant, des équipements de pointe et un accompagnement personnalisé, du BTS au Master.
-            </p>
-          </Reveal>
-          <ul className="mt-8 grid gap-5 sm:grid-cols-2">
-            {features.map((f, i) => (
-              <Reveal as="li" key={f.title} delay={i * 0.08} className="flex gap-4">
-                <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary-50 text-primary"><f.Icon className="h-6 w-6" /></span>
-                <div>
-                  <h3 className="text-base font-extrabold text-primary">{f.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-muted">{f.text}</p>
-                </div>
-              </Reveal>
-            ))}
-          </ul>
-          <Reveal className="mt-10 flex flex-wrap gap-4" delay={0.2}>
-            <Button href="/presentation" variant="primary" size="lg">Découvrir le Groupe ISI</Button>
-            <Button href="/admissions" variant="outline" size="lg">Conditions d&apos;admission</Button>
-          </Reveal>
         </div>
-      </div>
-    </Section>
+      </Container>
+    </section>
   );
 }

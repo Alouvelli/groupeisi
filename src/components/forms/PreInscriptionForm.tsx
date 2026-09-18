@@ -110,7 +110,7 @@ export function PreInscriptionForm({ options, defaultProgrammeId, defaultCampusI
         localStorage.removeItem("isi-preinscription-draft");
       } catch {}
       toast.success(res.message);
-      router.push(`/pre-inscription/confirmation?numero=${encodeURIComponent(res.data.numero)}&id=${res.data.id}`);
+      router.push(`/preinscription/confirmation?numero=${encodeURIComponent(res.data.numero)}&id=${res.data.id}`);
     } else {
       toast.error(res.message);
       if (!res.ok && res.errors) {

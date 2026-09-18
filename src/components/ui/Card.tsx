@@ -1,13 +1,10 @@
 import { cn } from "@/lib/utils";
 
+/** Carte générique du thème : coins arrondis, bordure fine, ombre douce au survol. */
 export function Card({ className, children, hover = true, ...rest }: React.HTMLAttributes<HTMLDivElement> & { hover?: boolean }) {
   return (
     <div
-      className={cn(
-        "group relative overflow-hidden rounded-card border border-line bg-white shadow-soft transition-all duration-300",
-        hover && "hover:-translate-y-1.5 hover:shadow-card hover:border-primary-100",
-        className,
-      )}
+      className={cn("group relative overflow-hidden rounded-lg border border-line bg-white transition-all duration-300", hover && "hover:shadow-card", className)}
       {...rest}
     >
       {children}

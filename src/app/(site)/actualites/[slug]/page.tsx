@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Calendar, Clock, Tag, User, ArrowLeft } from "lucide-react";
-import { Section, SectionHeading } from "@/components/ui/Section";
-import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { ArrowLeft, CalendarDays, Clock, Folder, User } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import { PageHeader } from "@/components/ui/Breadcrumb";
 import { NewsCard } from "@/components/cards/NewsCard";
 import { Button } from "@/components/ui/Button";
 import { getPostBySlug, getRelatedPosts } from "@/lib/data";
@@ -16,7 +15,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const p = await getPostBySlug(slug);
   if (!p) return { title: "Article introuvable" };
-  return { title: p.seoTitle ?? p.titre, description: p.seoDescription ?? p.extrait, openGraph: { type: "article", publishedTime: p.publishedAt?.toISOString(), images: p.image ? [p.image] : undefined } };
+  return {
+    title: p.seoTitle ?? p.titre,
+    description: p.seoDescription ?? p.extrait,
+    alternates: { canonical: `/actualites/${p.slug}` },
+    openGraph: { type: "article", publishedTime: p.publishedAt?.toISOString(), images: p.image ? [p.image] : undefined },
+  };
 }
 
 export default async function ActualitePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -25,52 +29,87 @@ export default async function ActualitePage({ params }: { params: Promise<{ slug
   if (!p) notFound();
   const related = await getRelatedPosts(p.id, p.categorieId);
   prisma.post.update({ where: { id: p.id }, data: { vues: { increment: 1 } } }).catch(() => null);
-  const shareUrl = absoluteUrl(`/actualites/${p.slug}`);
-  const jsonLd = { "@context": "https://schema.org", "@type": "NewsArticle", headline: p.titre, description: p.extrait, image: p.image, datePublished: p.publishedAt?.toISOString(), author: { "@type": "Organization", name: "Groupe ISI" }, url: shareUrl };
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: p.titre,
+    description: p.extrait,
+    image: p.image ? absoluteUrl(p.image) : undefined,
+    datePublished: p.publishedAt?.toISOString(),
+    author: { "@type": "Organization", name: "Groupe ISI" },
+    url: absoluteUrl(`/actualites/${p.slug}`),
+  };
 
   return (
     <article>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <div className="relative bg-primary text-white">
-        {p.image && <Image src={p.image} alt="" fill sizes="100vw" className="object-cover opacity-30" priority />}
-        <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary/80 to-primary/60" />
-        <Container className="relative py-16 sm:py-24">
-          <Breadcrumb items={[{ label: "Actualités", href: "/actualites" }, ...(p.categorie ? [{ label: p.categorie.nom, href: `/actualites?categorie=${p.categorie.slug}` }] : []), { label: p.titre }]} className="mb-6" />
-          {p.categorie && <span className="rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wide text-white" style={{ background: p.categorie.couleur ?? "#f26522" }}>{p.categorie.nom}</span>}
-          <h1 className="mt-4 max-w-4xl font-heading text-3xl font-extrabold text-white text-balance sm:text-4xl lg:text-5xl">{p.titre}</h1>
-          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/80">
-            <span className="inline-flex items-center gap-2"><Calendar className="h-4 w-4 text-accent" /> {formatDate(p.publishedAt)}</span>
-            {p.tempsLecture && <span className="inline-flex items-center gap-2"><Clock className="h-4 w-4 text-accent" /> {p.tempsLecture} min de lecture</span>}
-            {p.auteur && <span className="inline-flex items-center gap-2"><User className="h-4 w-4 text-accent" /> {p.auteur.nom}</span>}
+
+      <PageHeader
+        title={p.titre}
+        items={[{ label: "Actualités", href: "/actualites" }, ...(p.categorie ? [{ label: p.categorie.nom }] : [])]}
+        image={p.image}
+      />
+
+      <section className="bg-white py-16 lg:py-[90px]">
+        <Container narrow>
+          <div className="mb-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-[15px] font-medium text-body">
+            {p.categorie && (
+              <Link href={`/actualites?categorie=${p.categorie.slug}`} className="inline-flex items-center gap-1.5 transition hover:text-primary">
+                <Folder className="h-4 w-4 text-primary" aria-hidden /> {p.categorie.nom}
+              </Link>
+            )}
+            <span className="inline-flex items-center gap-1.5">
+              <CalendarDays className="h-4 w-4 text-primary" aria-hidden /> {formatDate(p.publishedAt)}
+            </span>
+            {p.tempsLecture ? (
+              <span className="inline-flex items-center gap-1.5">
+                <Clock className="h-4 w-4 text-primary" aria-hidden /> {p.tempsLecture} min de lecture
+              </span>
+            ) : null}
+            {p.auteur?.nom && (
+              <span className="inline-flex items-center gap-1.5">
+                <User className="h-4 w-4 text-primary" aria-hidden /> {p.auteur.nom}
+              </span>
+            )}
           </div>
-        </Container>
-      </div>
-      <Section padding="lg">
-        <div className="mx-auto max-w-3xl">
-          {p.image && <div className="relative -mt-28 mb-10 aspect-[16/9] overflow-hidden rounded-3xl shadow-card"><Image src={p.image} alt={p.titre} fill sizes="(max-width: 768px) 100vw, 768px" className="object-cover" /></div>}
-          <p className="text-lg font-semibold leading-relaxed text-slate-700">{p.extrait}</p>
-          <div className="prose-isi mt-6 text-[17px]" dangerouslySetInnerHTML={{ __html: p.contenu }} />
-          {p.tags.length > 0 && (
-            <div className="mt-10 flex flex-wrap items-center gap-2 border-t border-line pt-6">
-              <Tag className="h-4 w-4 text-secondary" />
-              {p.tags.map((t) => <Link key={t} href={`/actualites?tag=${encodeURIComponent(t)}`} className="rounded-full bg-surface px-3 py-1 text-xs font-semibold hover:bg-primary-50">#{t}</Link>)}
-            </div>
+
+          {p.image && (
+            <Image src={p.image} alt={p.titre} width={1100} height={620} className="mb-10 h-auto w-full rounded-lg object-cover" priority />
           )}
-          <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
-            <Button href="/actualites" variant="ghost"><ArrowLeft className="h-4 w-4" /> Toutes les actualités</Button>
-            <div className="flex gap-2 text-sm">
-              <a className="rounded-full bg-surface px-4 py-2 font-semibold hover:bg-primary-50" target="_blank" rel="noopener noreferrer" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}>Facebook</a>
-              <a className="rounded-full bg-surface px-4 py-2 font-semibold hover:bg-primary-50" target="_blank" rel="noopener noreferrer" href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}>LinkedIn</a>
-              <a className="rounded-full bg-surface px-4 py-2 font-semibold hover:bg-primary-50" target="_blank" rel="noopener noreferrer" href={`https://wa.me/?text=${encodeURIComponent(`${p.titre} – ${shareUrl}`)}`}>WhatsApp</a>
-            </div>
-          </div>
-        </div>
-      </Section>
+
+          <p className="text-[17px] font-medium leading-8 text-dark">{p.extrait}</p>
+          <div className="prose-isi mt-6 max-w-none" dangerouslySetInnerHTML={{ __html: p.contenu }} />
+
+          {p.tags.length > 0 && (
+            <ul className="mt-10 flex flex-wrap gap-2.5 border-t border-line pt-8">
+              {p.tags.map((t) => (
+                <li key={t}>
+                  <Link href={`/actualites?tag=${encodeURIComponent(t)}`} className="rounded-full border border-line px-4 py-1.5 text-[13px] text-body transition hover:border-primary hover:text-primary">
+                    {t}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <Button href="/actualites" variant="outline" className="mt-10">
+            <ArrowLeft className="h-4 w-4" aria-hidden /> Toutes les actualités
+          </Button>
+        </Container>
+      </section>
+
       {related.length > 0 && (
-        <Section variant="surface" padding="lg">
-          <SectionHeading label="À lire aussi" title="Articles similaires" />
-          <div className="grid gap-6 md:grid-cols-3">{related.map((r) => <NewsCard key={r.id} titre={r.titre} slug={r.slug} extrait={r.extrait} image={r.image} publishedAt={r.publishedAt} categorie={r.categorie} />)}</div>
-        </Section>
+        <section className="bg-surface py-16 lg:py-[90px]">
+          <Container>
+            <h2 className="section-title mb-10">Articles similaires</h2>
+            <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
+              {related.map((r) => (
+                <NewsCard key={r.id} titre={r.titre} slug={r.slug} extrait={r.extrait} image={r.image} publishedAt={r.publishedAt} categorie={r.categorie} />
+              ))}
+            </div>
+          </Container>
+        </section>
       )}
     </article>
   );

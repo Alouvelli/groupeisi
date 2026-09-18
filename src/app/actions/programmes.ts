@@ -31,7 +31,7 @@ export async function saveProgramme(id: string | null, input: ProgrammeFormValue
       ? await prisma.programme.update({ where: { id }, data })
       : await prisma.programme.create({ data: { ...data, campus: { connect: d.campusIds.map((cid) => ({ id: cid })) } } });
     revalidatePath("/admin/programmes");
-    revalidatePath("/programmes");
+    revalidatePath("/formations");
     revalidatePath("/");
     return { ok: true, message: id ? "Programme mis à jour." : "Programme créé.", data: { id: p.id } };
   } catch (err) {
@@ -51,7 +51,7 @@ export async function deleteProgramme(id: string): Promise<ActionResult> {
   }
   await prisma.programme.delete({ where: { id } });
   revalidatePath("/admin/programmes");
-  revalidatePath("/programmes");
+  revalidatePath("/formations");
   return { ok: true, message: "Programme supprimé." };
 }
 
@@ -61,7 +61,7 @@ export async function toggleProgramme(id: string, field: "isActive" | "isFeature
   if (!p) return { ok: false, message: "Introuvable." };
   await prisma.programme.update({ where: { id }, data: { [field]: !(p as Record<string, boolean>)[field] } });
   revalidatePath("/admin/programmes");
-  revalidatePath("/programmes");
+  revalidatePath("/formations");
   revalidatePath("/");
   return { ok: true, message: "Mis à jour." };
 }

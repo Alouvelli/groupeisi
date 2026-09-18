@@ -1,34 +1,37 @@
-import { ArrowRight, MapPin } from "lucide-react";
-import { Section, SectionHeading } from "@/components/ui/Section";
-import { Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { CampusCard, type CampusCardProps } from "@/components/cards/CampusCard";
-import { Button } from "@/components/ui/Button";
+import { Container } from "@/components/ui/Container";
+import { SectionLabel } from "@/components/ui/Section";
 
-export function CampusSection({ campus }: { campus: CampusCardProps[] }) {
-  const featured = campus.slice(0, 3);
-  const others = campus.slice(3);
+/**
+ * Section « Campus & Annexes » de l'accueil : fond bleu, titre centré
+ * et grille de vignettes photo (trois colonnes).
+ */
+export function CampusSection({
+  campus,
+  label = "Nos Campus",
+  title = "Campus & Annexes",
+  description,
+}: {
+  campus: CampusCardProps[];
+  label?: string;
+  title?: string;
+  description?: string;
+}) {
+  if (!campus.length) return null;
   return (
-    <Section variant="surface" padding="lg" id="campus">
-      <SectionHeading label="Nos campus" title="9 campus au Sénégal et en Mauritanie" description="Dakar, Keur Massar, Pikine, Kaolack, Kaffrine, Diourbel, Nouakchott, Nouadhibou : une formation de qualité près de chez vous." />
-      <Stagger className="grid gap-6 md:grid-cols-3">
-        {featured.map((c) => (
-          <StaggerItem key={c.slug}>
-            <CampusCard {...c} />
-          </StaggerItem>
-        ))}
-      </Stagger>
-      {others.length > 0 && (
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          {others.map((c) => (
-            <Button key={c.slug} href={`/campus/${c.slug}`} variant="white" size="sm" className="shadow-soft">
-              <MapPin className="h-3.5 w-3.5 text-secondary" /> {c.ville}
-            </Button>
+    <section className="relative overflow-hidden bg-primary py-16 sm:py-20 lg:py-[100px]">
+      <Container>
+        <div className="mb-12 max-w-3xl">
+          <SectionLabel light>{label}</SectionLabel>
+          <h2 className="section-title text-white">{title}</h2>
+          {description && <p className="mt-4 text-base leading-7 text-white/80">{description}</p>}
+        </div>
+        <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
+          {campus.map((c) => (
+            <CampusCard key={c.slug} {...c} />
           ))}
         </div>
-      )}
-      <div className="mt-10 text-center">
-        <Button href="/campus" variant="outline">Découvrir tous les campus <ArrowRight className="h-4 w-4" /></Button>
-      </div>
-    </Section>
+      </Container>
+    </section>
   );
 }

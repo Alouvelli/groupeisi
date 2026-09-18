@@ -116,7 +116,7 @@ export function inscriptionConfirmationEmail(d: InscriptionEmailData) {
       <li>Préparez vos pièces justificatives : copie du diplôme, relevés de notes, pièce d'identité, photos d'identité.</li>
     </ol>
     <p style="font-size:14px">Pour toute question, contactez le service des admissions : <a href="mailto:${env.adminNotificationEmail || "admissions@groupeisi.com"}" style="color:${BRAND.secondary}">${env.adminNotificationEmail || "admissions@groupeisi.com"}</a>.</p>
-    ${button("Consulter nos formations", `${env.siteUrl}/programmes`)}
+    ${button("Consulter nos formations", `${env.siteUrl}/formations`)}
   `;
   return {
     subject: `[Groupe ISI] Confirmation de votre pré-inscription – ${d.numero}`,

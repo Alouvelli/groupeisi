@@ -1,25 +1,53 @@
-import { CalendarDays, Users, MapPin, BookOpen, Briefcase, Handshake } from "lucide-react";
+import { Building2, GraduationCap, Handshake, Trophy, Users, UserCheck } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { StatCard } from "@/components/cards/StatCard";
+import { Counter } from "@/components/ui/Counter";
 
-export function StatsBar({ stats }: { stats: { annees: number; etudiants: number; campus: number; programmes: number; insertion: number; partenaires: number } }) {
+export interface StatsBarProps {
+  stats: {
+    annees: number;
+    etudiants: number;
+    campus: number;
+    programmes: number;
+    insertion: number;
+    partenaires: number;
+  };
+  variant?: "primary" | "surface";
+}
+
+/** Bande de chiffres clés animés (présentation, campus). */
+export function StatsBar({ stats, variant = "primary" }: StatsBarProps) {
   const items = [
-    { value: stats.annees, suffix: "+", label: "Années d'expérience", Icon: CalendarDays },
-    { value: stats.etudiants, suffix: "+", label: "Diplômés formés", Icon: Users },
-    { value: stats.campus, label: "Campus", Icon: MapPin },
-    { value: stats.programmes, suffix: "+", label: "Formations", Icon: BookOpen },
-    { value: stats.insertion, suffix: "%", label: "Insertion professionnelle", Icon: Briefcase },
-    { value: stats.partenaires, suffix: "+", label: "Entreprises partenaires", Icon: Handshake },
+    { value: stats.annees, suffix: " ans", label: "d'expertise", Icon: Trophy },
+    { value: stats.etudiants, suffix: "+", label: "étudiants formés", Icon: Users },
+    { value: stats.campus, suffix: "", label: "campus et annexes", Icon: Building2 },
+    { value: stats.programmes, suffix: "+", label: "formations", Icon: GraduationCap },
+    { value: stats.insertion, suffix: " %", label: "d'insertion professionnelle", Icon: UserCheck },
+    { value: stats.partenaires, suffix: "+", label: "partenaires", Icon: Handshake },
   ];
+  const light = variant === "primary";
   return (
-    <div className="relative z-10 -mt-12 sm:-mt-16">
+    <section className={light ? "bg-primary py-12" : "bg-surface py-12"}>
       <Container>
-        <div className="grid grid-cols-1 gap-4 rounded-3xl bg-white p-4 shadow-card sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 xl:p-5">
-          {items.map((s) => (
-            <StatCard key={s.label} {...s} />
+        <div className="grid gap-8 sm:grid-cols-3 lg:grid-cols-6">
+          {items.map(({ value, suffix, label, Icon }) => (
+            <div key={label} className="text-center">
+              <span
+                className={
+                  light
+                    ? "mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-white/10"
+                    : "mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10"
+                }
+              >
+                <Icon className={light ? "h-6 w-6 text-secondary" : "h-6 w-6 text-primary"} aria-hidden />
+              </span>
+              <p className={light ? "mt-4 font-heading text-[34px] font-semibold leading-none text-white" : "mt-4 font-heading text-[34px] font-semibold leading-none text-primary"}>
+                <Counter value={value} suffix={suffix} />
+              </p>
+              <p className={light ? "mt-2 text-sm text-white/75" : "mt-2 text-sm text-body"}>{label}</p>
+            </div>
           ))}
         </div>
       </Container>
-    </div>
+    </section>
   );
 }

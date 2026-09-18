@@ -21,11 +21,11 @@ export default async function AlumniDetailPage({ params }: { params: Promise<{ s
   if (!a) notFound();
   return (
     <>
-      <PageHeader title={`${a.prenom} ${a.nom}`} subtitle={`Promotion ${a.promotion} · ${a.programme}`} items={[{ label: "Alumni", href: "/alumni" }, { label: `${a.prenom} ${a.nom}` }]} />
+      <PageHeader title={`${a.prenom} ${a.nom}`} subtitle={`Promotion ${a.promotion} · ${a.programme}`} items={[{ label: "Nos Alumnis", href: "/alumnis" }, { label: `${a.prenom} ${a.nom}` }]} />
       <Section padding="lg">
         <div className="grid gap-10 lg:grid-cols-3">
           <div>
-            <div className="relative aspect-square overflow-hidden rounded-3xl bg-primary-50"><Image src={a.photo || "/images/placeholder.svg"} alt={`${a.prenom} ${a.nom}`} fill sizes="33vw" className="object-cover" /></div>
+            <div className="relative aspect-square overflow-hidden rounded-3xl bg-primary-50"><Image src={a.photo || "/media/alamni-team-1.jpg"} alt={`${a.prenom} ${a.nom}`} fill sizes="33vw" className="object-cover" /></div>
             <ul className="mt-6 space-y-3 text-sm">
               <li className="flex gap-3"><GraduationCap className="mt-0.5 h-4 w-4 shrink-0 text-secondary" /> {a.programme} – Promotion {a.promotion}</li>
               {(a.poste || a.entreprise) && <li className="flex gap-3"><Briefcase className="mt-0.5 h-4 w-4 shrink-0 text-secondary" /> {[a.poste, a.entreprise].filter(Boolean).join(" · ")}</li>}
@@ -41,7 +41,7 @@ export default async function AlumniDetailPage({ params }: { params: Promise<{ s
               </blockquote>
             )}
             {a.parcours && <div className="prose-isi mt-8"><h2>Parcours</h2><p>{a.parcours}</p></div>}
-            <Button href="/alumni" variant="ghost" className="mt-8"><ArrowLeft className="h-4 w-4" /> Tous les alumni</Button>
+            <Button href="/alumnis" variant="ghost" className="mt-8"><ArrowLeft className="h-4 w-4" /> Tous les alumni</Button>
           </div>
         </div>
       </Section>

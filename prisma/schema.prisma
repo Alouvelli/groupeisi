@@ -20,6 +20,7 @@ datasource db {
 // ============================================================================
 
 enum NavLocation {
+  TOP_BAR
   HEADER
   FOOTER
   FOOTER_SECONDARY
@@ -27,8 +28,10 @@ enum NavLocation {
 
 enum Niveau {
   BTS
+  BACHELOR
   LICENCE
   MASTER
+  INGENIEUR
   DOCTORAT
   CERTIFICAT
   FORMATION_CONTINUE
@@ -142,6 +145,7 @@ model SiteSettings {
   description          String?
   logoUrl              String?
   logoWhiteUrl         String?
+  logoFooterUrl        String?
   faviconUrl           String?
   email                String?
   emailAdmissions      String?
@@ -162,6 +166,9 @@ model SiteSettings {
   heroCtaLabel         String?
   heroCtaHref          String?
   heroVideoUrl         String?
+  heroSlides           String[] @default([])
+  playStoreUrl         String?
+  appStoreUrl          String?
   annonceBandeau       String?
   annonceLien          String?
   // Statistiques (barre de chiffres clés)
@@ -213,23 +220,26 @@ model NavigationItem {
 // ============================================================================
 
 model Departement {
-  id             String      @id @default(cuid())
-  nom            String
-  slug           String      @unique
-  accroche       String?
-  description    String
-  contenu        String?
-  icone          String? // nom d'icône lucide (ex: "Code2")
-  image          String?
-  couleur        String? // couleur d'accent (#hex)
-  ordre          Int         @default(0)
-  isActive       Boolean     @default(true)
-  seoTitle       String?
-  seoDescription String?
-  programmes     Programme[]
-  personnes      Personne[]
-  createdAt      DateTime    @default(now())
-  updatedAt      DateTime    @updatedAt
+  id                  String      @id @default(cuid())
+  nom                 String
+  slug                String      @unique
+  accroche            String?
+  description         String
+  contenu             String?
+  icone               String? // nom d'icône lucide (ex: "Code2")
+  image               String?
+  email               String?
+  telephone           String?
+  chefDeDepartementId String?
+  couleur             String? // couleur d'accent (#hex)
+  ordre               Int         @default(0)
+  isActive            Boolean     @default(true)
+  seoTitle            String?
+  seoDescription      String?
+  programmes          Programme[]
+  personnes           Personne[]
+  createdAt           DateTime    @default(now())
+  updatedAt           DateTime    @updatedAt
 
   @@index([ordre])
 }
@@ -253,8 +263,16 @@ model Programme {
   competences         String[]      @default([])
   modules             Json? // [{ semestre, intitule, ects }]
   conditionsAdmission String?
-  fraisInscription    Int? // en FCFA
-  fraisScolarite      Int? // en FCFA / an
+  volumeHoraire       Int? // heures totales
+  nbUE                Int? // nombre d'unités d'enseignement
+  semestres           Int? // nombre de semestres
+  structure           String? // « Structure typique du programme »
+  unitesEnseignement  Json? // [{ intitule, contenu }]
+  portfolioUrl        String? // lien « Plus de détails »
+  session             String? // ex: "2025 - 2026"
+  fraisInscription    Int? // droits d'inscription, en FCFA
+  fraisScolarite      Int? // coût annuel, en FCFA
+  fraisMensualite     Int? // mensualité, en FCFA
   diplome             String? // ex: "Licence professionnelle (ANAQ-Sup)"
   accreditation       String? // ex: "CAMES", "ANAQ-Sup"
   image               String?
@@ -281,34 +299,44 @@ model Programme {
 // ============================================================================
 
 model Campus {
-  id           String        @id @default(cuid())
-  nom          String
-  slug         String        @unique
-  ville        String
-  pays         String        @default("Sénégal")
-  adresse      String
-  telephone    String?
-  telephone2   String?
-  email        String?
-  whatsapp     String?
-  description  String
-  contenu      String?
-  image        String?
-  images       String[]      @default([])
-  equipements  String[]      @default([])
-  latitude     Float?
-  longitude    Float?
-  mapEmbedUrl  String?
-  ordre        Int           @default(0)
-  isActive     Boolean       @default(true)
-  isSiege      Boolean       @default(false)
-  erpCode      String?
-  programmes   Programme[]   @relation("ProgrammeCampus")
-  inscriptions Inscription[]
-  evenements   Evenement[]
-  personnes    Personne[]
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
+  id               String        @id @default(cuid())
+  nom              String
+  slug             String        @unique
+  ville            String
+  pays             String        @default("Sénégal")
+  adresse          String
+  telephone        String?
+  telephone2       String?
+  email            String?
+  whatsapp         String?
+  description      String
+  contenu          String?
+  image            String?
+  images           String[]      @default([])
+  equipements      String[]      @default([])
+  latitude         Float?
+  longitude        Float?
+  mapEmbedUrl      String?
+  zone             String? // ex: "Dakar", "Régions", "Mauritanie"
+  directeurNom     String?
+  directeurPoste   String?
+  directeurPhoto   String?
+  mission          String[]      @default([])
+  vision           String[]      @default([])
+  statCampus       Int?
+  statDepartements Int?
+  statFormations   Int?
+  statEtudiants    String?
+  ordre            Int           @default(0)
+  isActive         Boolean       @default(true)
+  isSiege          Boolean       @default(false)
+  erpCode          String?
+  programmes       Programme[]   @relation("ProgrammeCampus")
+  inscriptions     Inscription[]
+  evenements       Evenement[]
+  personnes        Personne[]
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
 
   @@index([ordre])
 }
@@ -436,6 +464,7 @@ model Alumni {
   temoignage String?
   parcours   String?
   photo      String?
+  videoUrl   String?
   linkedin   String?
   isFeatured Boolean  @default(false)
   isActive   Boolean  @default(true)
@@ -576,16 +605,18 @@ model Document {
 // ============================================================================
 
 model Testimonial {
-  id        String   @id @default(cuid())
-  nom       String
-  role      String // ex: "Étudiante en Master Génie Logiciel"
-  contenu   String
-  photo     String?
-  note      Int      @default(5)
-  ordre     Int      @default(0)
-  isActive  Boolean  @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         String   @id @default(cuid())
+  nom        String
+  role       String // ex: "Étudiante en Master Génie Logiciel"
+  contenu    String
+  photo      String?
+  videoUrl   String?
+  entreprise String?
+  note       Int      @default(5)
+  ordre      Int      @default(0)
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
 
 // ============================================================================

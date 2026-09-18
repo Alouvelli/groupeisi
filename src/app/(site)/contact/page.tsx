@@ -1,57 +1,122 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
+import { Briefcase, Mail, MapPin, Phone } from "lucide-react";
 import { PageHeader } from "@/components/ui/Breadcrumb";
-import { Section, SectionHeading } from "@/components/ui/Section";
+import { Container } from "@/components/ui/Container";
+import { SectionLabel } from "@/components/ui/Section";
 import { ContactForm } from "@/components/forms/ContactForm";
-import { SocialLinks } from "@/components/ui/SocialLinks";
 import { getSettings, getCampus } from "@/lib/data";
 
-export const metadata: Metadata = { title: "Contact", description: "Contactez le Groupe ISI : adresse, téléphone, email, formulaire de contact et coordonnées de nos 9 campus." };
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Contactez le Groupe ISI : email, téléphone, adresse du siège à Dakar et coordonnées de tous nos campus.",
+};
 
-export default async function ContactPage({ searchParams }: { searchParams: Promise<{ sujet?: string }> }) {
-  const { sujet } = await searchParams;
+export default async function ContactPage() {
   const [settings, campus] = await Promise.all([getSettings(), getCampus()]);
-  const siege = campus.find((c) => c.isSiege) ?? campus[0];
-  const mapUrl = siege?.latitude && siege?.longitude ? `https://www.google.com/maps?q=${siege.latitude},${siege.longitude}&z=15&output=embed` : `https://www.google.com/maps?q=${encodeURIComponent(settings.address ?? "Dakar")}&output=embed`;
+
+  const blocs = [
+    { titre: "Contact Email", icone: Mail, lignes: [{ label: settings.email ?? "", href: `mailto:${settings.email}` }] },
+    {
+      titre: "Téléphone",
+      icone: Phone,
+      lignes: [
+        { label: settings.phone ?? "", href: `tel:${(settings.phone ?? "").replace(/[^+\d]/g, "")}` },
+        ...(settings.phone2 ? [{ label: settings.phone2, href: `tel:${settings.phone2.replace(/[^+\d]/g, "")}` }] : []),
+      ],
+    },
+    { titre: "Adresse", icone: MapPin, lignes: [{ label: settings.address ?? "", href: null }] },
+    {
+      titre: "Carrière",
+      icone: Briefcase,
+      lignes: [
+        { label: "coip@groupeisi.com", href: "mailto:coip@groupeisi.com" },
+        { label: "+221 76 450 83 97", href: "tel:+221764508397" },
+      ],
+    },
+  ];
+
   return (
     <>
-      <PageHeader title="Contactez-nous" subtitle="Une question sur nos formations, les admissions ou un partenariat ? Notre équipe vous répond rapidement." items={[{ label: "Contact" }]} />
-      <Section padding="lg">
-        <div className="grid gap-12 lg:grid-cols-5">
-          <div className="lg:col-span-3">
-            <SectionHeading label="Écrivez-nous" title="Envoyez-nous un message" align="left" />
-            <ContactForm defaultSujet={sujet} />
+      <PageHeader title="Contact" items={[{ label: "Contact" }]} image="/media/img-9163.jpg" />
+
+      <section className="bg-white py-16 lg:py-[100px]">
+        <Container>
+          <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-4">
+            {blocs.map(({ titre, icone: Icon, lignes }) => (
+              <div key={titre} className="rounded-lg border border-line bg-white p-7">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                  <Icon className="h-5 w-5 text-primary" aria-hidden />
+                </span>
+                <h3 className="mt-5 font-heading text-[20px] font-semibold text-dark">{titre}</h3>
+                <ul className="mt-3 space-y-1.5 text-[15px] text-body">
+                  {lignes.map((l) => (
+                    <li key={l.label}>
+                      {l.href ? (
+                        <a href={l.href} className="break-words transition hover:text-primary">
+                          {l.label}
+                        </a>
+                      ) : (
+                        l.label
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
-          <aside className="space-y-6 lg:col-span-2">
-            <div className="rounded-card bg-primary p-7 text-white shadow-card">
-              <h3 className="text-xl font-extrabold text-white">Siège – Dakar</h3>
-              <ul className="mt-5 space-y-4 text-sm">
-                {settings.address && <li className="flex gap-3"><MapPin className="mt-0.5 h-5 w-5 shrink-0 text-accent" /> {settings.address}</li>}
-                {settings.phone && <li className="flex gap-3"><Phone className="mt-0.5 h-5 w-5 shrink-0 text-accent" /> <span><a href={`tel:${settings.phone.replace(/\s/g, "")}`}>{settings.phone}</a>{settings.phone2 && <><br /><a href={`tel:${settings.phone2.replace(/\s/g, "")}`}>{settings.phone2}</a></>}</span></li>}
-                {settings.email && <li className="flex gap-3"><Mail className="mt-0.5 h-5 w-5 shrink-0 text-accent" /> <span><a href={`mailto:${settings.email}`}>{settings.email}</a>{settings.emailAdmissions && <><br /><a href={`mailto:${settings.emailAdmissions}`}>{settings.emailAdmissions}</a></>}</span></li>}
-                {settings.horaires && <li className="flex gap-3"><Clock className="mt-0.5 h-5 w-5 shrink-0 text-accent" /> {settings.horaires}</li>}
-              </ul>
-              {settings.whatsapp && <a href={`https://wa.me/${settings.whatsapp.replace(/[^\d]/g, "")}`} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-[#25D366] text-sm font-bold text-white hover:opacity-90"><MessageCircle className="h-4 w-4" /> Discuter sur WhatsApp</a>}
-              <SocialLinks socials={settings} className="mt-5" itemClassName="bg-white/10 text-white" />
+
+          <div className="mt-16 grid gap-12 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <SectionLabel>Formulaire</SectionLabel>
+              <h2 className="section-title mb-8">Entrer en contact</h2>
+              <ContactForm />
             </div>
-            <div className="overflow-hidden rounded-card border border-line"><iframe title="Carte du siège" src={mapUrl} className="h-64 w-full" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /></div>
-          </aside>
-        </div>
-      </Section>
-      <Section variant="surface" padding="lg">
-        <SectionHeading label="Nos campus" title="Coordonnées de tous les campus" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {campus.map((c) => (
-            <Link key={c.id} href={`/campus/${c.slug}`} className="group rounded-card border border-line bg-white p-5 shadow-soft transition hover:-translate-y-1 hover:shadow-card">
-              <h3 className="font-extrabold text-primary group-hover:text-secondary">{c.nom}</h3>
-              <p className="mt-2 flex gap-2 text-sm text-muted"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-secondary" /> {c.adresse}, {c.ville}</p>
-              {c.telephone && <p className="mt-1 flex gap-2 text-sm text-muted"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-secondary" /> {c.telephone}</p>}
-              {c.email && <p className="mt-1 flex gap-2 text-sm text-muted"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-secondary" /> {c.email}</p>}
-            </Link>
-          ))}
-        </div>
-      </Section>
+            <div className="overflow-hidden rounded-lg border border-line">
+              <iframe
+                src="https://maps.google.com/maps?q=Institut%20Sup%C3%A9rieur%20d%27Informatique&t=m&z=15&output=embed&iwloc=near"
+                title="Carte du siège du Groupe ISI"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-full min-h-[460px] w-full border-0"
+              />
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-surface py-16 lg:py-[100px]">
+        <Container>
+          <h2 className="section-title mb-10">Tous nos campus</h2>
+          <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
+            {campus.map((c) => (
+              <div key={c.id} className="rounded-lg border border-line bg-white p-6">
+                <h3 className="font-heading text-[18px] font-semibold text-dark">{c.nom}</h3>
+                <ul className="mt-3 space-y-2 text-[15px] text-body">
+                  <li className="flex gap-2.5">
+                    <MapPin className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden /> {c.adresse}
+                  </li>
+                  {c.telephone && (
+                    <li className="flex gap-2.5">
+                      <Phone className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden />
+                      <a href={`tel:${c.telephone.replace(/[^+\d]/g, "")}`} className="transition hover:text-primary">
+                        {c.telephone}
+                      </a>
+                    </li>
+                  )}
+                  {c.email && (
+                    <li className="flex gap-2.5">
+                      <Mail className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden />
+                      <a href={`mailto:${c.email}`} className="break-all transition hover:text-primary">
+                        {c.email}
+                      </a>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
     </>
   );
 }
