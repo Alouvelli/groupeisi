@@ -1,70 +1,212 @@
-import { getSettings, getDepartements, getFeaturedProgrammes, getCampus, getLatestPosts, getEvenements, getTestimonials, getPersonnes, getAlumni, getPartenaires, getGalleryImages } from "@/lib/data";
-import { HeroSection, StatsBar, WhyChooseSection, DepartementsSection, ProgrammesSection, CampusSection, PreInscriptionCTA, NewsSection, EventsSection, TestimonialsSection, TeamSection, AlumniSection, GallerySection, PartnersSection } from "@/components/sections";
+import type { Metadata } from "next";
+import {
+  getSettings,
+  getFeaturedProgrammes,
+  getCampus,
+  getLatestPosts,
+  getEvenements,
+  getTestimonials,
+  getPersonnes,
+  getGalleryImages,
+  getProgrammesForForm,
+} from "@/lib/data";
+import {
+  AboutSection,
+  CampusSection,
+  EventsSection,
+  GalleryStrip,
+  HeroSection,
+  NewsSection,
+  PreInscriptionCTA,
+  ProgrammesSection,
+  QuickLinks,
+  TeamSection,
+  TestimonialsSection,
+} from "@/components/sections";
 
-const HERO_IMAGES = [
-  "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1800&q=80",
-  "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1800&q=80",
-  "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1800&q=80",
-];
+export const metadata: Metadata = {
+  title: "Groupe ISI – Institut de référence dans les TIC",
+  description:
+    "Depuis plus de 27 ans, l'Institut Supérieur d'Informatique (ISI) forme les jeunes cadres africains : licences et masters reconnus ANAQ-Sup et CAMES, 9 campus au Sénégal et en Mauritanie.",
+  alternates: { canonical: "/" },
+};
 
 export default async function HomePage() {
-  const [settings, departements, programmes, campus, posts, events, testimonials, team, alumni, partenaires, gallery] = await Promise.all([
+  const [settings, programmes, campus, posts, events, testimonials, team, gallery, formations] = await Promise.all([
     getSettings(),
-    getDepartements(),
-    getFeaturedProgrammes(9),
+    getFeaturedProgrammes(4),
     getCampus(),
-    getLatestPosts(3),
-    getEvenements({ upcoming: true, take: 5 }),
+    getLatestPosts(4),
+    getEvenements({ upcoming: true, take: 3 }),
     getTestimonials(6),
-    getPersonnes().then((p) => p.filter((x) => x.isFeatured).slice(0, 4)),
-    getAlumni({ featured: true, take: 6 }),
-    getPartenaires(),
+    getPersonnes("ENSEIGNANT").then((list) => list.filter((p) => p.isFeatured).slice(0, 3)),
     getGalleryImages(),
+    getProgrammesForForm(),
   ]);
 
-  const slides = [
-    {
-      label: `Rentrée ${settings.anneeAcademique}`,
-      title: settings.heroTitle ?? "Construisez votre avenir dans les technologies de l'information",
-      subtitle: settings.heroSubtitle ?? "Plus de 30 ans d'excellence en formation informatique, réseaux, télécoms et management.",
-      image: HERO_IMAGES[0],
-      cta: { label: settings.heroCtaLabel ?? "Pré-inscription en ligne", href: settings.heroCtaHref ?? "/pre-inscription" },
-      cta2: { label: "Nos formations", href: "/programmes" },
-    },
-    {
-      label: "Génie logiciel · Réseaux · Cybersécurité · Data & IA",
-      title: "Des formations d'ingénieurs au cœur du numérique",
-      subtitle: "Licences et Masters accrédités ANAQ-Sup et CAMES, laboratoires Cisco et Huawei, certifications internationales.",
-      image: HERO_IMAGES[1],
-      cta: { label: "Découvrir nos formations", href: "/programmes" },
-      cta2: { label: "Nos départements", href: "/departements" },
-    },
-    {
-      label: "9 campus · Sénégal & Mauritanie",
-      title: "Une école de proximité, une reconnaissance internationale",
-      subtitle: "Dakar, Keur Massar, Pikine, Kaolack, Kaffrine, Diourbel, Nouakchott, Nouadhibou : étudiez près de chez vous.",
-      image: HERO_IMAGES[2],
-      cta: { label: "Nos campus", href: "/campus" },
-      cta2: { label: "Nous contacter", href: "/contact" },
-    },
-  ];
+  const slides = settings.heroSlides.length
+    ? settings.heroSlides
+    : ["/media/site-wet-en-ligne-at-2x-at-2x.jpg", "/media/whatsapp-image-2026-07-14-at-16-49-01.jpeg", "/media/site-web-fede-at-2x.jpg"];
 
   return (
     <>
-      <HeroSection slides={slides} videoUrl={settings.heroVideoUrl} />
-      <StatsBar stats={{ annees: settings.statAnnees, etudiants: settings.statEtudiants, campus: settings.statCampus, programmes: settings.statProgrammes, insertion: settings.statInsertion, partenaires: settings.statPartenaires }} />
-      <WhyChooseSection image="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1200&q=80" videoUrl={settings.heroVideoUrl} annees={settings.statAnnees} />
-      <DepartementsSection departements={departements.map((d) => ({ nom: d.nom, slug: d.slug, accroche: d.accroche, description: d.description, icone: d.icone, couleur: d.couleur, programmesCount: d._count.programmes }))} />
-      <ProgrammesSection programmes={programmes.map((p) => ({ titre: p.titre, slug: p.slug, niveau: p.niveau, duree: p.duree, accroche: p.accroche, description: p.description, image: p.image, accreditation: p.accreditation, departement: p.departement, campus: p.campus }))} />
-      <PreInscriptionCTA anneeAcademique={settings.anneeAcademique} phone={settings.phone2 ?? settings.phone} ouvertes={settings.inscriptionsOuvertes} image="https://images.unsplash.com/photo-1627556704302-624286467c65?auto=format&fit=crop&w=1800&q=80" />
-      <CampusSection campus={campus.map((c) => ({ nom: c.nom, slug: c.slug, ville: c.ville, pays: c.pays, adresse: c.adresse, telephone: c.telephone, image: c.image, isSiege: c.isSiege, programmesCount: c._count.programmes }))} />
-      <NewsSection posts={posts.map((p) => ({ titre: p.titre, slug: p.slug, extrait: p.extrait, image: p.image, publishedAt: p.publishedAt, tempsLecture: p.tempsLecture, categorie: p.categorie }))} />
-      <EventsSection events={events.map((e) => ({ titre: e.titre, slug: e.slug, description: e.description, image: e.image, dateDebut: e.dateDebut, heure: e.heure, lieu: e.lieu, type: e.type }))} />
-      <TestimonialsSection testimonials={testimonials} />
-      <TeamSection members={team} />
-      <AlumniSection alumni={alumni} />
-      <GallerySection images={gallery} />
-      <PartnersSection partenaires={partenaires} />
+      <HeroSection slides={slides} />
+
+      <QuickLinks
+        annee={settings.anneeAcademique}
+        links={[
+          { label: "Admission", href: "/condition-admission", icon: "admission" },
+          { label: "Brochure", href: "/telechargements", icon: "brochure" },
+          { label: "Préinscription", href: "/preinscription", icon: "inscription" },
+        ]}
+      />
+
+      <AboutSection
+        label="à propos du Groupe ISI"
+        title="Un institut de référence dans les TIC"
+        intro="Depuis plus de 27 ans, l'Institut Supérieur d'Informatique « ISI » s'engage dans la formation des jeunes cadres africains. Avec l'ambition du PDG, l'institut vise à diversifier l'offre de formation au Sénégal et dans la sous-région. Au fil des années, l'ISI a su se développer et compte aujourd'hui 9 campus, réunissant plus de trente nationalités, formant ainsi une belle et dynamique famille isienne."
+        onglets={[
+          {
+            id: "mission",
+            label: "Mission",
+            paragraphes: [
+              "Grâce à son expertise et la qualité de ses services, le Groupe ISI délivre des diplômes de Licence et Master reconnus à la fois par le monde de l'entreprise et par les instances d'accréditation nationales « ANAQ-Sup » et panafricaines « CAMES ».",
+            ],
+          },
+          {
+            id: "vision",
+            label: "Vision",
+            paragraphes: [
+              "Avec une offre de formation diversifiée dans les métiers d'avenir, une innovation permanente de ses programmes, et les brillants résultats obtenus aux différents examens et concours, l'Institut Supérieur d'Informatique « ISI » est leader dans son domaine au Sénégal et dans la sous-région.",
+            ],
+          },
+          {
+            id: "valeurs",
+            label: "Valeurs",
+            paragraphes: [
+              "Avec l'ambition du PDG de participer à la diversification de l'offre de formation au Sénégal et dans la sous-région, l'ISI a su se développer au fil des ans, comptant ainsi en son sein 09 campus, où se côtoient plus de trente nationalités, qui constituent la belle famille isienne.",
+            ],
+          },
+        ]}
+        atouts={[
+          "Diplômes reconnus par le CAMES et l'ANAQ-SUP",
+          "N°1 de la formation au Sénégal et en Mauritanie",
+          "Corps professoral qualifié",
+          "Près de 10 campus partout dans la sous-région",
+        ]}
+        images={["/media/mg-9698-cr3-at-2025-copie.jpg", "/media/img-9163.jpg"]}
+        href="/a-propos"
+        chiffres={[
+          {
+            valeur: settings.statEtudiants,
+            prefixe: "+ ",
+            titre: "Etudiants inscrits",
+            description: `Plus de ${new Intl.NumberFormat("fr-FR").format(settings.statEtudiants)} étudiants inscrits dans nos différents campus.`,
+            icone: "users",
+          },
+          {
+            titre: "Institut de référence dans les TIC",
+            description: "N°1 de la formation au Sénégal et en Mauritanie.",
+            icone: "award",
+          },
+          {
+            valeur: 20,
+            prefixe: "+ ",
+            titre: "Distinctions remportées",
+            description: "Plus de 20 distinctions remportées pour excellence et innovation.",
+            icone: "trophy",
+          },
+        ]}
+      />
+
+      <ProgrammesSection
+        programmes={programmes.map((p) => ({
+          titre: p.titre,
+          slug: p.slug,
+          niveau: p.niveau,
+          duree: p.duree,
+          accroche: p.accroche,
+          description: p.description,
+          image: p.image,
+          objectifs: p.objectifs,
+          departement: p.departement ? { nom: p.departement.nom, slug: p.departement.slug } : null,
+          campus: p.campus.map((c) => ({ nom: c.nom, slug: c.slug })),
+        }))}
+      />
+
+      <PreInscriptionCTA
+        anneeAcademique={settings.anneeAcademique}
+        ouvertes={settings.inscriptionsOuvertes}
+        image="/media/img-2298-1.jpg"
+        formations={formations.map((f) => ({ id: f.id, titre: f.titre }))}
+        campus={campus.map((c) => ({ id: c.id, nom: c.nom }))}
+      />
+
+      <TeamSection
+        members={team.map((m) => ({
+          prenom: m.prenom,
+          nom: m.nom,
+          slug: m.slug,
+          poste: m.poste,
+          photo: m.photo,
+          email: m.email,
+          telephone: m.telephone,
+          linkedin: m.linkedin,
+          twitter: m.twitter,
+          departement: m.departement?.nom ?? null,
+        }))}
+      />
+
+      <CampusSection
+        campus={campus.slice(0, 6).map((c) => ({
+          nom: c.nom,
+          slug: c.slug,
+          image: c.image,
+          ville: c.ville,
+          pays: c.pays,
+          isSiege: c.isSiege,
+          programmesCount: c._count.programmes,
+        }))}
+        description="Inscrivez-vous dès maintenant pour commencer votre parcours académique transformateur avec nous."
+      />
+
+      <EventsSection
+        events={events.map((e) => ({
+          titre: e.titre,
+          slug: e.slug,
+          description: e.description,
+          image: e.image,
+          dateDebut: e.dateDebut,
+          heure: e.heure,
+          lieu: e.lieu,
+          type: e.type,
+        }))}
+      />
+
+      <GalleryStrip images={gallery.slice(0, 5)} title="Vie estudiantine" />
+
+      <TestimonialsSection
+        testimonials={testimonials.map((t) => ({
+          nom: t.nom,
+          role: t.role,
+          contenu: t.contenu,
+          photo: t.photo,
+          note: t.note,
+          entreprise: t.entreprise,
+        }))}
+      />
+
+      <NewsSection
+        posts={posts.map((p) => ({
+          titre: p.titre,
+          slug: p.slug,
+          extrait: p.extrait,
+          image: p.image,
+          publishedAt: p.publishedAt,
+          tempsLecture: p.tempsLecture,
+          categorie: p.categorie ? { nom: p.categorie.nom, slug: p.categorie.slug, couleur: p.categorie.couleur } : null,
+        }))}
+      />
     </>
   );
 }

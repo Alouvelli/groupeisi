@@ -1,6 +1,10 @@
 # Groupe ISI – Site web Next.js 15 + Prisma + PostgreSQL + Redis + intégration ERP/CRM
 
-Refonte du site **new.groupeisi.com** (WordPress / thème Univet) en **Next.js 15** (App Router, Server Components, Server Actions) avec :
+Refonte du site **new.groupeisi.com** (WordPress / thème Univet) en **Next.js 15** (App Router, Server Components, Server Actions).
+
+Le site reproduit fidèlement l'original : **charte graphique du thème Univet** (bleu `#07294D`, jaune `#FDC72F`, beige `#F6F4EE`, titres Bitter + texte Inter), **structure des pages et des menus**, et **contenu réel du site** (campus, formations, équipe, actualités, témoignages, FAQ, frais de scolarité, photos). Les anciennes URL WordPress sont redirigées vers les nouvelles routes.
+
+Le projet ajoute par-dessus :
 
 - un système complet de **pré-inscription en ligne** (formulaire 6 étapes, 30+ champs) ;
 - une **intégration ERP/CRM bidirectionnelle** : client API configurable, queue BullMQ avec retry automatique (backoff exponentiel), webhooks signés HMAC, logs détaillés ;
@@ -131,8 +135,8 @@ docker compose logs -f worker           # suivre le worker
 | 1 | `SiteSettings` | Paramètres du site (coordonnées, réseaux, hero, chiffres clés, SEO, ouverture des inscriptions, options de rentrée) |
 | 2 | `NavigationItem` | Menu header / footer (hiérarchique, méga-menu) |
 | 3 | `Departement` | Départements (Génie Informatique, Réseaux & Systèmes, Management, Formation continue) |
-| 4 | `Programme` | Formations (niveau, durée, objectifs, débouchés, modules JSON, frais, accréditation, `erpCode`) – relation N-N avec `Campus` |
-| 5 | `Campus` | 9 campus (adresse, contacts, équipements, coordonnées GPS, `erpCode`) |
+| 4 | `Programme` | Formations (niveau, durée, semestres, crédits, volume horaire, unités d'enseignement JSON, objectifs, débouchés, frais annuels / inscription / mensualité, accréditation, `erpCode`) – relation N-N avec `Campus` |
+| 5 | `Campus` | Campus et annexes (zone, adresse, contacts, direction, mission/vision, chiffres, équipements, carte, `erpCode`) |
 | 6 | `Post` | Actualités |
 | 7 | `CategorieActualite` | Catégories d'actualités |
 | 8 | `Evenement` | Événements (agenda) |
@@ -158,8 +162,10 @@ Commandes : `npm run db:push`, `npm run db:seed`, `npm run db:studio`, `npm run 
 
 ```
 ├── docker-compose.yml / Dockerfile / docker/       # infrastructure
-├── prisma/schema.prisma · prisma/seed.ts           # modèles + données de démo
-├── public/                                          # logos SVG, logos partenaires, documents PDF
+├── prisma/schema.prisma · prisma/seed.ts           # modèles + contenu du site
+├── prisma/data/actualites.json                      # actualités extraites de new.groupeisi.com
+├── public/media/                                    # visuels du site (photos, logos, affiches)
+├── public/                                          # logos partenaires, documents PDF
 └── src/
     ├── app/
     │   ├── (site)/                                  # pages publiques (layout Header/Footer)
@@ -188,6 +194,7 @@ Commandes : `npm run db:push`, `npm run db:seed`, `npm run db:studio`, `npm run 
     │   ├── validations.ts schémas zod (inscription 30+ champs, contact, newsletter, login, ERP, programme, article, paramètres)
     │   ├── data.ts        requêtes des pages publiques
     │   └── constants.ts · utils.ts · env.ts
+    ├── fonts/             Bitter et Inter auto-hébergées (woff2)
     ├── middleware.ts      protection /admin et /api/admin
     └── worker.ts          point d'entrée du worker BullMQ
 ```
@@ -196,26 +203,63 @@ Commandes : `npm run db:push`, `npm run db:seed`, `npm run db:studio`, `npm run 
 
 ## Pages du site
 
+Les routes reprennent celles de new.groupeisi.com (les anciennes URL WordPress sont redirigées en 308 – voir `next.config.ts`).
+
 | Route | Contenu |
 |---|---|
-| `/` | Homepage : bandeau d'annonce, top bar, header sticky avec méga-menu, hero slider (3 slides), barre de chiffres clés animée, « Pourquoi choisir ISI », départements, formations (filtre par niveau), CTA pré-inscription, campus, actualités, agenda, témoignages (carrousel), équipe, alumni, galerie (lightbox), partenaires (défilement), newsletter, footer 4 colonnes |
-| `/presentation` | Histoire, mission/vision/valeurs, chiffres, frise chronologique, direction, partenaires |
-| `/departements`, `/departements/[slug]` | Liste + fiche (contenu, formations par niveau, enseignants) |
-| `/programmes`, `/programmes/[slug]` | Catalogue filtrable (niveau, département, campus, recherche) + fiche (onglets présentation / programme / débouchés / admission, frais, campus, partage, JSON-LD `Course`) |
-| `/admissions` | Procédure en 4 étapes, conditions par niveau, pièces à fournir, grille des frais, FAQ admissions |
-| `/campus`, `/campus/[slug]` | 9 campus groupés par zone + fiche (coordonnées, carte Google Maps, équipements, galerie, formations, équipe, événements) |
-| `/actualites`, `/actualites/[slug]` | Liste paginée (catégories, tags, recherche) + article (JSON-LD `NewsArticle`, partage, articles similaires) |
-| `/evenements`, `/evenements/[slug]` | Agenda (à venir / passés) + fiche (ajout à Google Agenda, JSON-LD `Event`) |
-| `/alumni`, `/alumni/[slug]` | Réseau alumni + portrait |
-| `/equipe`, `/equipe/[slug]` | Direction, enseignants, administration + fiche |
-| `/galerie` | Galerie par catégorie avec lightbox |
+| `/` | Accueil : barre supérieure, header avec méga-menu « Formations » et panneau latéral, diaporama d'affiches, accès rapides (Admission / Brochure / Préinscription), « à propos du Groupe ISI » (onglets Mission · Vision · Valeurs + chiffres clés), Programmes & Formations, « Les inscriptions sont ouvertes » (formulaire), Nos chefs de département, Campus & Annexes, Évènements, bande « Vie estudiantine », témoignages, actualités, bande galerie + pied de page |
+| `/a-propos` | À propos de ISI, citation du président, chiffres, Notre Vision, encarts, « Les 72H du Groupe ISI », témoignages, galerie |
+| `/a-propos/histoire` | Histoire du groupe et frise des distinctions (Gov'athon, Quality Achievements Awards, académies Huawei et Cisco…) |
+| `/a-propos/administration` | Répertoire administratif : personnels fréquemment contactés, direction, responsables de campus |
+| `/a-propos/localisation` | Les 14 implantations avec carte Google Maps, site propre du campus, groupées par zone (Dakar, annexes, régions, Mauritanie) |
+| `/mot-du-president` | Mot d'Abdou Sambe, président du Groupe ISI + galerie |
+| `/formations`, `/formations/[slug]` | Catalogue filtrable (campus, départements, niveaux, recherche) + fiche formation (sommaire ancré, détails du programme, unités d'enseignement, coût & modalités, admissions, demande d'information, JSON-LD `Course`) |
+| `/departements`, `/departements/[slug]` | Les 4 départements + fiche (présentation, contact, formations par niveau, équipe) |
+| `/campus`, `/campus/[slug]` | Campus & annexes + fiche (direction, mission/vision, chiffres, équipements, carte, formations, équipe, événements, galerie) |
+| `/frais-d-etudes` | Grille tarifaire par cycle (coût annuel, droits d'inscription, mensualité), FAQ et formulaire |
+| `/condition-admission` | Exigences, pièces à fournir, procédure en 4 étapes, profils, FAQ |
+| `/preinscription`, `/preinscription/confirmation` | Formulaire 6 étapes (identité, coordonnées, parcours, formation, tuteur, finalisation), brouillon en `localStorage`, honeypot, page de confirmation avec numéro de dossier |
+| `/actualites`, `/actualites/[slug]` | Liste paginée avec catégories, recherche et articles récents + article (JSON-LD `NewsArticle`) |
+| `/evenements`, `/evenements/[slug]` | Agenda (à venir / passés) + fiche (ajout à Google Agenda, carte, JSON-LD `Event`) |
+| `/alumnis`, `/alumni/[slug]` | Réseau alumni (communauté mondiale, portraits, événements, galerie, actualités) + portrait |
+| `/equipe`, `/equipe/[slug]` | Direction, chefs de département, administration + fiche |
+| `/formation-en-ligne` | Offre à distance (FOAD) : licences, masters et certificats en ligne, accès à la plateforme e-learning, arguments et contacts |
+| `/temoignages` | Interviews vidéo (YouTube) et témoignages écrits |
+| `/galerie` | Galerie filtrable par catégorie avec visionneuse |
+| `/librairie` | Collections, chiffres clés, documents à télécharger, actualités |
 | `/faq` | FAQ par catégorie (accordéon, JSON-LD `FAQPage`) |
-| `/pre-inscription`, `/pre-inscription/confirmation` | Formulaire 6 étapes (identité, coordonnées, parcours, formation, tuteur, finalisation), brouillon sauvegardé en `localStorage`, honeypot anti-spam, page de confirmation avec numéro de dossier |
-| `/contact` | Formulaire de contact + coordonnées siège + carte + tous les campus |
+| `/contact` | Coordonnées (email, téléphone, adresse, carrière), formulaire, carte et tous les campus |
 | `/telechargements` | Documents PDF par type |
 | `/mentions-legales`, `/confidentialite` | Pages légales |
 | `404` | Page introuvable personnalisée |
 | `/sitemap.xml`, `/robots.txt` | SEO (métadonnées Open Graph / Twitter sur toutes les pages) |
+
+### Fidélité au site d'origine
+
+- **Charte** : couleurs et typographies extraites du kit Elementor et du thème Univet ; polices Bitter et Inter auto-hébergées (`src/fonts/`).
+- **Composants** : header deux niveaux, méga-menu, panneau latéral, cartes formation / campus / équipe / événement / actualité / témoignage, accordéons, onglets et pied de page reprennent la structure du thème.
+- **Contenu** : campus, départements, 26 formations (durée, crédits, volume horaire, unités d'enseignement, frais), équipe, alumni, témoignages, FAQ et 18 actualités réelles proviennent du site ; les textes des actualités sont extraits dans `prisma/data/actualites.json`.
+- **Images** : 100 visuels du site sont téléchargés, redimensionnés et servis depuis `public/media/` (aucune dépendance à new.groupeisi.com en production).
+- **Redirections** : `/programs/:slug`, `/faculties/:slug`, `/blog-grid`, `/contact-2`, `/apply-now`, `/frais-etudes`, `/2025/01/10/:slug`… redirigent vers les routes correspondantes.
+
+### Sources de contenu
+
+Trois sites du Groupe ISI ont servi de référence :
+
+| Source | Rôle |
+|---|---|
+| `new.groupeisi.com` | Référence de **design** (thème Univet / Elementor) et de structure : mise en page, composants, routes, visuels. |
+| `groupeisi.com` (site en vigueur) | Référence de **données** : coordonnées, organigramme, sites propres des campus, menu des départements, offre FOAD, distinctions et cellule COIP, actualités récentes. |
+| `test.groupeisi.com` | Référence de **fiches formation** : objectifs, compétences, débouchés, conditions d'admission et unités d'enseignement, ainsi que l'organigramme et ses photos. |
+
+Les contenus extraits sont versionnés dans des fichiers de données relus par le seed :
+
+- `prisma/data/actualites.json` — 18 actualités (titre, extrait, contenu HTML, images, catégorie, date).
+- `prisma/data/programmes-details.json` — fiches détaillées de 25 formations, régénérables avec `node scripts/normaliser-programmes.mjs` (suppression des phrases d'amorce, éclatement des puces collées, réparation des mots recollés par l'export Elementor).
+
+Quand le site de référence et la fiche détaillée divergent, la liste la plus complète l'emporte ; les compétences et les conditions d'admission viennent toujours de la fiche d'origine. Le rattachement de chaque formation à son département suit le menu de `groupeisi.com` et les pages département de `test.groupeisi.com`.
+
+> Deux libellés du pied de page de l'original (« About Univet », « Univet Library ») sont des restes du thème de démonstration : ils ont été remplacés par « À propos » et « Librairie », qui pointent vers les mêmes pages. Ils restent modifiables depuis `/admin`.
 
 ---
 
@@ -326,10 +370,12 @@ Templates HTML dans `src/lib/email.ts` : confirmation de pré-inscription (numé
 
 ## Tests réalisés
 
-- `npm run lint` : 0 erreur · `npm run typecheck` : OK · `npm run build` : OK (47 routes).
-- Rendu vérifié de toutes les pages publiques et admin (HTTP 200) en dev et en production (`next start`).
-- Parcours navigateur (Playwright / Chromium headless) : formulaire de pré-inscription 6 étapes avec validation, page de confirmation, formulaire de contact, newsletter, connexion admin, test de connexion ERP.
-- Chaîne ERP avec un serveur ERP simulé : job → appel signé HMAC → `SYNCED` + mapping ; retry après 2 réponses 503 puis succès ; erreur définitive sans retry ; notification d'échec ; webhooks signés (valide → statut mis à jour, invalide → 401, `ping`).
+- `npm run lint` : 0 erreur · `npm run typecheck` : OK · `npm run build` : OK.
+- Base PostgreSQL 16 locale, `npm run db:push` puis `npm run db:seed` : 14 campus, 4 départements, 26 formations, 18 actualités, 12 membres de l'administration, 11 témoignages, 8 questions FAQ.
+- Rendu vérifié en production (`npm start`) : toutes les pages publiques et l'espace admin répondent en HTTP 200, `/sitemap.xml` liste 80 URL.
+- Redirections des anciennes URL WordPress vérifiées (308 vers la route correspondante).
+- Rendu comparé au site d'origine en 1440 px et en 390 px (aucun débordement horizontal).
+- Audit Playwright de 36 pages en 1440 px et 390 px : aucun débordement, aucune erreur JavaScript, aucune réponse HTTP ≥ 400.
 
 ---
 

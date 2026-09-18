@@ -1,34 +1,61 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/ui/Breadcrumb";
-import { Section, SectionHeading } from "@/components/ui/Section";
-import { Stagger, StaggerItem } from "@/components/ui/Reveal";
+import { Container } from "@/components/ui/Container";
+import { SectionLabel } from "@/components/ui/Section";
 import { CampusCard } from "@/components/cards/CampusCard";
-import { getCampus } from "@/lib/data";
+import { PreInscriptionCTA } from "@/components/sections/PreInscriptionCTA";
+import { getCampus, getSettings, getProgrammesForForm } from "@/lib/data";
 
-export const metadata: Metadata = { title: "Nos campus", description: "Les 9 campus du Groupe ISI au Sénégal (Dakar, Keur Massar, Pikine, Kaolack, Kaffrine, Diourbel) et en Mauritanie (Nouakchott, Nouadhibou)." };
+export const metadata: Metadata = {
+  title: "Nos campus",
+  description: "Les campus et annexes du Groupe ISI : Dakar, Keur Massar, SupTech, Diourbel, Kaolack, Kaffrine, Ziguinchor, Sédhiou et la Mauritanie.",
+};
 
-export default async function CampusListPage() {
-  const campus = await getCampus();
-  const groups = [
-    { title: "Dakar et banlieue", items: campus.filter((c) => ["Dakar", "Keur Massar", "Pikine", "Rufisque", "Guédiawaye"].includes(c.ville)) },
-    { title: "Régions du Sénégal", items: campus.filter((c) => c.pays === "Sénégal" && !["Dakar", "Keur Massar", "Pikine", "Rufisque", "Guédiawaye"].includes(c.ville)) },
-    { title: "Mauritanie", items: campus.filter((c) => c.pays !== "Sénégal") },
-  ].filter((g) => g.items.length);
+export default async function CampusPage() {
+  const [campus, settings, formations] = await Promise.all([getCampus(), getSettings(), getProgrammesForForm()]);
+
   return (
     <>
-      <PageHeader title="Nos campus" subtitle="9 campus modernes au Sénégal et en Mauritanie pour étudier près de chez vous." items={[{ label: "L'École" }, { label: "Campus" }]} />
-      {groups.map((g, gi) => (
-        <Section key={g.title} variant={gi % 2 ? "surface" : "white"} padding="md">
-          <SectionHeading label="Campus" title={g.title} align="left" />
-          <Stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {g.items.map((c) => (
-              <StaggerItem key={c.id}>
-                <CampusCard nom={c.nom} slug={c.slug} ville={c.ville} pays={c.pays} adresse={c.adresse} telephone={c.telephone} image={c.image} isSiege={c.isSiege} programmesCount={c._count.programmes} />
-              </StaggerItem>
+      <PageHeader
+        title="Nos campus"
+        subtitle={`${settings.statCampus} campus au Sénégal et en Mauritanie, réunissant plus de trente nationalités.`}
+        items={[{ label: "Nos campus" }]}
+        image="/media/img-9163.jpg"
+      />
+
+      <section className="bg-white py-16 lg:py-[100px]">
+        <Container>
+          <div className="mb-12 max-w-3xl">
+            <SectionLabel>Campus &amp; Annexes</SectionLabel>
+            <h2 className="section-title">Nos Campus :</h2>
+          </div>
+          <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
+            {campus.map((c) => (
+              <CampusCard
+                key={c.id}
+                variant="detail"
+                cta="Explorez davantage"
+                nom={c.nom}
+                slug={c.slug}
+                ville={c.ville}
+                pays={c.pays}
+                adresse={c.adresse}
+                telephone={c.telephone}
+                image={c.image}
+                isSiege={c.isSiege}
+                programmesCount={c._count.programmes}
+              />
             ))}
-          </Stagger>
-        </Section>
-      ))}
+          </div>
+        </Container>
+      </section>
+
+      <PreInscriptionCTA
+        anneeAcademique={settings.anneeAcademique}
+        ouvertes={settings.inscriptionsOuvertes}
+        formations={formations.map((f) => ({ id: f.id, titre: f.titre }))}
+        campus={campus.map((c) => ({ id: c.id, nom: c.nom }))}
+      />
     </>
   );
 }

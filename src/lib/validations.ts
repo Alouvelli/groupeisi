@@ -115,7 +115,7 @@ export type ERPConfigFormValues = z.input<typeof erpConfigSchema>;
 export const programmeSchema = z.object({
   titre: z.string().trim().min(3).max(150),
   slug: z.string().trim().min(2).max(150).regex(/^[a-z0-9-]+$/, "Slug invalide (lettres minuscules, chiffres, tirets)"),
-  niveau: z.enum(["BTS", "LICENCE", "MASTER", "DOCTORAT", "CERTIFICAT", "FORMATION_CONTINUE"]),
+  niveau: z.enum(["BTS", "BACHELOR", "LICENCE", "MASTER", "INGENIEUR", "DOCTORAT", "CERTIFICAT", "FORMATION_CONTINUE"]),
   duree: z.string().trim().min(1).max(40),
   departementId: z.string().min(1, "Département requis"),
   accroche: z.string().trim().max(200).optional().or(z.literal("")),

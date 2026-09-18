@@ -13,7 +13,7 @@ export default function NotFound() {
         <p className="mx-auto mt-4 max-w-xl text-white/80">La page que vous recherchez n&apos;existe pas ou a été déplacée. Retournez à l&apos;accueil ou explorez nos formations.</p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Button href="/" variant="secondary"><Home className="h-4 w-4" /> Accueil</Button>
-          <Button href="/programmes" variant="outline-white"><Search className="h-4 w-4" /> Nos formations</Button>
+          <Button href="/formations" variant="outline-white"><Search className="h-4 w-4" /> Nos formations</Button>
           <Link href="/contact" className="inline-flex h-11 items-center gap-2 px-4 text-sm font-bold text-white/80 hover:text-white"><ArrowLeft className="h-4 w-4" /> Contact</Link>
         </div>
       </div>

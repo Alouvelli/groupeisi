@@ -1,21 +1,50 @@
-import { Section, SectionHeading } from "@/components/ui/Section";
-import { PartenaireLogo } from "@/components/cards/PartenaireLogo";
+import Image from "next/image";
+import { Container } from "@/components/ui/Container";
+import { SectionLabel } from "@/components/ui/Section";
 
-export function PartnersSection({ partenaires, compact = false }: { partenaires: { id: string; nom: string; logo: string; url?: string | null }[]; compact?: boolean }) {
+export interface Partenaire {
+  nom: string;
+  logo: string;
+  url?: string | null;
+}
+
+/** Bande des partenaires : défilement continu des logos. */
+export function PartnersSection({
+  partenaires,
+  label = "Nos partenaires",
+  title = "Ils nous font confiance",
+  variant = "white",
+}: {
+  partenaires: Partenaire[];
+  label?: string;
+  title?: string;
+  variant?: "white" | "surface";
+}) {
   if (!partenaires.length) return null;
   const doubled = [...partenaires, ...partenaires];
   return (
-    <Section variant="surface" padding={compact ? "sm" : "md"} id="partenaires" container={false} className="overflow-hidden">
-      {!compact && <SectionHeading label="Partenaires" title="Ils nous font confiance" description="Entreprises, institutions et universités partenaires du Groupe ISI." />}
-      <div className="relative" aria-label="Logos des partenaires">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-surface to-transparent" aria-hidden />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-surface to-transparent" aria-hidden />
-        <div className="flex w-max gap-6 animate-marquee hover:[animation-play-state:paused]">
+    <section className={variant === "surface" ? "overflow-hidden bg-surface py-16 lg:py-20" : "overflow-hidden bg-white py-16 lg:py-20"}>
+      <Container>
+        <div className="mb-10 text-center">
+          <SectionLabel className="justify-center">{label}</SectionLabel>
+          <h2 className="section-title">{title}</h2>
+        </div>
+      </Container>
+      <div className="relative">
+        <div className="flex w-max animate-marquee items-center gap-6">
           {doubled.map((p, i) => (
-            <PartenaireLogo key={`${p.id}-${i}`} {...p} />
+            <div key={p.nom + i} className="flex h-24 w-48 shrink-0 items-center justify-center rounded-lg border border-line bg-white px-6">
+              <Image
+                src={p.logo}
+                alt={p.nom}
+                width={160}
+                height={64}
+                className="h-12 w-auto object-contain opacity-80 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+              />
+            </div>
           ))}
         </div>
       </div>
-    </Section>
+    </section>
   );
 }

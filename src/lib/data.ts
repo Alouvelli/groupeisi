@@ -23,6 +23,7 @@ export const getNavigation = cache(async () => {
     include: { children: { where: { isActive: true }, orderBy: { ordre: "asc" } } },
   });
   return {
+    topBar: items.filter((i) => i.location === "TOP_BAR"),
     header: items.filter((i) => i.location === "HEADER"),
     footer: items.filter((i) => i.location === "FOOTER"),
     footerSecondary: items.filter((i) => i.location === "FOOTER_SECONDARY"),
@@ -88,7 +89,7 @@ export const getProgrammesForForm = cache(async () =>
 export const getCampus = cache(async () =>
   prisma.campus.findMany({
     where: { isActive: true },
-    orderBy: [{ isSiege: "desc" }, { ordre: "asc" }],
+    orderBy: { ordre: "asc" },
     include: { _count: { select: { programmes: true } } },
   }),
 );

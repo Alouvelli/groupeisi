@@ -5,7 +5,7 @@ import { absoluteUrl } from "@/lib/utils";
 export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const statics = ["/", "/presentation", "/departements", "/programmes", "/admissions", "/campus", "/actualites", "/evenements", "/alumni", "/equipe", "/galerie", "/faq", "/pre-inscription", "/contact", "/telechargements"];
+  const statics = ["/", "/a-propos", "/departements", "/formations", "/condition-admission", "/campus", "/actualites", "/evenements", "/alumnis", "/equipe", "/galerie", "/faq", "/preinscription", "/contact", "/telechargements", "/frais-d-etudes", "/librairie", "/temoignages", "/mot-du-president", "/a-propos/histoire", "/a-propos/administration", "/a-propos/localisation", "/mentions-legales", "/confidentialite"];
   const [deps, progs, campus, posts, events, alumni, personnes] = await Promise.all([
     prisma.departement.findMany({ where: { isActive: true }, select: { slug: true, updatedAt: true } }),
     prisma.programme.findMany({ where: { isActive: true }, select: { slug: true, updatedAt: true } }),
@@ -19,7 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...statics.map((p) => ({ url: absoluteUrl(p), lastModified: new Date(), changeFrequency: "weekly" as const, priority: p === "/" ? 1 : 0.8 })),
     ...map("/departements", deps, 0.7),
-    ...map("/programmes", progs, 0.8),
+    ...map("/formations", progs, 0.8),
     ...map("/campus", campus, 0.7),
     ...map("/actualites", posts, 0.6),
     ...map("/evenements", events, 0.5),

@@ -31,7 +31,20 @@ export const TiktokIcon = (p: IconProps) => (
   <svg {...svg(p)}><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-1.8-2.5V9.7a5.7 5.7 0 1 0 4.9 5.7V9.2a7.3 7.3 0 0 0 4.3 1.4V7.5a4.3 4.3 0 0 1-3.2-1.7z" /></svg>
 );
 
-export function SocialLinks({ socials, className, itemClassName }: { socials: Socials; className?: string; itemClassName?: string }) {
+export function SocialLinks({
+  socials,
+  className,
+  itemClassName,
+  withLabels = false,
+  shape = "circle",
+}: {
+  socials: Socials;
+  className?: string;
+  itemClassName?: string;
+  /** Affiche le nom du réseau à côté de l'icône (panneau latéral du thème) */
+  withLabels?: boolean;
+  shape?: "circle" | "square";
+}) {
   const items = [
     { href: socials.facebook, Icon: FacebookIcon, label: "Facebook" },
     { href: socials.instagram, Icon: InstagramIcon, label: "Instagram" },
@@ -42,10 +55,23 @@ export function SocialLinks({ socials, className, itemClassName }: { socials: So
   ].filter((i) => i.href);
   if (!items.length) return null;
   return (
-    <div className={cn("flex items-center gap-2", className)}>
+    <div className={cn("flex flex-wrap items-center gap-2", className)}>
       {items.map(({ href, Icon, label }) => (
-        <a key={label} href={href!} target="_blank" rel="noopener noreferrer" aria-label={label} className={cn("inline-flex h-8 w-8 items-center justify-center rounded-full transition hover:bg-secondary hover:text-white", itemClassName)}>
+        <a
+          key={label}
+          href={href!}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={label}
+          className={cn(
+            "inline-flex h-9 items-center justify-center gap-2 text-[13px] font-medium transition hover:bg-secondary hover:text-secondary-fg",
+            shape === "circle" ? "rounded-full" : "rounded",
+            withLabels ? "px-3" : "w-9",
+            itemClassName,
+          )}
+        >
           <Icon className="h-4 w-4" />
+          {withLabels && <span>{label}</span>}
         </a>
       ))}
     </div>

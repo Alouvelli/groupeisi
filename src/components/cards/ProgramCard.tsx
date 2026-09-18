@@ -1,70 +1,111 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Clock, MapPin, ArrowRight, Award } from "lucide-react";
-import { Card } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
+import { ArrowRight, Check, MapPin, Network } from "lucide-react";
 import { NIVEAU_LABELS } from "@/lib/constants";
+import { cn, truncate } from "@/lib/utils";
 import type { Niveau } from "@prisma/client";
 
 export interface ProgramCardProps {
   titre: string;
   slug: string;
   niveau: Niveau;
-  duree: string;
+  duree?: string | null;
   accroche?: string | null;
   description?: string;
   image?: string | null;
-  accreditation?: string | null;
-  departement?: { nom: string; couleur?: string | null } | null;
-  campus?: { nom: string }[];
-  compact?: boolean;
+  objectifs?: string[];
+  departement?: { nom: string; slug: string } | null;
+  campus?: { nom: string; slug: string }[];
+  /** « row » : image à gauche (accueil) · « tile » : image au-dessus (catalogue) */
+  variant?: "row" | "tile";
+  cta?: string;
 }
 
-const niveauVariant: Record<Niveau, "primary" | "secondary" | "soft" | "softOrange" | "success" | "neutral"> = {
-  BTS: "soft",
-  LICENCE: "primary",
-  MASTER: "secondary",
-  DOCTORAT: "secondary",
-  CERTIFICAT: "success",
-  FORMATION_CONTINUE: "neutral",
-};
+/**
+ * Carte de formation du thème (widget « rs-programs ») : cadre blanc,
+ * visuel arrondi, titre, liste d'objectifs à puces et bouton « S'inscrire ».
+ */
+export function ProgramCard({
+  titre,
+  slug,
+  niveau,
+  duree,
+  accroche,
+  description,
+  image,
+  objectifs = [],
+  departement,
+  campus = [],
+  variant = "row",
+  cta = "S'inscrire",
+}: ProgramCardProps) {
+  const puces = objectifs.length ? objectifs.slice(0, 3) : accroche ? [accroche] : description ? [truncate(description, 220)] : [];
 
-export function ProgramCard({ titre, slug, niveau, duree, accroche, description, image, accreditation, departement, campus, compact }: ProgramCardProps) {
-  const campusLabel = campus && campus.length > 0 ? (campus.length >= 5 ? "Tous les campus" : campus.map((c) => c.nom.replace(/^ISI\s+/, "").replace(/\s*\(.*\)$/, "")).slice(0, 2).join(", ") + (campus.length > 2 ? ` +${campus.length - 2}` : "")) : null;
   return (
-    <Card className="flex h-full flex-col">
-      <Link href={`/programmes/${slug}`} className="flex h-full flex-col">
-        {!compact && (
-          <div className="relative aspect-[16/10] overflow-hidden bg-primary-50">
-            <Image src={image || "/images/placeholder.svg"} alt={titre} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent" aria-hidden />
-            <div className="absolute left-4 top-4 flex gap-2">
-              <Badge variant={niveauVariant[niveau]}>{NIVEAU_LABELS[niveau]}</Badge>
-            </div>
-            {accreditation && (
-              <span className="absolute bottom-4 left-4 inline-flex items-center gap-1 rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-bold text-primary">
-                <Award className="h-3.5 w-3.5 text-secondary" /> {accreditation}
-              </span>
+    <article
+      className={cn(
+        "group flex h-full gap-[30px] rounded-xl border border-line bg-white p-3 transition hover:shadow-card",
+        variant === "row" ? "flex-col sm:flex-row sm:items-center" : "flex-col",
+      )}
+    >
+      <Link
+        href={`/formations/${slug}`}
+        className={cn("block shrink-0 overflow-hidden rounded-xl", variant === "row" ? "sm:w-[260px]" : "w-full")}
+        tabIndex={-1}
+        aria-hidden
+      >
+        <Image
+          src={image || "/media/mg-9941-cr3-at-2025-copie.jpg"}
+          alt=""
+          width={600}
+          height={900}
+          className={cn("w-full object-cover transition duration-500 group-hover:scale-[1.03]", variant === "row" ? "h-[260px] sm:h-[335px]" : "h-[300px]")}
+        />
+      </Link>
+
+      <div className={cn("flex flex-1 flex-col", variant === "row" ? "pr-0 sm:pr-[30px]" : "px-3 pb-4")}>
+        <span className="mb-2 inline-flex items-center gap-2 text-[13px] font-medium uppercase tracking-wide text-primary">
+          {NIVEAU_LABELS[niveau]}
+          {duree ? <span className="text-body normal-case tracking-normal">· {duree}</span> : null}
+        </span>
+        <h4 className="mb-3 font-heading text-[20px] font-semibold leading-[1.3] text-dark transition group-hover:text-primary lg:text-[24px] lg:leading-[34px]">
+          <Link href={`/formations/${slug}`}>{titre}</Link>
+        </h4>
+
+        {puces.length > 0 && (
+          <ul className="mb-4 space-y-2">
+            {puces.map((p, i) => (
+              <li key={i} className="flex gap-2.5 text-[15px] font-medium leading-6 text-dark">
+                <Check className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden />
+                <span>{truncate(p, 160)}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {(departement || campus.length > 0) && (
+          <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[13px] text-body">
+            {campus[0] && (
+              <Link href={`/campus/${campus[0].slug}`} className="inline-flex items-center gap-1.5 transition hover:text-primary">
+                <MapPin className="h-3.5 w-3.5 text-primary" aria-hidden /> {campus[0].nom}
+              </Link>
+            )}
+            {departement && (
+              <Link href={`/departements/${departement.slug}`} className="inline-flex items-center gap-1.5 transition hover:text-primary">
+                <Network className="h-3.5 w-3.5 text-primary" aria-hidden /> {departement.nom}
+              </Link>
             )}
           </div>
         )}
-        <div className="flex flex-1 flex-col p-6">
-          {compact && <Badge variant={niveauVariant[niveau]} className="mb-3 self-start">{NIVEAU_LABELS[niveau]}</Badge>}
-          {departement && <span className="mb-1.5 text-xs font-bold uppercase tracking-wider" style={{ color: departement.couleur ?? "#f26522" }}>{departement.nom}</span>}
-          <h3 className="text-lg font-extrabold leading-snug text-primary transition group-hover:text-secondary">{titre}</h3>
-          <p className="mt-2 line-clamp-2 flex-1 text-sm text-muted">{accroche ?? description}</p>
-          <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold text-slate-500">
-            <span className="inline-flex items-center gap-1"><Clock className="h-3.5 w-3.5 text-secondary" /> {duree}</span>
-            {campusLabel && <span className="inline-flex items-center gap-1"><MapPin className="h-3.5 w-3.5 text-secondary" /> {campusLabel}</span>}
-          </div>
-          <div className="mt-5 flex items-center justify-between border-t border-line pt-4">
-            <span className="text-sm font-bold text-primary">Voir la formation</span>
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary-50 text-primary transition group-hover:bg-secondary group-hover:text-white">
-              <ArrowRight className="h-4 w-4" />
-            </span>
-          </div>
-        </div>
-      </Link>
-    </Card>
+
+        <Link
+          href={`/formations/${slug}`}
+          className="mt-auto inline-flex w-fit items-center gap-2 rounded-[30px] bg-primary px-6 py-3 text-sm font-medium text-white transition hover:bg-secondary hover:text-secondary-fg"
+        >
+          {cta}
+          <ArrowRight className="h-4 w-4" aria-hidden />
+        </Link>
+      </div>
+    </article>
   );
 }

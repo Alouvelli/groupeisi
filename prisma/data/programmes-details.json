@@ -1,0 +1,1417 @@
+{
+  "licence-assistanat-de-direction": {
+    "source": "https://test.groupeisi.com/licence-assistanat-de-direction/",
+    "titreSource": "Assistanat de direction",
+    "intro": "L’objectif général de la licence professionnelle en Assistanat de direction est de former des assistants de direction, capables d’organiser et de coordonner, les activités de leurs supérieurs hiérarchiques",
+    "objectifs": [
+      "Organiser un secrétariat ( création et suivi de dossier, gestion de l'agenda, traitement du courrier, gestion des relations internes etexternes, gestion de l'accueil, prise de notes rapide )",
+      "Assister son Supérieur hiérarchique, dans son travail quotidien, qui passe par le management, la conduite de réunion, la gestion du temps, la motivation des collaborateurs, la gestion des conflits et la numérisation des ressources documentaires"
+    ],
+    "competences": [
+      "Sens de l'organisation, rigueur",
+      "Capacités relationnelles développées",
+      "Aptitude au travail en équipe",
+      "Bonne capacité d'écoute",
+      "Maitrise du Pack-Office",
+      "Capacités d'expression orale et rédactionnelle",
+      "Disponible, autonome, souriant(e)",
+      "Esprit d'initiative, la discrétion, l'adaptation à toute situation et le sens d'observation",
+      "Une bonne présentation",
+      "Conscience professionnelle"
+    ],
+    "debouches": [
+      "Assistant (e) de direction",
+      "Secrétaire de direction",
+      "Attaché (e) de direction",
+      "Assistant ( e ) service scommerciaux",
+      "Responsable service administratif"
+    ],
+    "admission": [
+      "Les titulaires du baccalauréat ou de tout autre diplôme équivalent peuvent être admis à la formation, après examen du dossier de candidature. L'examen du dossier peut éventuellement être complété par un entre tien ou un test devant un jury",
+      "Composition du dossier de candidature",
+      "Une photocopie légalisée du Baccalauréat",
+      "Le relevé des notes du Bac",
+      "Une photocopie légalisée du dernier diplôme ou de l'attestation de réussite (pour l'inscription en licence 2 ou licence 3)",
+      "Deux extraits de naissance",
+      "Quatre photos d'identité",
+      "Un relevé de notes des deux dernières années d'études",
+      "Une lettre de motivation"
+    ],
+    "unitesEnseignement": [
+      {
+        "intitule": "Durée",
+        "contenu": "La formation dispensée est répartie sur six (6) semestres d'études pour un volume horaire total de 1800 heures.( voir maquette de formation)"
+      },
+      {
+        "intitule": "Répartition des enseignements",
+        "contenu": "Les enseignements sont organisés en cours magistraux, travaux dirigés (TD), travaux pratiques (TP); séminaires spécialisés, visite en entreprise et projet pour une durée de trois ans répartis sur six semestres"
+      },
+      {
+        "intitule": "Chaque semestre est composé de 15 semaines dont"
+      },
+      {
+        "intitule": "Trois (3) semaines d'évaluation"
+      },
+      {
+        "intitule": "Douze (12) semaines d'enseignement",
+        "contenu": "A la fin du sixième du cycle l 'étudiant ayant capitalisé 180 crédits obtient-le diplôme de licence professionnelle en Réseaux Informatiques"
+      }
+    ]
+  },
+  "licence-banque-finance-assurance": {
+    "source": "https://test.groupeisi.com/licence-banque-finance-assurance/",
+    "titreSource": "Banque Finance Assurance",
+    "intro": "Ce programme est conçu pour développer des compétences techniques commerciales comportementales et managériales que l’on peut s’attendre d’un professionnel qui doit exercer dans les entreprises d’assurance, les banques et le milieu financier",
+    "objectifs": [
+      "Ce programme est conçu pour développer des compétences techniques commerciales comportementales et managériales que l'on peut s'attendre d'un professionnel qui doit exercer dans les entreprises d'assurance, les banques et le milieu financier"
+    ],
+    "competences": [
+      "Le programme forme des commerciaux, chargé de clientèle, conseillers commerciaux et assistants commerciaux dans les secteurs de la banque et de l'assurance de telle sorte qu'ils soient aptes à",
+      "Analyser les besoins des clients en produit bancaire et d'assurance",
+      "Apporter des solutions aux besoins et assurer le suivi des dossiers",
+      "Identifier, évaluer, prévenir et financer les risques afférents à leur mission",
+      "Adopter une approche patrimoniale du client",
+      "Accéder à moyen terme à des postes de management ou dédiés au marché des professionnels"
+    ],
+    "debouches": [
+      "Chargé de la clientèle (particuliers et entreprises)",
+      "Rédacteur de contrats et de sinistres en assurance",
+      "Gestionnaire d'agence ou de cabinet de courtage",
+      "Responsable comptable en assurance ou banque",
+      "Gestionnaire de risques et conseillers en patrimoine"
+    ],
+    "admission": [
+      "Les titulaires du baccalauréat ou de tout autre diplôme équivalent peuvent être admis à la formation, après examen du dossier de candidature. L'examen du dossier peut éventuellement être complété par un entre tien ou un test devant un jury",
+      "Composition du dossier de candidature",
+      "Une photocopie légalisée du Baccalauréat",
+      "Le relevé des notes du Bac",
+      "Une photocopie légalisée du dernier diplôme ou de l'attestation de réussite (pour l'inscription en licence 2 ou licence 3)",
+      "Deux extraits de naissance",
+      "Quatre photos d'identité",
+      "Un relevé de notes des deux dernières années d'études",
+      "Une lettre de motivation"
+    ],
+    "unitesEnseignement": [
+      {
+        "intitule": "Durée",
+        "contenu": "La formation dispensée est répartie sur six (6) semestres d'études pour un volume horaire total de 1800 heures.( voir maquette de formation)"
+      },
+      {
+        "intitule": "Répartition des enseignements",
+        "contenu": "Les enseignements sont organisés en cours magistraux, travaux dirigés (TD), travaux pratiques (TP); séminaires spécialisés, visite en entreprise et projet pour une durée de trois ans répartis sur six semestres"
+      },
+      {
+        "intitule": "Chaque semestre est composé de 15 semaines dont"
+      },
+      {
+        "intitule": "Trois (3) semaines d'évaluation"
+      },
+      {
+        "intitule": "Douze (12) semaines d'enseignement",
+        "contenu": "A la fin du sixième du cycle l 'étudiant ayant capitalisé 180 crédits obtient-le diplôme de licence professionnelle en Réseaux Informatiques"
+      }
+    ]
+  },
+  "licence-commerce-international": {
+    "source": "https://test.groupeisi.com/licence-commerce-international/",
+    "titreSource": "Commerce international",
+    "intro": "La licence professionnelle en commerce international a pour objectif de former à un niveau Bac + 3 des spécialistes de l’import/export, polyglottes, directement opérationnels",
+    "objectifs": [
+      "L'objectif du programme commerce international est quintuple",
+      "Comprendre les principes fondamentaux du commerce international",
+      "Acquérir des compétences en gestion d'entreprise à l'échelle mondiale",
+      "Développer une perspective internationale",
+      "Renforcer les compétences en communication et en langues étrangères",
+      "Explorer les opportunités de carrière internationales"
+    ],
+    "competences": [
+      "Assurer le suivi d'une opération de dédouanement",
+      "Monter un dossier d'import-export",
+      "Maitriser les techniques de paiement à l'international",
+      "Conduire une négociation commerciale",
+      "Maitriser la chaine logistique"
+    ],
+    "debouches": [
+      "Chef de service transit",
+      "Adjoint responsable import/ export",
+      "Opérateur économique",
+      "Courtier international",
+      "Conseiller en développement international",
+      "Attaché commercial en export",
+      "Chargé de clientèle entreprise en relation avec les opérations de commerce international et de financement des banques des opérations de couverture des risques pour les entreprises d'assurance"
+    ],
+    "admission": [
+      "Les titulaires du baccalauréat ou de tout autre diplôme équivalent peuvent être admis à la formation, après examen du dossier de candidature. L'examen du dossier peut éventuellement être complété par un entre tien ou un test devant un jury",
+      "Composition du dossier de candidature",
+      "Une photocopie légalisée du Baccalauréat",
+      "Le relevé des notes du Bac",
+      "Une photocopie légalisée du dernier diplôme ou de l'attestation de réussite (pour l'inscription en licence 2 ou licence 3)",
+      "Deux extraits de naissance",
+      "Quatre photos d'identité",
+      "Un relevé de notes des deux dernières années d'études",
+      "Une lettre de motivation"
+    ],
+    "unitesEnseignement": [
+      {
+        "intitule": "Durée",
+        "contenu": "La formation dispensée est répartie sur six (6) semestres d'études pour un volume horaire total de 1800 heures.( voir maquette de formation)"
+      },
+      {
+        "intitule": "Répartition des enseignements",
+        "contenu": "Les enseignements sont organisés en cours magistraux, travaux dirigés (TD), travaux pratiques (TP); séminaires spécialisés, visite en entreprise et projet pour une durée de trois ans répartis sur six semestres"
+      },
+      {
+        "intitule": "Chaque semestre est composé de 15 semaines dont"
+      },
+      {
+        "intitule": "Trois (3) semaines d'évaluation"
+      },
+      {
+        "intitule": "Douze (12) semaines d'enseignement",
+        "contenu": "A la fin du sixième du cycle l 'étudiant ayant capitalisé 180 crédits obtient-le diplôme de licence professionnelle en Réseaux Informatiques"
+      }
+    ]
+  },
+  "licence-cybersecurite": {
+    "source": "https://test.groupeisi.com/licence-cybersecurite/",
+    "titreSource": "Cyber Sécurité",
+    "intro": "Les systèmes informatiques et télécommunications apportent aujourd’hui une dimension nouvelle à notre société avec des enjeux technologiques, économiques, culturels et sociologiques",
+    "objectifs": [
+      "D'acquérir de solides connaissances en Cyber-Sécurité et Cyber-défense",
+      "De savoir déjouer les cyberattaques",
+      "D'acquérir de solides connaissances en matière de sécurité informatique",
+      "De savoir repérer la fragilité et les failles systèmes d'un réseau, services et supports de communication",
+      "De pouvoir concevoir et définir la politique de sécurisation des données de l'entreprise",
+      "De maîtriser les aspects « sécurité » et « qualité » des réseaux et des systèmes de communication",
+      "De maîtriser les protocoles de réseaux dédiés",
+      "De qualifier un besoin client et le traduire en solutions",
+      "De détecter et analyser les vulnérabilités réseaux, applicatives et systèmes",
+      "De connaître et maîtriser l'architecture des réseaux, des techniques d'ingénierie et intégrer leurs évolutions",
+      "D'exploiter et assurer la sécurité des réseaux LAN, WAN et WLAN"
+    ],
+    "competences": [
+      "Mécanismes de sécurité et de défense",
+      "Politique de sécurité des systèmes d'information",
+      "Sécurisation des SI",
+      "Analyse des MALWARES",
+      "Sécurisation des Applications et Réseaux",
+      "Interconnexion de réseaux IP",
+      "Administration réseaux sous linux et Windows",
+      "Administration systèmes"
+    ],
+    "debouches": [
+      "Responsable Sécurité Informatique",
+      "Administrateurs Réseaux et Sécurité",
+      "Consultant en Sécurité Informatique",
+      "Analyste Sécurité",
+      "Responsable de la Sécurité Opérationnelle",
+      "Les débouchés cibles de la Cyber-sécurité sont les équipementiers des systèmes informatiques et des réseaux, les opérateurs de télécoms, les grandes entreprises, les PME/PMI, les banques, les industries, de même que les sociétés de conseils en informatique et réseau"
+    ],
+    "admission": [
+      "Nos licences professionnelles sont adressées aux étudiants titulaires du baccalauréat ou tout autre diplôme admis en équivalence ou en dispense",
+      "Peut s'inscrire en L2, tout étudiant ayant capitalisé au moins 70% des crédits de la première année L1 (c'est-à-dire 42 crédits)",
+      "Peut s'inscrire en L3, tout étudiant ayant validé l'ensemble des crédits de la L1 (c'est dire 60 crédits) et capitalisé au moins 70% des crédits de la deuxième année L2 (c'est-à-dire 42 crédits)",
+      "Les étudiants titulaires d'un diplôme de Bac+2 ou d'un diplôme admis en équivalence ou en dispense peuvent s'inscrire en troisième année L3 (étudiants venant d'autres établissements). Les autorisations d'inscription de ces étudiants, sont établies par la direction des études, sur étude de dossier",
+      "Les étudiants ont accès à ces informations soit sur le site web de l'institut, soit au niveau de la scolarité ou au niveau du Bureau d'Information et d'Orientation (BIO)"
+    ],
+    "unitesEnseignement": [
+      {
+        "intitule": "Programmation et Langage"
+      },
+      {
+        "intitule": "Optimisation et Langage"
+      },
+      {
+        "intitule": "Réseaux et Systèmes"
+      },
+      {
+        "intitule": "Architecture et Maintenance"
+      },
+      {
+        "intitule": "Cyber-sécurité Informatique"
+      },
+      {
+        "intitule": "Système d'Information"
+      },
+      {
+        "intitule": "Connaissances Générales"
+      },
+      {
+        "intitule": "Gouvernance de la Cyber-sécurité"
+      },
+      {
+        "intitule": "Professionnalisation"
+      }
+    ]
+  },
+  "cycle-ingenieur-techniques-informatiques": {
+    "source": "https://test.groupeisi.com/licence-cycle-ingenieur/",
+    "titreSource": "Cycle Ingénieur",
+    "intro": "L’objectif principal du programme est de former des ingénieurs en conception et développement d’applications, en administration système et réseaux et administration des données",
+    "objectifs": [
+      "Proposer des solutions innovantes",
+      "Rédiger un cahier de charge, le document d'analyse, le document de conception, de déploiement et de test",
+      "Implémenter, valider des livrables et des recettes fonctionnelles en prenant en compte l'aspect de sécurité applicative",
+      "Concevoir, administrer, sécuriser et automatiser un réseau d'entreprise",
+      "Déployer des solutions d'interconnexion de réseaux d'entreprise",
+      "Piloter des projets transversaux basés sur des infrastructures virtualisées",
+      "Mettre en place des environnements de développement et de production d'applications",
+      "Concevoir, implémenter et administrer les bases de données transactionnelles et décisionnelles",
+      "Participer aux choix des indicateurs, aux interfaces de visualisation, à l'architecture des données pour les reporting et les tableaux de bord des entreprises",
+      "Travailler en équipe",
+      "Faire l'offre technique et financière d'un projet",
+      "Planifier et gérer un projet"
+    ],
+    "competences": [
+      "Ingénieu rinformaticien",
+      "Développeur et concepteur d'applica tions Web, mobiles et embarqués",
+      "Chef de projets informatiques",
+      "Consultant",
+      "Administrateur Réseaux",
+      "Administrateur Base de données"
+    ],
+    "debouches": [
+      "Business analyst",
+      "Chef de projets informatiques",
+      "Développeur d'applications",
+      "Testeur",
+      "Administrateur base de données",
+      "Architect data",
+      "Ingénieur devops",
+      "Intégrateur de solutions",
+      "Administrateur système et réseaux"
+    ],
+    "admission": [
+      "Le programme du diplôme d'ingénieur en techniques informatiques s'adresse aux étudiants titulaires d'un baccalauréat plus deux scientifique ou tout autre diplôme admis en équivalence",
+      "Les étudiants ont accès à ces informations soit sur le site web de l'institut, soit au niveau de la scolarité ou au niveau du Bureau d'Information et d'Orientation (BIO)"
+    ],
+    "unitesEnseignement": [
+      {
+        "intitule": "Algorithmique et langage (ALA)"
+      },
+      {
+        "intitule": "Réseaux et systèmes (RSY)"
+      },
+      {
+        "intitule": "Technologies Web et Base de données (TWBD)"
+      },
+      {
+        "intitule": "Mathématiques appliquées (MAP)"
+      },
+      {
+        "intitule": "Connaissances générales (CGE)"
+      },
+      {
+        "intitule": "Développement d'applications (DAP)"
+      },
+      {
+        "intitule": "Développement d'applications et informatique décisionnelle (DAID)"
+      },
+      {
+        "intitule": "Réseaux informatiques et systèmes embarqués (RISE)"
+      },
+      {
+        "intitule": "Ingénierie logicielle (ILO)"
+      },
+      {
+        "intitule": "Big data et Intelligence artificielle (BDIA)"
+      },
+      {
+        "intitule": "Télécoms, Réseaux et Systèmes (TRS)"
+      },
+      {
+        "intitule": "Professionnalisation (PRO)"
+      }
+    ]
+  },
+  "bachelor-data-science-big-data": {
+    "source": "https://test.groupeisi.com/licence-en-data-science-big-data-technology/",
+    "titreSource": "Licence en Data science & Big Data Technology",
+    "intro": "Le Bachelor en Data Science et Big Data (DSBD) est une formation d’excellence qui prépare les étudiants à relever les défis de la transformation numérique en maîtrisant l’exploitation des données massives et les technologies modernes.Cette formation développe des compétences dans les domaines de la Data Analysis, du Machine Learning, de l’ingénierie des données (Data Engineering), du Cloud Computing, ainsi que dans le développement d’applications intelligentes intégrant des solutions d’intelligence artificielle. Alliant rigueur scientifique, savoir-faire technique et esprit d’innovation, ce programme constitue également une passerelle vers les Masters en Data Science, Intelligence Artificielle et Génie Logiciel",
+    "competences": [
+      "Les diplômés seront en mesure de:",
+      "Analyser et traiter des données complexes grâce aux techniques de Data Science et Big Data",
+      "Concevoir et déployer des pipelines de données performants et sécurisés",
+      "Développer des modèles de Machine Learning et les intégrer dans des applications intelligentes",
+      "Concevoir des logiciels robustes en utilisant les principes du Génie Logiciel avec intégration de modules IA",
+      "Exploiter les environnements Cloud et distribuer les traitements de données à grande échelle",
+      "Gérer des projets numériques innovants orientés données et intelligence artificielle"
+    ],
+    "debouches": [
+      "Les diplômés peuvent accéder à des postes tels que:",
+      "Data Analyst",
+      "Développeur d'applications intelligentes (Software + IA)",
+      "Data Engineer",
+      "Cloud Data Architect",
+      "Consultant en innovation numérique"
+    ],
+    "admission": [
+      "Nos licences professionnelles sont adressées aux étudiants titulaires du Baccalauréat scientifique ou technique, ou diplôme équivalent",
+      "Peut s'inscrire en L2, tout étudiant ayant capitalisé au moins 70% des crédits de la première année L1 (c'est-à-dire 42 crédits)",
+      "Peut s'inscrire en L3, tout étudiant ayant validé l'ensemble des crédits de la L1 (c'est dire 60 crédits) et capitalisé au moins 70% des crédits de la deuxième année L2 (c'est-à-dire 42 crédits)",
+      "Les étudiants titulaires d'un diplôme de Bac+2 ou d'un diplôme admis en équivalence ou en dispense peuvent s'inscrire en troisième année L3 (étudiants venant d'autres établissements). Les autorisations d'inscription de ces étudiants, sont établies par la direction des études, sur étude de dossier",
+      "Les étudiants ont accès à ces informations soit sur le site web de l'institut, soit au niveau de la scolarité ou au niveau du Bureau d'Information et d'Orientation (BIO)"
+    ],
+    "unitesEnseignement": [
+      {
+        "intitule": "Mathématiques pour la Data Science",
+        "contenu": "Algorithmique numérique, Calcul différentiel et optimisation, Statistique inférentielle"
+      },
+      {
+        "intitule": "Technologies Cloud et Sécurité des Données",
+        "contenu": "Cloud Computing, Sécurité et performances des bases de données"
+      },
+      {
+        "intitule": "Programmation Avancée et Conception d'API",
+        "contenu": "Programmation parallèle, Langage Java I, Conception d'API (FastAPI)"
+      },
+      {
+        "intitule": "Ingénierie des Données et Développement Web",
+        "contenu": "Analyse de données avec Python, Frameworks Web (Django)"
+      },
+      {
+        "intitule": "Droit des Données et Stratégie d'Entreprise",
+        "contenu": "Entrepreneuriat et gestion de projets, Excel avancé (VBA)"
+      },
+      {
+        "intitule": "Analyse de Données et DevOps",
+        "contenu": "Exploration de données multidimensionnelles, Modèles linéaires en science des données, DevOps"
+      },
+      {
+        "intitule": "Actuariat et Gestion des Risques",
+        "contenu": "Principes fondamentaux de l'actuariat, Lois de probabilité en actuariat, Gestion des risques en assurance"
+      },
+      {
+        "intitule": "Systèmes Distribués et Big Data",
+        "contenu": "Systèmes de stockage distribués et NoSQL, Langage Java II, Plateformes Big Data (Spark, Hadoop)"
+      },
+      {
+        "intitule": "Projet de Fin d'Études",
+        "contenu": "Mémoire de fin de cycle"
+      }
+    ]
+  },
+  "licence-energies-renouvelables": {
+    "source": "https://test.groupeisi.com/licence-energies-renouvelables/",
+    "titreSource": "Groupe ISI",
+    "admission": [
+      "Institut de référence dans les TIC",
+      "Présentation du Groupe ISI",
+      "Inscription en ligne",
+      "Alumnis",
+      "Actualités"
+    ]
+  },
+  "licence-finance-comptabilite": {
+    "source": "https://test.groupeisi.com/licence-finance-et-comptabilite-2/",
+    "titreSource": "Finance & Comptabilité",
+    "intro": "La LPFC est un diplôme à finalité professionnelle. Elle permet d’obtenir les bases indispensables pour toute personne se destinant à une carrière dans les domaines de la comptabilité et de la finance",
+    "objectifs": [
+      "L'objectif du programme de la LPFC est triple",
+      "Odonner aux étudiants l'accès à un diplôme d'Etat: le BTS Comptabilité et gestion (Bac+ 2)",
+      "Odonner aux étudiants l'accès à un diplôme professionnel de niveau Licence (Bac+3)",
+      "Oacquérir des réflexes professionnels permettant de s'insérer en entreprise",
+      "Il sanctionne l'acquisition de connaiss ances approfondies dans sept (7 ) domaines de compétences fondamentaux pour la formation de l'expert, du responsable comptable ou financier"
+    ],
+    "competences": [
+      "Assurer la responsabilité de la tenue des comptes conformément aux règles comptables, fiscales et sociales, de la saisie des pièces comptables jusqu'à la présentation des états financiers",
+      "O Maîtriser les mécanismes et outils de la comptabilité analytique",
+      "O Mesurer et analyser les écarts sous forme de statistiques, de tableaux de bord (score bord) commentés, de rapports d'activité",
+      "O Être capable d'établir un rapport complet d'analyse financière d'une entreprise (analyse de rentabilité, structure financière et équilibre financier) à des fins de gestion et d'aide à la prise de décision",
+      "O Réaliser des études financières et économiques nécessaires aux choix d'investissement",
+      "O Arbitrer entre les différents modes de financement afin d'optimiser la gestion des ressources financières",
+      "O Superviser la trésorerie et gérer la relation banque/entreprise",
+      "O Etre capable de déterminer le résultat fiscal, de calculer l'impôt et de remplir la liasse fiscale",
+      "O Analyser et présenter les opérations comptables réalisées par les sociétés commerciales compte tenu de leurs caractéristiques fiscales et juridiques",
+      "O Maîtriser l'outil SAARI: de la création à la tenue comptable informatique d'une entité jusqu'à la restitution de l'information",
+      "O Maîtriser les principaux outils d'informatique de gestion (Word, Excel, Power Point et Access)",
+      "O Maîtriser l'anglais comme outil de communication orale et écrite"
+    ],
+    "debouches": [
+      "O Assistant du directeur financier",
+      "O Chef comptable",
+      "O Responsable du financement",
+      "O Responsable de Trésorerie",
+      "O Responsable de Paie",
+      "O Responsable de contrôle de gestion",
+      "O Assistant du contrôleur de gestion"
+    ],
+    "admission": [
+      "Les titulaires du baccalauréat ou de tout autre diplôme équivalent peuvent être admis à la formation, après examen du dossier de candidature. L'examen du dossier peut éventuellement être complété par un entre tien ou un test devant un jury",
+      "Composition du dossier de candidature",
+      "Une photocopie légalisée du Baccalauréat",
+      "Le relevé des notes du Bac",
+      "Une photocopie légalisée du dernier diplôme ou de l'attestation de réussite (pour l'inscription en licence 2 ou licence 3)",
+      "Deux extraits de naissance",
+      "Quatre photos d'identité",
+      "Un relevé de notes des deux dernières années d'études",
+      "Une lettre de motivation"
+    ],
+    "unitesEnseignement": [
+      {
+        "intitule": "Durée",
+        "contenu": "La formation dispensée est répartie sur six (6) semestres d'études pour un volume horaire total de 1800 heures.( voir maquette de formation)"
+      },
+      {
+        "intitule": "Répartition des enseignements",
+        "contenu": "Les enseignements sont organisés en cours magistraux, travaux dirigés (TD), travaux pratiques (TP); séminaires spécialisés, visite en entreprise et projet pour une durée de trois ans répartis sur six semestres"
+      },
+      {
+        "intitule": "Chaque semestre est composé de 15 semaines dont"
+      },
+      {
+        "intitule": "Trois (3) semaines d'évaluation"
+      },
+      {
+        "intitule": "Douze (12) semaines d'enseignement",
+        "contenu": "A la fin du sixième du cycle l 'étudiant ayant capitalisé 180 crédits obtient-le diplôme de licence professionnelle en Réseaux Informatiques"
+      }
+    ]
+  },
+  "licence-genie-logiciel": {
+    "source": "https://test.groupeisi.com/licence-genie-logiciel/",
+    "titreSource": "Groupe ISI"
+  },
+  "licence-geomatique-developpement-applications": {
+    "source": "https://test.groupeisi.com/licence-geomatique-et-developpement-d-application/",
+    "titreSource": "Géomatique et Développement d’applications",
+    "intro": "L’objectif principal de la Licence en Géomatique et développement d’applications est de former des professionnels compétents dans le domaine de la géomatique, en mettant l’accent sur le développement d’applications géospatiales. La géomatique est un domaine multidisciplinaire qui intègre la géographie, l’informatique et les sciences de la terre pour collecter, gérer, analyser et représenter des données géospatiales",
+    "objectifs": [
+      "Acquérir des connaissances géomatiques",
+      "Maîtriser les outils et les technologies",
+      "Développer des compétences en programmation",
+      "Concevoir des applications géospatiales",
+      "Intégrer les données géospatiales",
+      "Travailler en équipe",
+      "Comprendre les enjeux sociétaux et environnementaux",
+      "Réaliser un projet professionnel"
+    ],
+    "competences": [
+      "Maîtriser les savoirs théoriques et techniques de la Géomatique (SIG, Télédétection, Cartographie, Géodésie et Topographie, Photogrammétrie, Informatique)",
+      "Maîtrise r des logiciels de traitement de l'information géographique",
+      "Concevoir une base de données géographique",
+      "Proposer des solutions appropriées à la résolution des problèmes à travers l'analyse de l'Information Géographique et le développement d'applications",
+      "Modéliser les évolutions possibles du territoire et des phénomènes naturels et sociaux dans une perspectiv epréventive et de préservation"
+    ],
+    "debouches": [
+      "Administrate ur de bases de données géographiques",
+      "Développeur de logiciels SIG et responsable SIG",
+      "Consultant SIG",
+      "Responsable géomarketing"
+    ],
+    "admission": [
+      "Nos licences professionnelles sont adressées aux étudiants titulaires du baccalauréat ou tout autre diplôme admis en équivalence ou en dispense",
+      "Peut s'inscrire en L2, tout étudiant ayant capitalisé au moins 70% des crédits de la première année L1 (c'est-à-dire 42 crédits)",
+      "Peut s'inscrire en L3, tout étudiant ayant validé l'ensemble des crédits de la L1 (c'est dire 60 crédits) et capitalisé au moins 70% des crédits de la deuxième année L2 (c'est-à-dire 42 crédits)",
+      "Les étudiants titulaires d'un diplôme de Bac+2 ou d'un diplôme admis en équivalence ou en dispense peuvent s'inscrire en troisième année L3 (étudiants venant d'autres établissements). Les autorisations d'inscription de ces étudiants, sont établies par la direction des études, sur étude de dossier",
+      "Les étudiants ont accès à ces informations soit sur le site web de l'institut, soit au niveau de la scolarité ou au niveau du Bureau d'Information et d'Orientation (BIO)"
+    ],
+    "unitesEnseignement": [
+      {
+        "intitule": "Algorithme et Langage (ALA)"
+      },
+      {
+        "intitule": "Architecture et système (ASY)"
+      },
+      {
+        "intitule": "Système d'Information et base de données (SGBD)"
+      },
+      {
+        "intitule": "Mathématiques Appliquées (MAP)"
+      },
+      {
+        "intitule": "Connaissances générales (CGE)"
+      },
+      {
+        "intitule": "Technologies de la géomatique (TGE)"
+      },
+      {
+        "intitule": "Réseaux et système (RSI)"
+      },
+      {
+        "intitule": "Développement d'applications (DAP)"
+      },
+      {
+        "intitule": "Technologies Web et base de données (TWBD)"
+      },
+      {
+        "intitule": "Professionnalisation (PRO)"
+      }
+    ]
+  },
+  "licence-infographie-multimedia": {
+    "source": "https://test.groupeisi.com/licence-infographie-et-multimedia/",
+    "titreSource": "Infographie et Multimédia",
+    "intro": "L’objectif principal d’une Licence en Infographie et Multimédia est de former des professionnels capables de concevoir, de créer et de gérer des contenus graphiques et multimédias dans divers domaines tels que le design graphique, l’animation, la création de sites web, la réalité virtuelle, les jeux vidéo, la publicité, le cinéma, la télévision, et bien d’autres encore",
+    "objectifs": [
+      "Créer et traiter des images; ● Concevoir des contenus, tels que des affiches, des dépliants, brochures, magasines, journaux ou livres; ● Faire des simulations physiques, des représentations en trois dimensions; ● Monter et retoucher des vidéos; ● Prendre, monter et retoucher du son",
+      "Réaliser une prise de vue; ● Réaliser des documentaires, des films et des spots publicitaires; ● Créer et intégrer des maquettes; ● Créer, administrer et référencer des sites web. ● Diffuser des contenus sur les plateformes"
+    ],
+    "competences": [
+      "Créer et traiter des images",
+      "Concevoir des contenus, tels que des affiches, des dépliants, brochures, magasines, journaux ou livres",
+      "Faire des simulations physiques, des représentations en trois dimensions",
+      "Monter et retoucher des vidéos et du son",
+      "Réaliser des documentaires, des films et des spots publicitaires",
+      "Créer et intégrer des maquettes",
+      "Créer des sites web"
+    ],
+    "debouches": [
+      "Au terme de cette formation le diplômé peut exercer les métiers comme",
+      "Infographiste maquettiste, ● photographe, ● assistant chef opérateur, ● droniste, ● technicien vidéo, ● monteur vidéo, ● preneur de son, ● régisseur technique, ● réalisateur, ● modeleur 3D, ● décorateur d'intérieur, ● simulateur physique, ● web master, ● intégrateur web, ● diffuseur de contenus en multimédias dans les plateformes digitales"
+    ],
+    "admission": [
+      "Nos licences professionnelles sont adressées aux étudiants titulaires du baccalauréat ou tout autre diplôme admis en équivalence ou en dispense",
+      "Peut s'inscrire en L2, tout étudiant ayant capitalisé au moins 70% des crédits de la première année L1 (c'est-à-dire 42 crédits)",
+      "Peut s'inscrire en L3, tout étudiant ayant validé l'ensemble des crédits de la L1 (c'est dire 60 crédits) et capitalisé au moins 70% des crédits de la deuxième année L2 (c'est-à-dire 42 crédits)",
+      "Les étudiants titulaires d'un diplôme de Bac+2 ou d'un diplôme admis en équivalence ou en dispense peuvent s'inscrire en troisième année L3 (étudiants venant d'autres établissements). Les autorisations d'inscription de ces étudiants, sont établies par la direction des études, sur étude de dossier",
+      "Les étudiants ont accès à ces informations soit sur le site web de l'institut, soit au niveau de la scolarité ou au niveau du Bureau d'Information et d'Orientation (BIO)"
+    ],
+    "unitesEnseignement": [
+      {
+        "intitule": "Développement d'applications, ● pratique audiovisuelle et simulation physique ● connaissance générales, ● professionnalisation"
+      }
+    ]
+  },
+  "licence-iage": {
+    "source": "https://test.groupeisi.com/licence-informatique-de-gestion/",
+    "titreSource": "Informatique Appliquée àla Gestion des Entreprises",
+    "intro": "L’objectif principal de la licence en Informatique Appliquée à la Gestion des Entreprises est de former des professionnels capables de comprendre et d’exploiter les technologies de l’information et de la communication dans un contexte de gestion d’entreprise",
+    "competences": [
+      "Travailler en équipe",
+      "Communiquer en milieu professionnel",
+      "Développer son autonomie",
+      "Gérer le temps",
+      "Définir des priorités",
+      "Développer sa créativité"
+    ],
+    "debouches": [
+      "Analyste programmeur",
+      "Assistant chef de projet",
+      "Technico-commercial",
+      "Freelancer",
+      "Conseiller digital",
+      "IT Support",
+      "Développeur backend",
+      "Développeur front end",
+      "Developpeur full stack",
+      "Assistant Responsable SI",
+      "Assistant comptable",
+      "L'étudiant pourra aussi poursuivre ses études en master informatique appliquée à la gestion des entreprises à l'ISI ou dans un autre établissement"
+    ],
+    "admission": [
+      "Nos licences professionnelles sont adressées aux étudiants titulaires du baccalauréat ou tout autre diplôme admis en équivalence ou en dispense",
+      "Peut s'inscrire en L2, tout étudiant ayant capitalisé au moins 70% des crédits de la première année L1 (c'est-à-dire 42 crédits)",
+      "Peut s'inscrire en L3, tout étudiant ayant validé l'ensemble des crédits de la L1 (c'est dire 60 crédits) et capitalisé au moins 70% des crédits de la deuxième année L2 (c'est-à-dire 42 crédits)",
+      "Les étudiants titulaires d'un diplôme de Bac+2 ou d'un diplôme admis en équivalence ou en dispense peuvent s'inscrire en troisième année L3 (étudiants venant d'autres établissements). Les autorisations d'inscription de ces étudiants, sont établies par la direction des études, sur étude de dossier",
+      "Les étudiants ont accès à ces informations soit sur le site web de l'institut, soit au niveau de la scolarité ou au niveau du Bureau d'Information et d'Orientation (BIO)"
+    ],
+    "unitesEnseignement": [
+      {
+        "intitule": "Algorithmique et langage (ALA)"
+      },
+      {
+        "intitule": "Architecture et système (ASY)"
+      },
+      {
+        "intitule": "Système d'Information et base de données (SIBD)"
+      },
+      {
+        "intitule": "Mathématiques et techniques quantitatives de gestion (MTQG)"
+      },
+      {
+        "intitule": "Management des organisations (MOR)"
+      },
+      {
+        "intitule": "Communication (COM)"
+      },
+      {
+        "intitule": "Réseaux et système (RSY)"
+      },
+      {
+        "intitule": "Technologie Web et Mobile (TWM)"
+      },
+      {
+        "intitule": "Mathématiques appliquées (MAP)"
+      },
+      {
+        "intitule": "Développement d'applications (DAP)"
+      },
+      {
+        "intitule": "Professionnalisation (PRO)"
+      },
+      {
+        "intitule": "Outils de gestion et de contrôle (OGC)"
+      },
+      {
+        "intitule": "Outils de gestion et de finance (OGC)"
+      }
+    ]
+  },
+  "licence-marketing-communication-digitale": {
+    "source": "https://test.groupeisi.com/licence-marketing-et-communication-digitale/",
+    "titreSource": "Marketing et communication digitale",
+    "intro": "L’objectif de ce programme est de former des étudiants dans l’utilisation des outils numériques pour communiquer, promouvoir, développer et fédérer une communauté de clients potentiels autour d’un produit, d’une marque, d’une entreprise etc",
+    "objectifs": [
+      "Ces programmes visent à fournir aux étudiants une combinaison de connaissances théoriques et pratiques, afin de les préparer à relever les défis du monde professionnel moderne axé sur le digital",
+      "Voici quelques-uns des objectifs typiques d'une licence professionnelle en Marketing et Communication digitale",
+      "Comprendre les concepts fondamentaux du marketing digital",
+      "Maîtriser les stratégies de communication en ligne",
+      "Analyser et interpréter les données numériques",
+      "Créer des stratégies de marketing intégrées",
+      "Gérer les projets numériques",
+      "Adapter les stratégies aux évolutions du numérique",
+      "Développer des compétences en design et en création de contenu numérique",
+      "Comprendre les enjeux juridiques et éthiques liés au marketing digital"
+    ],
+    "debouches": [
+      "Responsable de la stratégie digitale; 2. Chef de projet digital; 3. Directeur marketing digital; 4. Chargé de communication digitale; 5. Responsable du trafic; 6. Content manager; 7. Responsable CRM / E-CRM; 8. Community manager; 9. Web designer; 10. Concepteur de site web"
+    ],
+    "admission": [
+      "Nos licences professionnelles sont adressées aux étudiants titulaires du baccalauréat ou tout autre diplôme admis en équivalence ou en dispense",
+      "Peut s'inscrire en L2, tout étudiant ayant capitalisé au moins 70% des crédits de la première année L1 (c'est-à-dire 42 crédits)",
+      "Peut s'inscrire en L3, tout étudiant ayant validé l'ensemble des crédits de la L1 (c'est dire 60 crédits) et capitalisé au moins 70% des crédits de la deuxième année L2 (c'est-à-dire 42 crédits)",
+      "Les étudiants titulaires d'un diplôme de Bac+2 ou d'un diplôme admis en équivalence ou en dispense peuvent s'inscrire en troisième année L3 (étudiants venant d'autres établissements). Les autorisations d'inscription de ces étudiants, sont établies par la direction des études, sur étude de dossier",
+      "Les étudiants ont accès à ces informations soit sur le site web de l'institut, soit au niveau de la scolarité ou au niveau du Bureau d'Information et d'Orientation (BIO)"
+    ],
+    "unitesEnseignement": [
+      {
+        "intitule": "L'offre de formation du groupe ISI en marketing et communication digital s'oriente autour de six axes stratégiques que sont"
+      },
+      {
+        "intitule": "Marketing et ses dérivées modernes"
+      },
+      {
+        "intitule": "Communication"
+      },
+      {
+        "intitule": "Techniques numériques digital"
+      },
+      {
+        "intitule": "Outils de développement personnel"
+      },
+      {
+        "intitule": "Outils de Management"
+      },
+      {
+        "intitule": "Professionnalisation"
+      }
+    ]
+  },
+  "licence-reseaux-informatiques": {
+    "source": "https://test.groupeisi.com/licence-reseaux-informatiques/",
+    "titreSource": "Réseaux informatiques",
+    "intro": "Le programme de licence, de la spécialité réseaux informatiques a été conçu, suivant les besoins et les exigences des entreprises publiques et privées. Il a pour objectif principal, de former des techniciens et spécialistes capables de concevoir, de paramétrer et d’administrer des réseaux de données de type IP utilisant les technologies LAN, WAN et WLAN",
+    "objectifs": [
+      "Cette licence professionnelle en Réseaux Informatique permet à l'étudiant de",
+      "Acquérir des connaissances en matière de réseaux, services réseaux et protocoles (RIPng, OSPF, EIGRP)",
+      "Connaître la conception, l'installation, l'exploitation et l'évolution des solutions réseaux",
+      "Savoir comment administrer les systèmes et bases de données des réseaux d'entreprise",
+      "Décrire les fonctionnalités des systèmes d'exploitation, des commutateurs, des routeurs et les pare-feu",
+      "Connaître les étapes d'implémentation des services réseaux et d'intégration des solutions informatiques",
+      "Comprendre les aspects liés à la sécurité et la qualité des réseaux et des systèmes de communication",
+      "Décrire les fonctionnalités des réseaux traditionnels et émergents, LAN, WAN, WLAN",
+      "Comprendre les différentes technologies de virtualisation, les modèles de Cloud et de l'automatisation des réseaux",
+      "Connaitre comment l'IoT rapproche les systèmes IT et les technologies opérationnelles",
+      "Qualifier un besoin client et le traduire en solutions",
+      "Détecter et analyser les facteurs d'évolution du réseau, pour les intégrer dans les études et les choix techniques"
+    ],
+    "competences": [
+      "Conception et administration des réseaux IP",
+      "Interconnexion (Routage et commutation) de réseaux IP",
+      "Administration réseaux sous linux et Windows",
+      "Administration systèmes",
+      "Sécurité des réseaux et systèmes informatiques, qualité de service sur les réseaux IP",
+      "Développement d'applications client/serveur"
+    ],
+    "debouches": [
+      "Administrateur système et réseaux",
+      "Assistant à la conception des réseaux fixes et mobiles",
+      "Responsable de l'administration, de la sécurité et de la qualité de services dans les réseaux d'entreprise ou d'opérateurs",
+      "Développeur d'applications client/serveur",
+      "Responsable qualité d'une régie de production",
+      "Responsable de l'administration de réseaux informatiques",
+      "Les secteurs d'activité sont multiples et couvrent aussi bien les sociétés d'équipements réseaux, d'opérateurs de télécommunication et de fournisseurs d'accès à l'internet, des entreprises et des administrateurs gérant elles-mêmes leurs systèmes d'information et de communication"
+    ],
+    "admission": [
+      "Nos licences professionnelles sont adressées aux étudiants titulaires du baccalauréat ou tout autre diplôme admis en équivalence ou en dispense",
+      "Peut s'inscrire en L2, tout étudiant ayant capitalisé au moins 70% des crédits de la première année L1 (c'est-à-dire 42 crédits)",
+      "Peut s'inscrire en L3, tout étudiant ayant validé l'ensemble des crédits de la L1 (c'est dire 60 crédits) et capitalisé au moins 70% des crédits de la deuxième année L2 (c'est-à-dire 42 crédits)",
+      "Les étudiants titulaires d'un diplôme de Bac+2 ou d'un diplôme admis en équivalence ou en dispense peuvent s'inscrire en troisième année L3 (étudiants venant d'autres établissements). Les autorisations d'inscription de ces étudiants, sont établies par la direction des études, sur étude de dossier",
+      "Les étudiants ont accès à ces informations soit sur le site web de l'institut, soit au niveau de la scolarité ou au niveau du Bureau d'Information et d'Orientation (BIO)"
+    ],
+    "unitesEnseignement": [
+      {
+        "intitule": "Programmation et Langages"
+      },
+      {
+        "intitule": "Réseaux et Architecture"
+      },
+      {
+        "intitule": "Administration Réseaux et Systèmes"
+      },
+      {
+        "intitule": "Electronique et Maintenance"
+      },
+      {
+        "intitule": "Système d'Information"
+      },
+      {
+        "intitule": "Cloud Computing et IoT"
+      },
+      {
+        "intitule": "Connaissances Générales"
+      },
+      {
+        "intitule": "Professionnalisation"
+      }
+    ]
+  },
+  "licence-reseaux-telecommunications": {
+    "source": "https://test.groupeisi.com/licence-reseaux-telecoms/",
+    "titreSource": "Réseaux Télécommunications",
+    "intro": "Les systèmes de télécommunications apportent aujourd’hui une dimension nouvelle à notre société avec des enjeux technologiques, économiques, culturels et sociologiques. Les réseaux de télécommunications et leurs applications font l’objet de nombreuses initiatives qui nourrissent une forte demande sur le marché de l’emploi en techniciens/Ingénieurs. Celle-ci va se renforcer dans l’avenir avec la concurrence amplifiée par l’apparition de nouveaux métiers requérant une main d’œuvre qualifiée, ainsi que par les développements technologiques et économiques autour des services sur l’Internet et sur les réseaux traditionnels privés ou publiques des opérateurs",
+    "objectifs": [
+      "D'acquérir de solides connaissances en matière de réseaux, services et supports de communication réseaux",
+      "De savoir, installer, exploiter, administrer et faire évoluer des solutions réseaux",
+      "De mettre en œuvre des ponts, commutateurs et routeurs dans les réseaux TCP/IP",
+      "De comprendre les aspects « sécurité » et « qualité » des réseaux de télécommunications",
+      "De savoir dimensionner un système de transmission de données (couche physique)",
+      "D'adapter les fonctionnalités des réseaux locaux sans fils émergents",
+      "De maîtriser les protocoles de réseaux dédiés",
+      "De détecter et analyser les facteurs d'évolution du réseau, pour les intégrer dans les études et les choix techniques",
+      "De connaître et maîtriser l'architecture des réseaux, des techniques innovants et intégrer leurs évolutions",
+      "De montrer et proposer des solutions techniques aux entreprises pour une migration IP"
+    ],
+    "competences": [
+      "Mise en place et administration des réseaux d'accès (FTTx, RNIS, FR…), des réseaux radio mobiles (2G, 3G, 4G…), des infrastructures de réseaux de transmission (fibre optique, FH, VSAT…)",
+      "Gestion d'indicateurs de performance réseaux (QoS et QoE)",
+      "Installation, configuration et supervision des infrastructures audiovisuelles et TNT",
+      "Interconnexion de réseaux IP et réseaux télécommunications",
+      "Administration systèmes, réseaux et services Cloud",
+      "Conception de réseaux d'objets connectés (IoT)",
+      "Sécurisation des infrastructures réseaux et systèmes d'information",
+      "Développement d'applications"
+    ],
+    "debouches": [
+      "Responsable en installation, configuration et supervision des réseaux de télécommunications fixes/mobiles",
+      "Responsable informatique/télécommunications dans une régie de production pour l'audiovisuel numérique et la TNT",
+      "Technicien de raccordement fibre optique",
+      "Assistant en conception de réseaux d'objets communicants (IoT)",
+      "Administrateur systèmes et réseaux informatiques/service Cloud",
+      "Responsable de la sécurité dans les réseaux d'entreprise ou d'opérateurs",
+      "Développeur d'applications (client/serveur, mobiles, desktop…)",
+      "Les secteurs d'activité sont multiples et couvrent aussi bien les sociétés d'équipements réseaux, d'opérateurs de télécommunication et de fournisseurs d'accès à l'internet, des entreprises et des administrateurs gérant elles-mêmes leurs systèmes d'information et de communication"
+    ],
+    "admission": [
+      "Nos licences professionnelles sont adressées aux étudiants titulaires du baccalauréat ou tout autre diplôme admis en équivalence ou en dispense",
+      "Peut s'inscrire en L2, tout étudiant ayant capitalisé au moins 70% des crédits de la première année L1 (c'est-à-dire 42 crédits)",
+      "Peut s'inscrire en L3, tout étudiant ayant validé l'ensemble des crédits de la L1 (c'est dire 60 crédits) et capitalisé au moins 70% des crédits de la deuxième année L2 (c'est-à-dire 42 crédits)",
+      "Les étudiants titulaires d'un diplôme de Bac+2 ou d'un diplôme admis en équivalence ou en dispense peuvent s'inscrire en troisième année L3 (étudiants venant d'autres établissements). Les autorisations d'inscription de ces étudiants, sont établies par la direction des études, sur étude de dossier",
+      "Les étudiants ont accès à ces informations soit sur le site web de l'institut, soit au niveau de la scolarité ou au niveau du Bureau d'Information et d'Orientation (BIO)"
+    ],
+    "unitesEnseignement": [
+      {
+        "intitule": "Programmation et Langage"
+      },
+      {
+        "intitule": "Réseaux et Systèmes"
+      },
+      {
+        "intitule": "Électronique et Architecture"
+      },
+      {
+        "intitule": "Système d'Information"
+      },
+      {
+        "intitule": "Théorie de l'information et Energie des télécoms"
+      },
+      {
+        "intitule": "Communication unifiée et Antennes"
+      },
+      {
+        "intitule": "Télécommunications"
+      },
+      {
+        "intitule": "Connaissances générales"
+      },
+      {
+        "intitule": "Professionnalisation"
+      }
+    ]
+  },
+  "licence-systemes-embarques-iot": {
+    "source": "https://test.groupeisi.com/licence-systemes-embarques-iot/",
+    "titreSource": "Systèmes embarquées et IoT",
+    "intro": "L’objectif de ce programme est de former, en trois ans après le baccalauréat, des compétences capables de seconder des ingénieurs dans le domaine de l’informatique embarquée, de l’automatisation et le contrôle des procédés industriels",
+    "objectifs": [
+      "Les diplômés issus de cette formation sont destinés, donc, à occuper des emplois dans les sociétés de services et de production ainsi que dans les entreprises exploitant des systèmes automatisés de production. Ils doivent être capables de",
+      "Développer l'aspect maintenance et exploitation de l'infrastructure des systèmes Embarqués & IoT",
+      "Concevoir et programmer les cartes électroniques à base de microprocesseurs ou de microcontrôleurs",
+      "Participer aux choix techniques des principaux composants hardwares et logiciels qui vont constituer la plateforme IoT",
+      "Concevoir les systèmes embarqués, avec OS temps réel",
+      "Développer l'aspect conception de solutions d'intégration des services embarqués et IoT",
+      "L'étudiant sera capable de développer un savoir-faire relationnel, c'est-à-dire des comportements et attitudes attendus dans une situation professionnelle",
+      "Être coopératif",
+      "Être créatif",
+      "S'adapter à n'importe quelle situation pour le bon fonctionnement du service",
+      "Développer le leadership",
+      "Savoir partager et communiquer"
+    ],
+    "competences": [
+      "La microinformatique embarquée dans un objet mobile",
+      "La conception et la réalisation des systèmes embarqués",
+      "La programmation de cartes électroniques à base de microprocesseurs ou de microcontrôleurs",
+      "Conception des système temps réel",
+      "L'automatisation et le contrôle des procédés industriels",
+      "Administration réseaux sous linux et Windows",
+      "Administration systèmes"
+    ],
+    "debouches": [
+      "Responsable des travaux de maintenance et conception de process industriels",
+      "Techniciens automatismes et réseaux industriels de communication",
+      "Responsable d'équipe dans le secteur automatismes et réseaux industriels",
+      "Gestionnaire de données industrielles (collecte, stockage, qualité, vieillissement, etc)",
+      "Technicien réseaux (internet des objets et des services)",
+      "Technicien responsable sécurité des systèmes d'information pour l'industrie",
+      "Les secteurs d'activité sont multiples et couvrent aussi bien les sociétés industrielles, d'équipements systèmes réseaux, d'opérateurs de télécommunication"
+    ],
+    "admission": [
+      "Nos licences professionnelles sont adressées aux étudiants titulaires du baccalauréat ou tout autre diplôme admis en équivalence ou en dispense",
+      "Peut s'inscrire en L2, tout étudiant ayant capitalisé au moins 70% des crédits de la première année L1 (c'est-à-dire 42 crédits)",
+      "Peut s'inscrire en L3, tout étudiant ayant validé l'ensemble des crédits de la L1 (c'est dire 60 crédits) et capitalisé au moins 70% des crédits de la deuxième année L2 (c'est-à-dire 42 crédits)",
+      "Les étudiants titulaires d'un diplôme de Bac+2 ou d'un diplôme admis en équivalence ou en dispense peuvent s'inscrire en troisième année L3 (étudiants venant d'autres établissements). Les autorisations d'inscription de ces étudiants, sont établies par la direction des études, sur étude de dossier",
+      "Les étudiants ont accès à ces informations soit sur le site web de l'institut, soit au niveau de la scolarité ou au niveau du Bureau d'Information et d'Orientation (BIO)"
+    ],
+    "unitesEnseignement": [
+      {
+        "intitule": "Programmation et Langage"
+      },
+      {
+        "intitule": "Optimisation et langage"
+      },
+      {
+        "intitule": "Réseaux et Architectures"
+      },
+      {
+        "intitule": "Réseaux et Systèmes Informatique"
+      },
+      {
+        "intitule": "Systèmes Embarqués"
+      },
+      {
+        "intitule": "Système d'Information"
+      },
+      {
+        "intitule": "Informatique Industrielle et IoT"
+      },
+      {
+        "intitule": "Connaissances générales"
+      },
+      {
+        "intitule": "Professionnalisation"
+      }
+    ]
+  },
+  "master-banque-assurance": {
+    "source": "https://test.groupeisi.com/master-banque-assurance/",
+    "titreSource": "Banque Assurance",
+    "intro": "Le Master en banque assurance est une formation professionnelle. Il vise à former des cadres de la banque et de l’assurance disposant des outils et d’une bonne pratique en matière de banque et d’assurance. Il a pour objectif de doter les étudiants des savoirs, des savoir-faire et méthodes leur permettant d’occuper des postes de responsabilité au sein des institutions financières, des banques et des compagnies d’assurance",
+    "objectifs": [
+      "Former des professionnels de la banque et de l'assurance destinés aux institutions financières, des banques et des compagnies d'assurances",
+      "Apporter les compétences requises pour exercer des postes dans les directions des institutions financières, des banques et des compagnies d'assurance"
+    ],
+    "competences": [
+      "Maitriser les outils d'évaluation et d'analyse des performances et des risques financiers",
+      "Estimer la valeur d'une entreprise, réaliser des modèles de prévision, des projets de restructuration, un business plan, une introduction en bourse, une offre publique d'achat",
+      "Planifier et coordonner les activités économiques",
+      "Evaluer la rentabilité attendue au regard du risque"
+    ],
+    "debouches": [
+      "Le programme ouvre plusieurs perspectives au diplômé qui peut devenir, dans les institutions financières, entreprises industrielles et commerciales, cabinets d'audit et de conseil, cabinets, d'expertise comptable",
+      "Analyste financier, responsable du financement",
+      "Analyste crédit, arrangeurs, structureurs, trader",
+      "Chargé d'affaires",
+      "Responsable financier (PME, grandes entreprises, banques)",
+      "Conseiller financier (patrimoine, investissement)",
+      "Evaluateur d'entreprise",
+      "Gestionnaire de portefeuille",
+      "Contrôleur bancaire",
+      "Responsable des risques opérationnels",
+      "Rédacteur sinistre",
+      "Producteur automobile IARD",
+      "Chef de service sinistre ou IARD"
+    ]
+  },
+  "master-data-science-intelligence-artificielle": {
+    "source": "https://test.groupeisi.com/master-data-science-et-intelligence-artificielle/",
+    "titreSource": "Data Science et Intelligence Artificielle",
+    "intro": "Le Master en Data Science et Intelligence Artificielle (DSIA) est un programme innovant qui prépare des experts capables d’exploiter la puissance des données et de l’intelligence artificielle pour répondre aux défis économiques, scientifiques et technologiques contemporains.Cette formation associe approches théoriques avancées et applications pratiques pour développer des compétences recherchées dans les domaines du Big Data, du Machine Learning et des systèmes intelligents.Elle vise à former des Data Scientists capables de concevoir et de déployer des solutions d’intelligence artificielle à fort impact",
+    "competences": [
+      "Collecter, traiter et analyser des données massives (Big Data) issues de sources variées",
+      "Concevoir et optimiser des modèles d'apprentissage automatique et de Deep Learning",
+      "Mettre en place des Data Pipelines performants et industrialiser les solutions IA avec des pratiques de MLOps",
+      "Déployer des solutions Data Science dans des environnements Cloud et IoT",
+      "Diriger des projets innovants intégrant l'IA et les données au cœur des processus de décision"
+    ],
+    "debouches": [
+      "Les diplômés du Master DSIA pourront exercer des fonctions telles que:",
+      "Data Scientist",
+      "Machine Learning Engineer",
+      "Big Data Engineer",
+      "Cloud Data Architect",
+      "Expert en Intelligence Artificielle appliquée",
+      "Chef de projet IA et Data Science",
+      "Consultant en transformation numérique"
+    ],
+    "admission": [
+      "L'accès au programme de Master en Data Science & IA est disponible pour les étudiants qui ont obtenu un diplôme de licence scientifique dans des domaines apparentés tels que les mathématiques, l'informatique et d'autres études liées aux sciences, jugées acceptables"
+    ],
+    "unitesEnseignement": [
+      {
+        "intitule": "Le programme de Master en Data Science & IA est conçu pour être complété en deux (2) années académiques à temps plein"
+      },
+      {
+        "intitule": "Formation disponible en présentiel et en FOAD (Formation Ouverte à Distance)"
+      },
+      {
+        "intitule": "Alternance entre cours théoriques, travaux dirigés, projets et études de cas"
+      },
+      {
+        "intitule": "Évaluation par contrôle continu, projets appliqués, et soutenances"
+      },
+      {
+        "intitule": "Stage obligatoire en entreprise en fin de parcours, avec soutenance d'un mémoire"
+      }
+    ]
+  },
+  "master-finance": {
+    "source": "https://test.groupeisi.com/master-finance/",
+    "titreSource": "Finance",
+    "intro": "Le Master en finance est une formation professionnelle. Il vise à former des experts du financement des entreprises disposant des outils d’analyse financière et d’une bonne pratique des montages financiers. Il a pour objectif de doter les étudiants des savoirs, des savoir-faire et méthodes leur permettant d’occuper des postes de responsabilité au sein des PME et PMI, des entreprises, des institutions financières ou des administrations",
+    "objectifs": [
+      "L'origine du programme est de",
+      "Renforcer l'offre de formation existante dans le domaine de la finance, peu de formations au niveau national proposent une offre exclusive (niveau master) de formation dans ce domaine",
+      "Contribuer à mettre en adéquation la formation de futurs cadres de la finance et les besoins et exigences du monde professionnel et aux métiers de la finance",
+      "Diversifier la demande, en termes de niveau de qualité des compétences requises, relative aux métiers des « professionnels des chiffres »",
+      "Former des professionnels de la finance destinés aux entreprises publiques et privées, aux banques ou aux fonds d'investissement",
+      "Apporter les compétences requises pour exercer des postes dans les directions financières des entreprises ou des banques nationales et sous régionales",
+      "Maitriser les outils d'évaluation et d'analyse des performances et des risques financiers",
+      "Estimer la valeur d'une entreprise, réaliser des modèles de prévision, des projets de restructuration, un business plan, une introduction en bourse, une offre publique d'achat",
+      "Planifier et coordonner les activités économiques",
+      "Evaluer la rentabilité attendue au regard du risque",
+      "Exposer sa pensée pour convaincre",
+      "Organiser et planifier un travail"
+    ],
+    "competences": [
+      "Le programme ouvre plusieurs perspectives au diplômé qui peut devenir, dans les institutions financières, entreprises industrielles et commerciales, cabinets d'audit et de conseil, cabinets, d'expertise comptable",
+      "Analyste financier, responsable du financement",
+      "Analyste crédit, arrangeurs, structureurs, trader",
+      "Chargé d'affaires",
+      "Assistant du directeur administratif et financier (DAF )",
+      "Responsable financier (PME, grandes entreprises, banques)",
+      "Conseiller financier (patrimoine, investissement)",
+      "Evaluateur d'entreprise",
+      "Gestionnaire de portefeuille",
+      "Gestionnaire de trésorerie"
+    ],
+    "debouches": [
+      "O Assistant du directeur financier",
+      "O Chef comptable",
+      "O Responsable du financement",
+      "O Responsable de Trésorerie",
+      "O Responsable de Paie",
+      "O Responsable de contrôle de gestion",
+      "O Assistant du contrôleur de gestion"
+    ]
+  },
+  "master-genie-logiciel": {
+    "source": "https://test.groupeisi.com/master-genie-logiciel/",
+    "titreSource": "Génie Logiciel",
+    "intro": "Le Master professionnel en génie logiciel vise à former des professionnels compétents, bien préparés techniquement et capables de s’adapter à un environnement professionnel exigeant, dans lequel l’innovation et la qualité des logiciels sont essentielles pour répondre aux besoins de l’industrie moderne",
+    "objectifs": [
+      "Objectif spécifiques (en termes de savoir)",
+      "D'acquérir des connaissances fondamentales et actualisées des concepts et des méthodologies de mise en place d'une application informatique",
+      "De connaitre les lois et la juridiction des TIC",
+      "D'acquérir des connaissances fondamentales de la culture d'entreprise",
+      "Objectifs spécifiques (en termes de savoir-faire)",
+      "En termes de savoir-faire, les titulaires du diplôme du master en génie logiciel sont capables de maitriser toutes les phases du cycle de vie d'un logiciel, notamment",
+      "Élaborer une Pré-étude d'un système à mettre en œuvre",
+      "Analyser la situation problème",
+      "Concevoir une application informatique",
+      "Mettre en œuvre cette application",
+      "Procéder à des phases de tests et de validation",
+      "Déployer une solution",
+      "Assurer la maintenance d'un logiciel",
+      "Concevoir, interroger, et administrer une base de données"
+    ],
+    "competences": [
+      "Élaborer une Pré-étude d'un système à mettre en œuvre",
+      "Analyser la situation problème",
+      "Concevoir une application informatique",
+      "Mettre en œuvre cette application",
+      "Procéder à des phases de tests et de validation",
+      "Déployer une solution",
+      "Assurer la maintenance d'un logiciel",
+      "Concevoir, interroger, et administrer une base de données"
+    ],
+    "debouches": [
+      "Le titulaire de ce master peut exercer les métiers suivants: ● Ingénieur de conception et de développement; ● Architecte d'applications; ● Intégrateur d'applications; ● Chef de projet junior; ● Administrateur de base de données"
+    ],
+    "admission": [
+      "Nos masters professionnels (M1) sont ouverts à tout étudiant titulaire d'une licence (Bac+3) dans le domaine de l'informatique ou tout autre diplôme admis en équivalence ou en dispense",
+      "Peut s'inscrire en master 2, tout étudiant ayant capitalisé au moins 70% des crédits de la première année M1 (c'est-à-dire 42 crédits)",
+      "Les étudiants titulaires d'un diplôme de Bac+4 ou d'un diplôme admis en équivalence ou en dispense peuvent s'inscrire en master 2 (étudiants venant d'autres établissements)"
+    ],
+    "unitesEnseignement": [
+      {
+        "intitule": "Développement d'application; ● ILO",
+        "contenu": "Ingénierie logicielle; ● DME: développement mobile et embarqué; ● SIBD: Système d'Informations et Base de données ● RIN: Réseaux Informatiques; ● CGE: Connaissances Générales ● PRO: Professionnalisation"
+      }
+    ]
+  },
+  "master-miage": {
+    "source": "https://test.groupeisi.com/master-informatique-de-gestion/",
+    "titreSource": "Informatique de Gestion",
+    "intro": "Le Master MIAGE forme des experts en systèmes d’information à l’interface de l’informatique, de la gestion et du management. Ce programme pluridisciplinaire permet aux étudiants d’acquérir des compétences techniques et managériales pour concevoir, développer et piloter des solutions numériques adaptées aux besoins des entreprises. Le cursus combine des enseignements en informatique, gestion, management et spécialisation en Data Management & Analytics ou ERP Management, offrant ainsi une formation complète et adaptée aux évolutions du marché",
+    "objectifs": [
+      "DATA MANAGEMENT & ANALYTICS",
+      "Cette spécialisation forme des experts en gestion et analyse de données massives (Big Data). Les étudiants apprendront à extraire de la valeur à partir des données pour aider à la prise de décision stratégique",
+      "ERP MANAGEMENT",
+      "La spécialisation ERP Management prépare à la gestion et au déploiement des systèmes ERP (SAP, Oracle, etc.), indispensables au pilotage des processus métiers d'une entreprise. Les étudiants seront formés à la conduite de projets d'intégration ERP et à la transformation numérique des organisations"
+    ],
+    "competences": [
+      "DATA MANAGEMENT & ANALYTICS",
+      "Gestion des bases de données relationnelles et non-relationnelles",
+      "Outils de Big Data, statistiques, et Machine Learning",
+      "Data Visualization et communication des résultats",
+      "ERP MANAGEMENT",
+      "Conception et mise en œuvre d'ERP",
+      "Gestion de projets d'implémentation ERP",
+      "Conduite du changement lié aux systèmes ERP"
+    ],
+    "debouches": [
+      "DATA MANAGEMENT & ANALYTICS",
+      "Data Scientist",
+      "Data Analyst",
+      "Consultant Big Data",
+      "Architecte de solutions de données",
+      "ERP MANAGEMENT",
+      "Consultant ERP",
+      "Chef de Projet ERP",
+      "Responsable Fonctionnel ERP",
+      "Architecte Fonctionnel des Systèmes d'Information"
+    ],
+    "admission": [
+      "Accès en M1",
+      "Licence en Informatique, Mathématiques Appliquées ou équivalent",
+      "Les titulaires d'une licence MIAGE sont particulièrement bienvenus",
+      "Compétences en programmation, bases de données, et systèmes d'information requises",
+      "Accès en M2",
+      "M1 MIAGE ou diplôme d'ingénieur en informatique et gestion",
+      "Admission sur dossier et entretien"
+    ],
+    "unitesEnseignement": [
+      {
+        "intitule": "Systèmes d'Information et Modélisation",
+        "contenu": "Introduction aux Systèmes d'Information et Gouvernance Principes fondamentaux des systèmes d'information, leur gouvernance et introduction à UML"
+      },
+      {
+        "intitule": "Modélisation des SI (UML/Merise)",
+        "contenu": "Approfondissement des méthodologies UML et Merise pour la modélisation des systèmes d'information"
+      },
+      {
+        "intitule": "Réseaux, Cloud et Bases de Données",
+        "contenu": "Concepts Fondamentaux du Cloud Computing Introduction aux concepts du cloud computing, incluant les services et infrastructures modernes"
+      },
+      {
+        "intitule": "Administration des Services Réseaux",
+        "contenu": "Gestion et administration avancées des services réseaux dans des environnements complexes"
+      }
+    ]
+  },
+  "master-reseaux-systemes-informatiques": {
+    "source": "https://test.groupeisi.com/master-reseaux-et-systemes-informatiques/",
+    "titreSource": "Réseaux et Systèmes informatiques",
+    "intro": "L’objectif du programme de Master professionnel en Réseaux et Systèmes Informatiques est de former des ingénieurs capables de concevoir les architectures des systèmes d’information d’entreprises. Elle propose une approche cohérente des réseaux, des systèmes et des applications réparties de manière à préparer le sortant à la conduite de projets dans le domaine des infrastructures informatiques. L’objectif est de maîtriser les architectures applicatives et les installations sous-jacentes, de manière à pouvoir dimensionner, concevoir, déployer, sécuriser et superviser les systèmes informatiques d’entreprises. Ce domaine fait appel à de nombreuses technologies sans cesse renouvelées. Aussi, le programme forme des ingénieurs polyvalents, possédant de fortes compétences techniques, mais également les fondamentaux leur permettant d’évoluer dans leur métier",
+    "competences": [
+      "Le titulaire de ce diplôme a les compétences dans les domaines",
+      "De la conception et administration des réseaux IP",
+      "De la sécurité des réseaux et systèmes informatiques, qualité de service sur les réseaux IP",
+      "De l'interconnexion de réseaux IP",
+      "De l'administration réseaux sous Linux et Windows",
+      "De l'administration systèmes",
+      "Du développement d'applications et de solutions réseaux",
+      "De déploiement des applications innovantes (IoT, Virtualisation, Cloud, …)",
+      "De la sécurité et la gestion de performances réseaux LAN et WAN"
+    ],
+    "debouches": [
+      "Administrateur système et réseaux",
+      "Responsable de l'administration, de la sécurité et de la qualité de services dans les réseaux d'entreprise ou d'opérateurs",
+      "Développeur d'applications client/serveur",
+      "Développeur d'applications mobiles",
+      "Responsable sécurité et qualité de service réseaux",
+      "Concepteur et administrateur de réseaux locaux (LAN) et réseaux étendus (WAN)",
+      "Les secteurs d'activité sont multiples et couvrent aussi bien les sociétés d'équipements réseaux, d'opérateurs de télécommunication et de fournisseurs d'accès à l'internet, des entreprises et des administrateurs gérant elles-mêmes leurs systèmes d'information et de communication"
+    ],
+    "admission": [
+      "Nos masters professionnels sont ouverts à tout étudiant titulaire d'une licence (Bac+3) dans le domaine de l'informatique ou tout autre diplôme admis en équivalence ou en dispense",
+      "Peut s'inscrire en master 2, tout étudiant ayant capitalisé au moins 70% des crédits de la première année M1 (c'est-à-dire 42 crédits)",
+      "Les étudiants titulaires d'un diplôme de Bac+4 ou d'un diplôme admis en équivalence ou en dispense peuvent s'inscrire en master 2 (étudiants venant d'autres établissements)"
+    ],
+    "unitesEnseignement": [
+      {
+        "intitule": "Ingénierie Réseaux et Systèmes"
+      },
+      {
+        "intitule": "Ingénierie de Sécurité Réseaux"
+      },
+      {
+        "intitule": "Ingénierie des Systèmes d'Informations"
+      },
+      {
+        "intitule": "Ingénierie Virtualisation"
+      },
+      {
+        "intitule": "Ingénierie Cloud et Machine Learning"
+      },
+      {
+        "intitule": "Ingénierie de Communication et Services"
+      },
+      {
+        "intitule": "Connaissance Générale"
+      },
+      {
+        "intitule": "Professionnalisation"
+      }
+    ]
+  },
+  "master-reseaux-telecommunications": {
+    "source": "https://test.groupeisi.com/master-reseaux-telecoms/",
+    "titreSource": "Réseaux Télécommunications",
+    "intro": "L’objectif de ce programme est de fournir aux opérateurs et autres ingénieurs spécialistes capables de mobiliser et d’intégrer des solutions adéquates et des technologies appropriées et pertinentes pour résoudre des problèmes relevant des domaines des réseaux télécommunications",
+    "objectifs": [
+      "D'acquérir des connaissances fondamentales et actualisées des concepts et des méthodologies d'ingénierie réseaux fixes et mobiles",
+      "D'acquérir des connaissances des différentes solutions et technologies réseaux télécommunications",
+      "D'interpréter les différentes étapes de mise en œuvre de réseaux télécommunications (planification, déploiement et gestion)",
+      "D'identifier les différentes solutions émergentes des télécommunications",
+      "D'expliquer les concepts d'ingénierie cœur de réseaux, de réseaux d'accès radio et de transmission",
+      "De connaître les éléments fondamentaux de l'IA appliquée aux télécommunications",
+      "D'acquérir des connaissances fondamentales pour la gestion des données massives (Big Data/Hadoop)",
+      "D'acquérir des connaissances en programmation et sécurité des réseaux",
+      "De connaître les activités et les compétences des autorités de régulation"
+    ],
+    "competences": [
+      "Conception et administration des réseaux IP, mobiles et multimédia, cœur de réseaux, et des backbones de transmission",
+      "Sécurisation des réseaux et systèmes informatiques et télécommunications",
+      "Gestion de la qualité de service dans les réseaux 2G, 3G, 4G, 5G, NGN, IMS…",
+      "Interconnexion de réseaux IP",
+      "Administration et supervision des réseaux sous Linux et Windows",
+      "Automatisation des services réseaux informatiques et télécommunications",
+      "Administration et gestion de données massives",
+      "Administration de services innovants des réseaux hauts débits",
+      "Programmation et apprentissage automatique",
+      "Exploitation des données pour l'analyse du trafic réseau"
+    ],
+    "debouches": [
+      "L'orientation professionnelle du master professionnel en réseaux télécommunications débouche sur des métiers suivants",
+      "Ingénieur en planification et optimisation réseaux",
+      "Ingénieur en déploiement et intégration réseaux",
+      "Ingénieur qualité de service",
+      "Ingénieur codeur de réseaux CS/PS",
+      "Ingénieur réseaux d'accès radio",
+      "Ingénieur de design et gestion de performance",
+      "Ingénieur chargé de suivi et la conformité avec la régulation",
+      "Ingénieur déploiement et intégration de services émergents",
+      "Les secteurs d'activité sont multiples et couvrent aussi bien les sociétés d'équipements réseaux, d'opérateurs de télécommunication et de fournisseurs d'accès à l'internet, des entreprises et des administrateurs gérant elles-mêmes leurs systèmes de formation et de communication"
+    ],
+    "admission": [
+      "Nos masters professionnels (M1) sont ouverts à tout étudiant titulaire d'une licence (Bac+3) dans le domaine de l'informatique ou tout autre diplôme admis en équivalence ou en dispense",
+      "Peut s'inscrire en master 2, tout étudiant ayant capitalisé au moins 70% des crédits de la première année M1 (c'est-à-dire 42 crédits)",
+      "Les étudiants titulaires d'un diplôme de Bac+4 ou d'un diplôme admis en équivalence ou en dispense peuvent s'inscrire en master 2 (étudiants venant d'autres établissements)"
+    ],
+    "unitesEnseignement": [
+      {
+        "intitule": "Ingénierie des systèmes"
+      },
+      {
+        "intitule": "Ingénierie des Télécommunications"
+      },
+      {
+        "intitule": "Ingénierie des Système d'informations"
+      },
+      {
+        "intitule": "Télécommunications"
+      },
+      {
+        "intitule": "Ingénierie Réseaux et Sécurité"
+      },
+      {
+        "intitule": "Connaissance de l'Entreprise"
+      },
+      {
+        "intitule": "Professionnalisation"
+      }
+    ]
+  },
+  "master-securite-systemes-informations-monetique": {
+    "source": "https://test.groupeisi.com/master-securite-systeme-informations-et-monetiques/",
+    "titreSource": "Sécurité des Systèmes d’Informations et Monétiques",
+    "intro": "Après une année de formation en tronc commun, au master 1, ce programme offre la possibilité aux futurs cadres à intégrer en Master 2, l’une des options suivantes",
+    "objectifs": [
+      "O Gérer des infrastructures monétique",
+      "O Sécuriser des infrastructures monétique",
+      "O Sécuriser les transactions et les flux interbancaires",
+      "O Sécuriser les différents types de paiements",
+      "O Mettre en place un PCA et un PRA",
+      "O Mener des études et concevoir des solutions de paiement électronique",
+      "O Proposer et mener des projets (assistance à maîtrise d'ouvrage ou maîtrise d'œuvre)",
+      "O Auditer les systèmes d'information et système monétique",
+      "O Manager le e-commerce et m-commerce",
+      "O Mettre en place un plan de transformation digitale et de détection des évènements digitaux",
+      "Le parcours Sécurité des Systèmes d'informations (SSI), il a pour but de donner un savoir-faire en sécurité informatique englobant les aspects organisationnels, applicatifs et réseaux de communication. A la fin de cette formation, l'étudiant sera capable de",
+      "O Sécuriser un système et réseaux informatiques",
+      "O Sécuriser les bases de données et les applications Web"
+    ],
+    "competences": [
+      "Gérer des infrastructures monétique",
+      "Sécuriser des infrastructures monétique",
+      "Sécuriser les transactions et les flux interbancaires",
+      "Sécuriser les différents types de paiements",
+      "Mener des études et concevoir des solutions de paiement électronique",
+      "Proposer et mener des projets (assistance à maîtrise d'ouvrage ou maîtrise d'œuvre)",
+      "Auditer les systèmes d'information et système monétique",
+      "Manager le e-commerce et m-commerce",
+      "Mettre en place un plan de transformation digitale et de détection des évènements digitaux",
+      "Le parcours Sécurité des Systèmes d'informations (SSI), il a pour but de donner un savoir-faire en sécurité informatique englobant les aspects organisationnels, applicatifs et réseaux de communication. A la fin de cette formation, l'étudiant sera capable de",
+      "Sécuriser un système et réseaux informatiques",
+      "Sécuriser les bases de données et les applications Web",
+      "Concevoir, implémenter et prendre en charge la sécurité des périphériques"
+    ],
+    "debouches": [
+      "L'orientation professionnelle du parcours Sécurité des Systèmes d'Informations (SSI) débouche sur les métiers suivants",
+      "O Ingénieur informatique",
+      "O Ingénieur sécurité",
+      "O Ingénieur d'études",
+      "O Auditeur en sécurité des SI",
+      "O Responsable de la sécurité des SI",
+      "O Chef de projets en sécurité informatique…",
+      "L'orientation professionnelle du parcours Monétique et Transactions Sécurisées (MTS) débouche sur des métiers suivants",
+      "O Consultant en monétique ou en sécurité des transactions",
+      "O Architecte de système monétique et de sécurisation des transactions",
+      "O Responsable sécurité informatique",
+      "O Responsable de la sécurité des SI monétique",
+      "O Chef de projet monétique",
+      "O Opérationnel Back Office"
+    ],
+    "admission": [
+      "Le master professionnel (M1) en Sécurité des Système d'Information et Monétique (SSIM) est ouvert à tout étudiant titulaire d'une licence (Bac+3) dans le domaine de l'informatique ou tout autre diplôme admis en équivalence ou en dispense",
+      "Peut s'inscrire en master 2, dans l'une des deux (2) options SSI ou MTS, tout étudiant ayant capitalisé au moins 70% des crédits de la première année M1 (c'est-à-dire 42 crédits)",
+      "Les étudiants titulaires d'un diplôme de Bac+4 en informatique ou d'un diplôme admis en équivalence ou en dispense peuvent s'inscrire en master 2, dans l'une des deux options (2) (étudiants venant d'autres établissements), sur étude de dossier"
+    ],
+    "unitesEnseignement": [
+      {
+        "intitule": "Ingénierie Réseaux et Services"
+      },
+      {
+        "intitule": "Ingénierie Sécurité des SI"
+      },
+      {
+        "intitule": "Ingénierie Sécurité Réseaux"
+      },
+      {
+        "intitule": "Ingénierie Sécurité"
+      },
+      {
+        "intitule": "Ingénierie de la Monétique"
+      },
+      {
+        "intitule": "Ingénierie Systèmes d'Informations et Développement"
+      },
+      {
+        "intitule": "Ingénierie Monétique et Développement"
+      },
+      {
+        "intitule": "Connaissance Générale"
+      },
+      {
+        "intitule": "Professionnalisation"
+      }
+    ]
+  },
+  "master-virtualisation-cloud-computing": {
+    "source": "https://test.groupeisi.com/master-virtualisation-et-cloud-computing/",
+    "titreSource": "Virtualisation et Cloud Computing",
+    "intro": "Le Master Virtualisation et Cloud Computing a pour objectif de fournir aux professionnels de l’entreprise les compétences à la fois théoriques et pratiques et des connaissances nécessaires pour concevoir, gérer et virtualiser des architectures complexes de Cloud Computing",
+    "objectifs": [
+      "Démontrer et appliquer une connaissance avancée des tendances actuelles dans des domaines tels que l'administration de réseaux, la virtualisation, la sécurité du cloud et les architectures de réseau basées sur le cloud",
+      "Étudier et réfléchir de manière critique sur les développements émergents des réseaux informatiques, en particulier ceux liés au cloud computing et à la virtualisation",
+      "Appliquer les compétences techniques et les techniques de pensée critique appropriées pour résoudre des problèmes complexes de réseau informatique à l'aide des principes et des technologies de virtualisation et de cloud computing",
+      "Procéder à une évaluation des risques liés au déploiement des données de l'entreprise sur le cloud et recommander des contrôles procéduraux et techniques appropriés pour garantir la sécurité",
+      "Communiquer efficacement les concepts et les solutions basés sur le cloud computing et la virtualisation aux personnes de l'ensemble de l'entreprise, des utilisateurs finaux et aux cadres supérieurs",
+      "De qualifier un besoin client et le traduire en solutions",
+      "De détecter et analyser les facteurs d'évolution du réseau, pour les intégrer dans les études et les choix techniques",
+      "De connaître et maîtriser l'architecture des réseaux, des techniques d'ingénierie et l'intégration des solutions cloud et virtualisation",
+      "De montrer et proposer des solutions cloud et virtualisation aux entreprises pour une migration",
+      "D'exploiter et assurer la maintenance des réseaux cloud et virtualisés",
+      "De développer, exécuter et intégrer des solutions pour les services à valeur ajoutée"
+    ],
+    "competences": [
+      "Ingénieur solutions cloud",
+      "Ingénieur infrastructures cloud",
+      "Chef de projet cloud",
+      "Ingénieur solutions de stockage ou virtualisation",
+      "Intégration dans une architecture cloud",
+      "Administrateur du système virtualisé",
+      "Administrateur système et réseaux",
+      "Responsable de l'administration, de la sécurité et de la qualité de services dans les réseaux d'entreprise ou d'opérateurs",
+      "Les secteurs d'activité sont multiples et couvrent aussi bien les sociétés d'équipements réseaux, d'opérateurs de télécommunication et de fournisseurs d'accès à l'internet, des entreprises et des administrateurs gérant elles-mêmes leurs systèmes d'information et de communication"
+    ],
+    "debouches": [
+      "Ingénieur solutions cloud",
+      "Ingénieur infrastructures cloud",
+      "Chef de projet cloud",
+      "Ingénieur solutions de stockage ou virtualisation",
+      "Intégration dans une architecture cloud",
+      "Administrateur du système virtualisé",
+      "Administrateur système et réseaux",
+      "Responsable de l'administration, de la sécurité et de la qualité de services dans les",
+      "Réseaux d'entreprise ou d'opérateurs",
+      "Responsable sécurité et qualité de service réseaux",
+      "Les secteurs d'activité sont multiples et couvrent aussi bien les sociétés d'équipements réseaux",
+      "D'opérateurs de télécommunication et de fournisseurs d'accès à l'internet, des entreprises et des",
+      "Administrateurs gérant elles-mêmes leurs systèmes d'information et de communication"
+    ],
+    "admission": [
+      "Nos masters professionnels (M1) sont ouverts à tout étudiant titulaire d'une licence (Bac+3) dans le domaine de l'informatique ou tout autre diplôme admis en équivalence ou en dispense",
+      "Peut s'inscrire en master 2, tout étudiant ayant capitalisé au moins 70% des crédits de la première année M1 (c'est-à-dire 42 crédits)",
+      "Les étudiants titulaires d'un diplôme de Bac+4 ou d'un diplôme admis en équivalence ou en dispense peuvent s'inscrire en master 2 (étudiants venant d'autres établissements)"
+    ],
+    "unitesEnseignement": [
+      {
+        "intitule": "Ingénierie Réseaux et Systèmes"
+      },
+      {
+        "intitule": "Ingénierie Virtualisation et Cloud Computing"
+      },
+      {
+        "intitule": "Ingénierie de la Virtualisation"
+      },
+      {
+        "intitule": "Connaissance Générale"
+      },
+      {
+        "intitule": "Ingénierie des Systèmes d'Informations"
+      },
+      {
+        "intitule": "Ingénierie de Sécurité Réseaux"
+      },
+      {
+        "intitule": "Ingénierie Réseaux"
+      },
+      {
+        "intitule": "Professionnalisation"
+      }
+    ]
+  }
+}

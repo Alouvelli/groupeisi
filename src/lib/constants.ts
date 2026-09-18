@@ -10,8 +10,10 @@ import type {
 
 export const NIVEAU_LABELS: Record<Niveau, string> = {
   BTS: "BTS",
+  BACHELOR: "Bachelor",
   LICENCE: "Licence",
   MASTER: "Master",
+  INGENIEUR: "Cycle ingénieur",
   DOCTORAT: "Doctorat",
   CERTIFICAT: "Certification",
   FORMATION_CONTINUE: "Formation continue",

@@ -1,23 +1,48 @@
-import { Section, SectionHeading } from "@/components/ui/Section";
-import { Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { DepartmentCard, type DepartmentCardProps } from "@/components/cards/DepartmentCard";
+import { Container } from "@/components/ui/Container";
+import { SectionLabel } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
-import { ArrowRight } from "lucide-react";
 
-export function DepartementsSection({ departements }: { departements: DepartmentCardProps[] }) {
+/** Section « Nos départements » : quatre cartes départements. */
+export function DepartementsSection({
+  departements,
+  label = "Nos départements",
+  title = "Quatre départements pédagogiques",
+  description,
+  href,
+  cta,
+  variant = "surface",
+}: {
+  departements: DepartmentCardProps[];
+  label?: string;
+  title?: string;
+  description?: string;
+  href?: string;
+  cta?: string;
+  variant?: "white" | "surface";
+}) {
+  if (!departements.length) return null;
   return (
-    <Section variant="surface" padding="lg" id="departements">
-      <SectionHeading label="Nos départements" title="Quatre pôles d'excellence pour construire votre avenir" description="Informatique, réseaux et systèmes, management, formation continue : des parcours complets et professionnalisants du BTS au Master." />
-      <Stagger className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-        {departements.map((d) => (
-          <StaggerItem key={d.slug}>
-            <DepartmentCard {...d} />
-          </StaggerItem>
-        ))}
-      </Stagger>
-      <div className="mt-10 text-center">
-        <Button href="/departements" variant="outline">Tous les départements <ArrowRight className="h-4 w-4" /></Button>
-      </div>
-    </Section>
+    <section className={variant === "surface" ? "bg-surface py-16 sm:py-20 lg:py-[100px]" : "bg-white py-16 sm:py-20 lg:py-[100px]"}>
+      <Container>
+        <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-3xl">
+            <SectionLabel>{label}</SectionLabel>
+            <h2 className="section-title">{title}</h2>
+            {description && <p className="mt-4 text-base leading-7 text-body">{description}</p>}
+          </div>
+          {href && cta && (
+            <Button href={href} arrow className="shrink-0">
+              {cta}
+            </Button>
+          )}
+        </div>
+        <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-4">
+          {departements.map((d) => (
+            <DepartmentCard key={d.slug} {...d} />
+          ))}
+        </div>
+      </Container>
+    </section>
   );
 }

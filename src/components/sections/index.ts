@@ -1,4 +1,6 @@
 export * from "./HeroSection";
+export * from "./QuickLinks";
+export * from "./AboutSection";
 export * from "./StatsBar";
 export * from "./WhyChooseSection";
 export * from "./DepartementsSection";

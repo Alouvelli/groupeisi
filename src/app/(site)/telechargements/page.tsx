@@ -13,7 +13,7 @@ export default async function TelechargementsPage() {
   const types = Array.from(new Set(docs.map((d) => d.type)));
   return (
     <>
-      <PageHeader title="Téléchargements" subtitle="Brochures, formulaires, calendrier académique et documents utiles." items={[{ label: "Admissions", href: "/admissions" }, { label: "Téléchargements" }]} />
+      <PageHeader title="Téléchargements" subtitle="Brochures, formulaires, calendrier académique et documents utiles." items={[{ label: "Admissions", href: "/condition-admission" }, { label: "Téléchargements" }]} />
       <Section padding="lg">
         <div className="mx-auto max-w-4xl space-y-12">
           {types.map((t) => (
