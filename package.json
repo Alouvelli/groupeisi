@@ -19,9 +19,12 @@
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
     "docker:logs": "docker compose logs -f",
-    "setup": "npm install && docker compose up -d && prisma generate && prisma db push && tsx prisma/seed.ts"
+    "setup": "npm install && docker compose up -d && prisma generate && prisma db push && tsx prisma/seed.ts",
+    "rag:evaluer": "tsx scripts/evaluer-rag.ts",
+    "rag:inspecter": "tsx scripts/inspecter-prompt.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.127.0",
     "@hookform/resolvers": "^5.9.1",
     "@prisma/client": "^6.19.3",
     "axios": "^1.20.0",

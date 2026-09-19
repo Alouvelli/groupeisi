@@ -4,6 +4,7 @@ import { Header, type NavItem } from "./Header";
 import { Footer } from "./Footer";
 import { BackToTop } from "./BackToTop";
 import { WhatsAppButton } from "./WhatsAppButton";
+import { Chatbot } from "@/components/chat/Chatbot";
 
 export async function BaseLayout({ children }: { children: React.ReactNode }) {
   const [settings, nav, featured, campus, gallery] = await Promise.all([
@@ -84,6 +85,7 @@ export async function BaseLayout({ children }: { children: React.ReactNode }) {
       <main className="flex-1">{children}</main>
       <Footer settings={settings} footerNav={nav.footer} footerSecondary={nav.footerSecondary} galerie={galerie.slice(0, 4)} />
       <WhatsAppButton number={settings.whatsapp} />
+      <Chatbot />
       <BackToTop />
     </div>
   );

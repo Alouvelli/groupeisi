@@ -242,6 +242,38 @@ Les routes reprennent celles de new.groupeisi.com (les anciennes URL WordPress s
 - **Images** : 100 visuels du site sont téléchargés, redimensionnés et servis depuis `public/media/` (aucune dépendance à new.groupeisi.com en production).
 - **Redirections** : `/programs/:slug`, `/faculties/:slug`, `/blog-grid`, `/contact-2`, `/apply-now`, `/frais-etudes`, `/2025/01/10/:slug`… redirigent vers les routes correspondantes.
 
+## Chatbot institutionnel
+
+Un assistant flottant répond aux questions des visiteurs à partir du contenu du site, avec des sources cliquables. Il n'y a **pas d'entraînement** : c'est de la génération augmentée par la recherche, la fraîcheur vient de l'index, reconstruit depuis la base de données.
+
+### Fonctionnement
+
+| Étape | Où | Ce qui se passe |
+|---|---|---|
+| Corpus | `src/lib/rag/corpus.ts` | Le contenu est lu depuis Prisma — formations, campus, départements, équipe, actualités, évènements, questions fréquentes, témoignages, alumni, documents, réglages — et découpé en passages portant chacun l'URL de sa page. S'y ajoutent les connaissances écrites dans les composants : plan du site, procédure de préinscription, conditions d'admission, offre à distance, vie étudiante. |
+| Index | `src/lib/rag/recherche.ts` | Recherche BM25 en mémoire, adaptée au français : repli des accents, désuffixation, mots vides, et un lexique de synonymes du domaine qui rapproche « c'est cher comment » de « frais de scolarité ». |
+| Récupération | `src/lib/rag/base.ts` | L'index se reconstruit toutes les quinze minutes. La question est enrichie du tour précédent, les résultats sont réordonnés selon le niveau nommé (« master data science » privilégie les masters) et une même page ne fournit pas plus de deux tranches. |
+| Génération | `src/lib/rag/reponse.ts` | Les dix meilleurs passages sont numérotés et remis à `claude-opus-5` via le SDK Anthropic, en flux continu. La consigne interdit d'affirmer quoi que ce soit hors des extraits et impose de citer les numéros employés. |
+| Route | `src/app/api/chat/route.ts` | Diffuse la réponse en JSON délimité par des sauts de ligne, puis les sources déduites des citations réellement présentes. |
+| Interface | `src/components/chat/` | Bulle flottante, panneau de conversation, questions suggérées, sources cliquables, interruption possible. L'assistant connaît la page consultée. |
+
+### Configuration
+
+`ANTHROPIC_API_KEY` dans `.env`. **Sans cette clé, l'assistant reste utile** : la recherche fonctionne de toute façon et il répond en mode documentaire, en restituant les passages trouvés au lieu de les faire rédiger.
+
+Deux garde-fous : la limitation de débit par adresse (douze questions par minute, quatre-vingts par heure) dans `src/lib/rag/quota.ts`, et la validation du corps de requête avant tout appel facturé.
+
+### Mesure
+
+```bash
+npx tsx scripts/evaluer-rag.ts                    # rappel de la recherche sur 24 questions types
+npx tsx scripts/inspecter-prompt.ts "votre question"   # passages retenus et contexte envoyé au modèle
+```
+
+L'évaluation vérifie qu'un passage attendu remonte pour chaque question. Dernier relevé : **100 % de rappel dans les cinq premiers résultats**, 96 % dans les trois premiers, 79 % en première position, pour une recherche à 0,6 ms.
+
+---
+
 ### Couche de mouvement
 
 Les primitives vivent dans `src/components/motion/`, les jetons partagés (courbes, durées, cascades) dans `src/lib/motion.ts`.

@@ -14,6 +14,8 @@ export const env = {
     webhookSecret: process.env.ERP_WEBHOOK_SECRET ?? "",
     timeoutMs: Number(process.env.ERP_TIMEOUT_MS ?? 15000),
   },
+  /** Clé de l'API Anthropic, utilisée par le chatbot. Absente : mode documentaire. */
+  anthropicApiKey: process.env.ANTHROPIC_API_KEY ?? "",
   cronSecret: process.env.CRON_SECRET ?? "",
   isProd: process.env.NODE_ENV === "production",
 };
